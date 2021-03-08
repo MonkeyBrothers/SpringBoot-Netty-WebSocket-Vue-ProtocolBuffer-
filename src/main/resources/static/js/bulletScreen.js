@@ -4,7 +4,7 @@ const BarrageControl = new Super.BarrageControl() // 弹幕控件
 const fullScreenControl = new Super.FullScreenControl() // 实例化“全屏”控件
 const video = new Super.Svideo('videoContainer', {
     source: new Super.VideoSource({ // 引入视频资源
-        src: 'http://oss.liurongqiang.com/images/20210302/7e62ebba40a244eeacadc48dc7842bc9.mp4'
+        src: 'https://blz-videos.nosdn.127.net/1/OverWatch/AnimatedShots/Overwatch_AnimatedShot_Winston_Recall.mp4'
     }),
     leftControls: [nextControl], // 控件栏左槽插入控件
     rightControls: [Dbspeen, fullScreenControl], // 控件栏右槽插入控件

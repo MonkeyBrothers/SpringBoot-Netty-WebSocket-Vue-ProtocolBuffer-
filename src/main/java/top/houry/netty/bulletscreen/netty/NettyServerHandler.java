@@ -23,6 +23,9 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
      */
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
+
+
+
     /**
      * @param ctx 通道上下文
      * @param msg 信息内容
