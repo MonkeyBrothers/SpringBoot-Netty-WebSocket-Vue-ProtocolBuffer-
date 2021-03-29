@@ -33,7 +33,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
-        log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]",ctx.channel().remoteAddress(), msg.text());
+        log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]",ctx.channel().toString(), msg.text());
         channels.forEach(v -> v.writeAndFlush(new TextWebSocketFrame(msg.text())));
     }
 
@@ -74,8 +74,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        log.error("[NettyServerHandler]-[exceptionCaught]-[Exception]");
-        cause.printStackTrace();
+        log.error("[NettyServerHandler]-[exceptionCaught]-[Exception]", cause);
         ctx.channel().close();
         channels.remove(ctx.channel());
     }
