@@ -1,13 +1,13 @@
-package top.houry.netty.bulletscreen;
+package top.houry.netty.barrage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BulletScreenApplication {
+public class BarrageApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BulletScreenApplication.class, args);
+        SpringApplication.run(BarrageApplication.class, args);
     }
 
 }

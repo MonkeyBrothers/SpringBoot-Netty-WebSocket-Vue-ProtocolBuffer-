@@ -1,4 +1,4 @@
-package top.houry.netty.bulletscreen.config;
+package top.houry.netty.barrage.config;
 
 import lombok.Getter;
 import lombok.Setter;

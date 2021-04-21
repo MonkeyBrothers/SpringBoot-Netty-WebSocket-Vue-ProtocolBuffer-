@@ -1,4 +1,4 @@
-package top.houry.netty.bulletscreen.netty;
+package top.houry.netty.barrage.netty;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;

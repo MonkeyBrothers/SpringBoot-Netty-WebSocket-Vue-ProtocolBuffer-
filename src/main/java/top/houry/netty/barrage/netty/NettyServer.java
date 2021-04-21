@@ -1,4 +1,4 @@
-package top.houry.netty.bulletscreen.netty;
+package top.houry.netty.barrage.netty;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -11,8 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
-import top.houry.netty.bulletscreen.config.NettyConfigProperties;
-import top.houry.netty.bulletscreen.utils.ContextUtil;
+import top.houry.netty.barrage.config.NettyConfigProperties;
+import top.houry.netty.barrage.listener.NettyServerListener;
+import top.houry.netty.barrage.utils.ContextUtil;
 
 import java.util.concurrent.TimeUnit;
 
@@ -42,8 +43,7 @@ public class NettyServer implements ApplicationRunner {
         try {
             ServerBootstrap server = new ServerBootstrap();
             server.group(boss, worker).channel(NioServerSocketChannel.class).childHandler(new NettyServerInitializer());
-            ChannelFuture channelFuture = server.bind(nettyConfigProperties.getServerPort()).sync();
-            log.info("[NettyServer]-[startNettyServer]-[start]");
+            ChannelFuture channelFuture = server.bind(nettyConfigProperties.getServerPort()).addListener(new NettyServerListener()).sync();
             new Thread(() ->{
                 while (true){
                     try {
@@ -55,7 +55,6 @@ public class NettyServer implements ApplicationRunner {
                 }
             }).start();
             channelFuture.channel().closeFuture().sync();
-
 
         } catch (Exception e) {
             log.error("[NettyServer]-[startNettyServer]-[Exception]", e);

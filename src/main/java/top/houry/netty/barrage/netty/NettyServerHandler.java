@@ -1,5 +1,6 @@
-package top.houry.netty.bulletscreen.netty;
+package top.houry.netty.barrage.netty;
 
+import cn.hutool.json.JSONUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -7,8 +8,8 @@ import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.concurrent.TimeUnit;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * @Desc 配置netty-handler
@@ -18,11 +19,13 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     /**
      * 用于记录和管理所有客户端的channel
      */
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
-
 
 
 
@@ -33,7 +36,9 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
-        log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]",ctx.channel().remoteAddress(), msg.text());
+        log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]",ctx.channel().remoteAddress(), JSONUtil.toJsonStr(msg.text()));
+        // 发送之前先保存在redis中
+//        redisTemplate.ops
         channels.forEach(v -> v.writeAndFlush(new TextWebSocketFrame(msg.text())));
     }
 

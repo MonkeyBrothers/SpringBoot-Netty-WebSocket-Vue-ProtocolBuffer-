@@ -11,7 +11,7 @@
     <groupId>top.houry.netty</groupId>
     <artifactId>bullet-screen</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bullet-screen</name>
+    <name>barrage</name>
     <description>netty-视频弹幕聊天网页</description>
     <properties>
         <java.version>1.8</java.version>
@@ -45,10 +45,21 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.4.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
