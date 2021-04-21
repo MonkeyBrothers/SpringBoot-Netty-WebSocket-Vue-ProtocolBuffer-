@@ -1,6 +1,5 @@
-package top.houry.netty.barrage.netty;
+package top.houry.netty.bulletscreen.netty;
 
-import cn.hutool.json.JSONUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -26,6 +25,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
      * 用于记录和管理所有客户端的channel
      */
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+
 
 
 
