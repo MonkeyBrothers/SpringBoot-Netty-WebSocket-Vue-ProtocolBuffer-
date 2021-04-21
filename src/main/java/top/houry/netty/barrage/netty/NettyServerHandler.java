@@ -1,5 +1,6 @@
-package top.houry.netty.bulletscreen.netty;
+package top.houry.netty.barrage.netty;
 
+import cn.hutool.json.JSONUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
