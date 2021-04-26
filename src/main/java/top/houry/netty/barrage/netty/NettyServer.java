@@ -43,19 +43,8 @@ public class NettyServer implements ApplicationRunner {
         try {
             ServerBootstrap server = new ServerBootstrap();
             server.group(boss, worker).channel(NioServerSocketChannel.class).childHandler(new NettyServerInitializer());
-            ChannelFuture channelFuture = server.bind(nettyConfigProperties.getServerPort()).addListener(new NettyServerListener()).sync();
-            new Thread(() ->{
-                while (true){
-                    try {
-                        TimeUnit.SECONDS.sleep(2);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    NettyServerHandler.channels.forEach(v -> v.writeAndFlush(new TextWebSocketFrame(ContextUtil.getContext())));
-                }
-            }).start();
+            ChannelFuture channelFuture = server.bind(nettyConfigProperties.getServerPort()).addListener(new NettyServerListener(nettyConfigProperties.getServerPort())).sync();
             channelFuture.channel().closeFuture().sync();
-
         } catch (Exception e) {
             log.error("[NettyServer]-[startNettyServer]-[Exception]", e);
         } finally {

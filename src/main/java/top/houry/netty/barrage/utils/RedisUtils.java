@@ -1,4 +1,4 @@
-package top.houry.netty.bulletscreen.utils;
+package top.houry.netty.barrage.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;

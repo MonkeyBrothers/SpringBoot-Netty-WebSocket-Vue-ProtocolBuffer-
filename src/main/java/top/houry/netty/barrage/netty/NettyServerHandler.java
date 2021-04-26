@@ -10,6 +10,9 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import top.houry.netty.barrage.utils.ContextUtil;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Desc 配置netty-handler
@@ -67,11 +70,17 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
         channels.remove(ctx.channel());
     }
 
-
+    /**
+     * 连接被激活的时候触发的操作
+     *
+     * @param ctx 通道上下文
+     * @throws Exception
+     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-
+        ctx.channel().eventLoop().scheduleAtFixedRate(() -> channels.forEach(v -> v.writeAndFlush(new TextWebSocketFrame(ContextUtil.getContext()))), 3, 3, TimeUnit.SECONDS);
     }
+
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
