@@ -6,10 +6,10 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
+import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
+import top.houry.netty.barrage.common.Const;
 import top.houry.netty.barrage.utils.ContextUtil;
 
 import java.util.concurrent.TimeUnit;
@@ -21,16 +21,14 @@ import java.util.concurrent.TimeUnit;
  **/
 @Slf4j
 public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
-
-    @Autowired
-    private RedisTemplate redisTemplate;
+//
+//    @Autowired
+//    private RedisTemplate redisTemplate;
 
     /**
      * 用于记录和管理所有客户端的channel
      */
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
-
-
 
 
     /**
@@ -39,11 +37,11 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
      * @throws Exception
      */
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
-        log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]",ctx.channel().remoteAddress(), JSONUtil.toJsonStr(msg.text()));
-        // 发送之前先保存在redis中
-//        redisTemplate.ops
-        channels.forEach(v -> v.writeAndFlush(new TextWebSocketFrame(msg.text())));
+    public void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
+        if (!Const.WEBSOCKET_HEARTBEAT_INFO_FLAG.equals(msg.text().trim())) {
+            log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]",ctx.channel().remoteAddress(), JSONUtil.toJsonStr(msg.text()));
+            channels.forEach(v -> v.writeAndFlush(new TextWebSocketFrame(msg.text())));
+        }
     }
 
     /**
@@ -78,7 +76,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ctx.channel().eventLoop().scheduleAtFixedRate(() -> channels.forEach(v -> v.writeAndFlush(new TextWebSocketFrame(ContextUtil.getContext()))), 3, 3, TimeUnit.SECONDS);
+
     }
 
 
@@ -91,7 +89,31 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         log.error("[NettyServerHandler]-[exceptionCaught]-[Exception]");
         cause.printStackTrace();
+        ctx.channel().eventLoop().shutdownGracefully();
         ctx.channel().close();
         channels.remove(ctx.channel());
+    }
+
+
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        if (evt instanceof IdleStateEvent) {
+            IdleStateEvent event = (IdleStateEvent) evt;
+            switch (event.state()) {
+                case READER_IDLE:
+                    log.info("[没有接收到：{}的信息心跳信息，将断开连接回收资源]", ctx.toString());
+                    ctx.channel().eventLoop().shutdownGracefully();
+                    ctx.channel().close();
+                    break;
+                case WRITER_IDLE:
+                    System.out.println("写空闲");
+                    break;
+                case ALL_IDLE:
+                    System.out.println("读写空闲");
+                    break;
+                default:
+                    throw new IllegalStateException("非法状态！");
+            }
+        }
     }
 }

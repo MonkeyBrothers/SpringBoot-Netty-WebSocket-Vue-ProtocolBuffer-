@@ -15,7 +15,9 @@ import top.houry.netty.barrage.config.NettyConfigProperties;
 import top.houry.netty.barrage.listener.NettyServerListener;
 import top.houry.netty.barrage.utils.ContextUtil;
 
+import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Desc netty 服务
@@ -38,8 +40,8 @@ public class NettyServer implements ApplicationRunner {
      * 启动netty服务
      */
     private void startNettyServer() {
-        EventLoopGroup boss = new NioEventLoopGroup(1);
-        EventLoopGroup worker = new NioEventLoopGroup(4);
+        EventLoopGroup boss = new NioEventLoopGroup(1, new NettyThreadFactory("netty-boss"));
+        EventLoopGroup worker = new NioEventLoopGroup(4, new NettyThreadFactory("netty-worker"));
         try {
             ServerBootstrap server = new ServerBootstrap();
             server.group(boss, worker).channel(NioServerSocketChannel.class).childHandler(new NettyServerInitializer());
@@ -53,4 +55,5 @@ public class NettyServer implements ApplicationRunner {
             log.info("[NettyServer]-[startNettyServer]-[shutdownGracefully]");
         }
     }
+
 }
