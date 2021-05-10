@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>top.houry.netty</groupId>
-    <artifactId>bullet-screen</artifactId>
+    <artifactId>barrage</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>barrage</name>
     <description>netty-视频弹幕聊天网页</description>
