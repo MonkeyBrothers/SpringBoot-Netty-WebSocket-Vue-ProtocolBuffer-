@@ -1,6 +1,6 @@
 let websocket;
 const port = 9999;
-const ip = "localhost";
+const ip = "barrage.houry.top";
 if ('WebSocket' in window) {
     websocket = new WebSocket("ws://" + ip + ":" + port + "/ws");
 } else {

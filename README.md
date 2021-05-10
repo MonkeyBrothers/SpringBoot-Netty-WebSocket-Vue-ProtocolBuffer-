@@ -1,10 +1,10 @@
-# bullet-screen
+# barrage
 
 #### 介绍
 基于springboot-2.4.3、thymeleaf、redis、netty打造的高并发弹幕系统
 
 #### 演示地址
-http://bullet-screen.houry.top:8080/index
+http://barrage.houry.top:8080/index
 #### 安装教程
 1.  修改websocket.js中的ip改为自己的地址
 2.  启动springboot
