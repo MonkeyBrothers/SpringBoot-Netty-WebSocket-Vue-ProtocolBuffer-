@@ -9,7 +9,15 @@ import java.util.Random;
  **/
 public class ContextUtil {
     static String[] context = {
-            "扫描下方二维码，扫不出吃亏，扫不出上当！",
+            "最美的人儿",
+            "我们都是追梦人！",
+            "做的不错",
+            "666666666",
+            "这波操作不亏",
+            "哈哈哈哈",
+            "OK",
+            "太棒了",
+            "学习一下",
 
     };
 

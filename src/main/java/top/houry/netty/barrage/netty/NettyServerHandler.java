@@ -10,9 +10,6 @@ import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
 import top.houry.netty.barrage.common.Const;
-import top.houry.netty.barrage.utils.ContextUtil;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * @Desc 配置netty-handler
@@ -21,17 +18,16 @@ import java.util.concurrent.TimeUnit;
  **/
 @Slf4j
 public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
-//
-//    @Autowired
-//    private RedisTemplate redisTemplate;
 
     /**
      * 用于记录和管理所有客户端的channel
      */
-    public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+    public static final ChannelGroup CLIENT_CHANNELS = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
 
     /**
+     * 读取发送的消息
+     *
      * @param ctx 通道上下文
      * @param msg 信息内容
      * @throws Exception
@@ -39,8 +35,8 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
     @Override
     public void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
         if (!Const.WEBSOCKET_HEARTBEAT_INFO_FLAG.equals(msg.text().trim())) {
-            log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]",ctx.channel().remoteAddress(), JSONUtil.toJsonStr(msg.text()));
-            channels.forEach(v -> v.writeAndFlush(new TextWebSocketFrame(msg.text())));
+            log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]", ctx.channel().remoteAddress(), JSONUtil.toJsonStr(msg.text()));
+            CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(msg.text()));
         }
     }
 
@@ -53,7 +49,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         log.info("[{}]-[handlerAdded]", ctx.channel().remoteAddress().toString());
-        channels.add(ctx.channel());
+        CLIENT_CHANNELS.add(ctx.channel());
     }
 
     /**
@@ -65,7 +61,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         log.info("[{}]-[handlerRemoved]", ctx.channel().remoteAddress().toString());
-        channels.remove(ctx.channel());
+        CLIENT_CHANNELS.remove(ctx.channel());
     }
 
     /**
@@ -79,22 +75,41 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
 
     }
 
-
+    /**
+     * channel 不活跃
+     *
+     * @param ctx 通道上下文
+     * @throws Exception
+     */
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
 
     }
 
+    /**
+     * 异常信息捕获
+     *
+     * @param ctx   通道上下文
+     * @param cause 异常信息
+     * @throws Exception
+     */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         log.error("[NettyServerHandler]-[exceptionCaught]-[Exception]");
         cause.printStackTrace();
         ctx.channel().eventLoop().shutdownGracefully();
         ctx.channel().close();
-        channels.remove(ctx.channel());
+        CLIENT_CHANNELS.remove(ctx.channel());
     }
 
 
+    /**
+     * 心跳检测事件
+     *
+     * @param ctx 通道上下文
+     * @param evt 触发事件
+     * @throws Exception
+     */
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
         if (evt instanceof IdleStateEvent) {
@@ -116,4 +131,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
             }
         }
     }
+
+
+
 }

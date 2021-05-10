@@ -5,7 +5,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 /**
- * @Desc
+ * @Desc redis 工具类
  * @Author houry
  * @Date 2021/3/29 14:10
  **/
