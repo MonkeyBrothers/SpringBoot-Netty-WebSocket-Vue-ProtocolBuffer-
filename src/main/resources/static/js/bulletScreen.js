@@ -14,7 +14,7 @@ video.addEventListener('change', (event) => { // 监听video各属性变化
     //  console.log(event)
 })
 nextControl.addEventListener('click', () => { // 监听“下一个”按钮控件点击事件
-    alert('click next menu !!!')
+    alert('就一部电影')
 })
 fullScreenControl.addEventListener('fullscreen', () => { // 监听进入全屏
     console.log('is fullscreen !!!')

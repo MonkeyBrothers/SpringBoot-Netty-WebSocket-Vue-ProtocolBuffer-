@@ -22,7 +22,7 @@ import top.houry.netty.barrage.utils.ContextUtil;
 public class BarrageScheduling {
 
     /**
-     * 定时任务推送历史弹幕
+     * 定时任务推送历史弹幕 fixedRate = 3000  3秒推送一次
      */
     @Scheduled(fixedRate = 3000)
     public void pushHistoryBarrage() {
