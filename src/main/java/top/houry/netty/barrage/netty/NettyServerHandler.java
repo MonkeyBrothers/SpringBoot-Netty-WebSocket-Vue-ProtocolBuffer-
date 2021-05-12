@@ -40,7 +40,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
     @Override
     public void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
         if (!Const.WEBSOCKET_HEARTBEAT_INFO_FLAG.equals(msg.text().trim())) {
-            log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]", ctx.channel().remoteAddress(), JSONUtil.toJsonStr(msg.text()));
+            log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]", ctx.channel().toString(), JSONUtil.toJsonStr(msg.text()));
             CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(msg.text()));
             BarrageService barrageService = SpringContextUtil.getBean("barrageService");
             barrageService.dealWithBarrageMessage(msg.text());
@@ -55,7 +55,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
      */
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        log.info("[{}]-[handlerAdded]", ctx.channel().remoteAddress().toString());
+        log.info("[{}]-[handlerAdded]", ctx.channel().toString());
         CLIENT_CHANNELS.add(ctx.channel());
     }
 
@@ -67,7 +67,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
      */
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
-        log.info("[{}]-[handlerRemoved]", ctx.channel().remoteAddress().toString());
+        log.info("[{}]-[handlerRemoved]", ctx.channel().toString());
         CLIENT_CHANNELS.remove(ctx.channel());
     }
 
@@ -83,7 +83,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
     }
 
     /**
-     * channel 不活跃
+     * channel 断开连接的channel
      *
      * @param ctx 通道上下文
      * @throws Exception
