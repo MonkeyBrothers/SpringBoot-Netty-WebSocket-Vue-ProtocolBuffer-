@@ -15,7 +15,7 @@ import java.util.Date;
  * @Author houry
  * @Date 2021/5/12 10:28
  **/
-@Service
+@Service("barrageService")
 public class BarrageServiceImpl implements BarrageService {
 
     /**
