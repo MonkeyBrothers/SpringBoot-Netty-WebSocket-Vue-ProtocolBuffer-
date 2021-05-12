@@ -1,5 +1,6 @@
 package top.houry.netty.barrage.netty;
 
+import cn.hutool.extra.spring.SpringUtil;
 import cn.hutool.json.JSONUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -10,6 +11,7 @@ import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
 import top.houry.netty.barrage.common.Const;
+import top.houry.netty.barrage.service.BarrageService;
 
 /**
  * @Desc 配置netty-handler
@@ -37,6 +39,8 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
         if (!Const.WEBSOCKET_HEARTBEAT_INFO_FLAG.equals(msg.text().trim())) {
             log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]", ctx.channel().remoteAddress(), JSONUtil.toJsonStr(msg.text()));
             CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(msg.text()));
+            BarrageService barrageService = SpringUtil.getBean(BarrageService.class);
+            barrageService.dealWithBarrageMessage(msg.text());
         }
     }
 
@@ -97,7 +101,6 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         log.error("[NettyServerHandler]-[exceptionCaught]-[Exception]");
         cause.printStackTrace();
-        ctx.channel().eventLoop().shutdownGracefully();
         ctx.channel().close();
         CLIENT_CHANNELS.remove(ctx.channel());
     }

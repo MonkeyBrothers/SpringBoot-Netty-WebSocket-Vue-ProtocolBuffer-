@@ -1,5 +1,6 @@
 package top.houry.netty.barrage.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Date;
  * @Date 2021/4/21 16:17
  **/
 @Data
+@AllArgsConstructor
 public class Barrage {
 
 
