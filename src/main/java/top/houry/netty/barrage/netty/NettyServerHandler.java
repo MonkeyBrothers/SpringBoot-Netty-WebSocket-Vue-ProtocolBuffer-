@@ -117,16 +117,16 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
             switch (event.state()) {
                 case READER_IDLE:
                     log.info("[没有接收到：{}的信息心跳信息，将断开连接回收资源]", ctx.toString());
-                    ctx.channel().eventLoop().shutdownGracefully();
                     ctx.channel().close();
                     break;
                 case WRITER_IDLE:
-                    System.out.println("写空闲");
+                    log.info("写空闲");
                     break;
                 case ALL_IDLE:
-                    System.out.println("读写空闲");
+                    log.info("读写空闲");
                     break;
                 default:
+                    log.info("非法状态");
                     throw new IllegalStateException("非法状态！");
             }
         }

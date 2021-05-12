@@ -40,8 +40,8 @@ public class NettyServer implements ApplicationRunner {
      * 启动netty服务
      */
     private void startNettyServer() {
-        EventLoopGroup boss = new NioEventLoopGroup(1, new NettyThreadFactory("netty-boss"));
-        EventLoopGroup worker = new NioEventLoopGroup(4, new NettyThreadFactory("netty-worker"));
+        EventLoopGroup boss = new NioEventLoopGroup(1,new NettyThreadFactory("netty-boss"));
+        EventLoopGroup worker = new NioEventLoopGroup(2, new NettyThreadFactory("netty-worker"));
         try {
             ServerBootstrap server = new ServerBootstrap();
             server.group(boss, worker).channel(NioServerSocketChannel.class).childHandler(new NettyServerInitializer());
