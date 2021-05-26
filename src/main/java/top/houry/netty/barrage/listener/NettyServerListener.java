@@ -11,18 +11,28 @@ import lombok.extern.slf4j.Slf4j;
  **/
 @Slf4j
 public class NettyServerListener implements GenericFutureListener {
-    private Integer port;
+
+    /**
+     * 端口号
+     */
+    private final Integer port;
 
     public NettyServerListener(Integer port) {
         this.port = port;
     }
 
+    /**
+     * 端口绑定之后发生的操作
+     *
+     * @param future
+     * @throws Exception
+     */
     @Override
     public void operationComplete(Future future) throws Exception {
         if (future.isSuccess()) {
-            log.info("~~~~~~~~~~~~NettyServer bind port {} success~~~~~~~~~~~~~~", port);
+            log.info("[NettyServerListener]-[NettyServer bind port {} success]", port);
         } else {
-            log.info("~~~~~~~~~~~~NettyServer bind port {} fail   ~~~~~~~~~~~~~~", port);
+            log.info("[NettyServerListener]-[NettyServer bind port {} fail]", port);
         }
     }
 }
