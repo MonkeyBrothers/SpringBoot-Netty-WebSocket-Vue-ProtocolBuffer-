@@ -1,5 +1,7 @@
 package top.houry.netty.barrage.listener;
 
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
  * @Date 2021/4/21 15:57
  **/
 @Slf4j
-public class NettyServerListener implements GenericFutureListener {
+public class NettyServerListener implements ChannelFutureListener {
 
     /**
      * 端口号
@@ -28,7 +30,7 @@ public class NettyServerListener implements GenericFutureListener {
      * @throws Exception
      */
     @Override
-    public void operationComplete(Future future) throws Exception {
+    public void operationComplete(ChannelFuture future) throws Exception {
         if (future.isSuccess()) {
             log.info("[NettyServerListener]-[NettyServer bind port {} success]", port);
         } else {
