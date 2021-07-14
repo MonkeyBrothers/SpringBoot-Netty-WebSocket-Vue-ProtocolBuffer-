@@ -17,3 +17,6 @@ http://barrage.houry.top:8080/index
 
 #### 关注我
 ![avatar](/images/WeChat.png)
+
+#### 有问题可以加群
+![avatar](/images/public.jpg)
