@@ -2,6 +2,7 @@ package top.houry.netty.barrage.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisUtils {
     @Autowired
-    private RedisTemplate redisTemplate;
+    private StringRedisTemplate redisTemplate;
 
     /**
      * 存放数据集合
@@ -21,7 +22,7 @@ public class RedisUtils {
      * @param value 数据值
      * @return 返回存放的位置
      */
-    public long listPush(String key, Object value) {
+    public long listPush(String key, String value) {
         Long count = redisTemplate.opsForList().rightPush(key, value);
         return count == null ? 0L : count;
     }

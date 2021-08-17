@@ -10,10 +10,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  **/
 public class NettyThreadFactory implements ThreadFactory {
     /**
-     * 线程池数量
-     */
-    private final AtomicInteger poolNumber = new AtomicInteger(1);
-    /**
      * 线程组
      */
     private final ThreadGroup threadGroup;
@@ -30,6 +26,10 @@ public class NettyThreadFactory implements ThreadFactory {
         SecurityManager s = System.getSecurityManager();
         threadGroup = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
         if (null == name || "".equals(name.trim())) name = "pool";
+        /**
+         * 线程池数量
+         */
+        AtomicInteger poolNumber = new AtomicInteger(1);
         namePrefix = name + "-" + poolNumber.getAndIncrement() + "-thread-";
     }
 

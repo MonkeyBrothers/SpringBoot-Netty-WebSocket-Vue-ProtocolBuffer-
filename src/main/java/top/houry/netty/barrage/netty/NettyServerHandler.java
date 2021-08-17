@@ -12,6 +12,7 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import top.houry.netty.barrage.common.Const;
+import top.houry.netty.barrage.enums.BarrageRouteEnum;
 import top.houry.netty.barrage.service.BarrageService;
 import top.houry.netty.barrage.service.impl.BarrageServiceImpl;
 import top.houry.netty.barrage.utils.SpringContextUtil;
@@ -39,12 +40,9 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
      */
     @Override
     public void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
-        if (!Const.WEBSOCKET_HEARTBEAT_INFO_FLAG.equals(msg.text().trim())) {
-            log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]", ctx.channel().toString(), JSONUtil.toJsonStr(msg.text()));
-            CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(msg.text()));
-            BarrageService barrageService = SpringContextUtil.getBean("barrageService");
-            barrageService.dealWithBarrageMessage(msg.text());
-        }
+        log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]", ctx.channel().toString(), JSONUtil.toJsonStr(msg.text()));
+        // TODO 有问题 目前 没有 type
+        BarrageRouteEnum.findByType(msg.text()).getService().dealWithBarrageMessage(msg.text());
     }
 
     /**

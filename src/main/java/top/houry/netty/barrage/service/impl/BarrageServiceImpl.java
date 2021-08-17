@@ -35,6 +35,6 @@ public class BarrageServiceImpl implements BarrageService {
      */
     @Override
     public void dealWithBarrageMessage(String text) {
-        redisUtils.listPush(Const.BARRAGE_REDIS_LIST_KEY + VIDEO_ID, new Barrage(Long.valueOf(VIDEO_ID), new Date(), XssUtil.xssEncode(text)));
+        //redisUtils.listPush(Const.BARRAGE_REDIS_LIST_KEY + VIDEO_ID, new Barrage(Long.valueOf(VIDEO_ID), new Date(), XssUtil.xssEncode(text)));
     }
 }
