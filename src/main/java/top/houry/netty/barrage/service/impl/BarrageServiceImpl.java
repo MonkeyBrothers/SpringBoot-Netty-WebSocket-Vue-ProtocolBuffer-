@@ -11,11 +11,11 @@ import top.houry.netty.barrage.utils.XssUtil;
 import java.util.Date;
 
 /**
- * @Desc
+ * @Desc 弹幕消息处理
  * @Author houry
  * @Date 2021/5/12 10:28
  **/
-@Service("barrageService")
+@Service
 public class BarrageServiceImpl implements BarrageService {
 
     /**
@@ -35,6 +35,6 @@ public class BarrageServiceImpl implements BarrageService {
      */
     @Override
     public void dealWithBarrageMessage(String text) {
-        //redisUtils.listPush(Const.BARRAGE_REDIS_LIST_KEY + VIDEO_ID, new Barrage(Long.valueOf(VIDEO_ID), new Date(), XssUtil.xssEncode(text)));
+        System.out.println(text);
     }
 }

@@ -10,6 +10,10 @@ import top.houry.netty.barrage.service.BarrageService;
  **/
 @Service
 public class HeartBeatServiceImpl implements BarrageService {
+    /**
+     * 处理心跳逻辑
+     * @param text 弹幕信息
+     */
     @Override
     public void dealWithBarrageMessage(String text) {
 

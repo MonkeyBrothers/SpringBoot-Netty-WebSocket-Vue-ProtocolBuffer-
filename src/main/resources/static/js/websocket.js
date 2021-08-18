@@ -19,13 +19,12 @@ websocket.onopen = function (event) {
 
 }
 window.setInterval(function () {
-    console.log("~~~~~~~~~~~~~")
-    websocket.send("WEBSOCKET_HEARTBEAT_INFO_FLAG");
+    websocket.send('{"msgType":"heart_beat", "context":"WEBSOCKET_HEARTBEAT_INFO_FLAG"}');
 }, 5000);
 
 // 收到服务器发送的消息
 websocket.onmessage = function () {
-    video.addBarrage(event.data)
+    video.addBarrage('{"msgType":"barrage_msg", "context":'+event.data+'}')
 }
 //连接关闭的回调方法
 websocket.onclose = function () {

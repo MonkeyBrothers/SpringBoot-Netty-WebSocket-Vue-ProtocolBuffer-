@@ -1,6 +1,7 @@
 package top.houry.netty.barrage.netty;
 
 import cn.hutool.extra.spring.SpringUtil;
+import cn.hutool.json.JSONException;
 import cn.hutool.json.JSONUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -16,6 +17,7 @@ import top.houry.netty.barrage.enums.BarrageRouteEnum;
 import top.houry.netty.barrage.service.BarrageService;
 import top.houry.netty.barrage.service.impl.BarrageServiceImpl;
 import top.houry.netty.barrage.utils.SpringContextUtil;
+import top.houry.netty.barrage.vo.BarrageVo;
 
 /**
  * @Desc 配置netty-handler
@@ -41,8 +43,16 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
     @Override
     public void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
         log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]", ctx.channel().toString(), JSONUtil.toJsonStr(msg.text()));
-        // TODO 有问题 目前 没有 type
-        BarrageRouteEnum.findByType(msg.text()).getService().dealWithBarrageMessage(msg.text());
+        try {
+            BarrageVo barrageVo = JSONUtil.toBean(msg.text(), BarrageVo.class);
+            BarrageRouteEnum.findByType(barrageVo.getMsgType()).getService().dealWithBarrageMessage(barrageVo.getContext());
+        } catch (JSONException e) {
+            ctx.close();
+            log.error("[JSONException]-[NettyServerHandler]-[channelRead0]", e);
+        } catch (Exception e) {
+            ctx.close();
+            log.error("[EXCEPTION]-[NettyServerHandler]-[channelRead0]", e);
+        }
     }
 
     /**
