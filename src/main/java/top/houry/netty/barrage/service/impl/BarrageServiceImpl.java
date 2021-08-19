@@ -1,8 +1,10 @@
 package top.houry.netty.barrage.service.impl;
 
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.houry.netty.barrage.common.Const;
+import top.houry.netty.barrage.netty.NettyServerHandler;
 import top.houry.netty.barrage.pojo.Barrage;
 import top.houry.netty.barrage.service.BarrageService;
 import top.houry.netty.barrage.utils.RedisUtils;
@@ -35,6 +37,7 @@ public class BarrageServiceImpl implements BarrageService {
      */
     @Override
     public void dealWithBarrageMessage(String text) {
+        NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(text));
         System.out.println(text);
     }
 }
