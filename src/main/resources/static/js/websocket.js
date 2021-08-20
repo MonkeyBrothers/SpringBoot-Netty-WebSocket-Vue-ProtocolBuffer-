@@ -24,7 +24,7 @@ window.setInterval(function () {
 
 // 收到服务器发送的消息
 websocket.onmessage = function () {
-    video.addBarrage('{"msgType":"barrage_msg", "context":'+event.data+'}')
+    video.addBarrage(event.data)
 }
 //连接关闭的回调方法
 websocket.onclose = function () {

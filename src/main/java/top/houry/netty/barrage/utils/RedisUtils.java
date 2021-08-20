@@ -34,7 +34,7 @@ public class RedisUtils {
      * @param hKey  hKey
      * @param value value
      */
-    public void hashPut(String key, String hKey, Object value) {
+    public void hashPut(String key, String hKey, String value) {
         this.redisTemplate.opsForHash().put(key, hKey, value);
     }
 

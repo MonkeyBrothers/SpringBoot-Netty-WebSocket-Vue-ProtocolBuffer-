@@ -1,6 +1,8 @@
 package top.houry.netty.barrage.service.impl;
 
+import cn.hutool.json.JSONUtil;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.houry.netty.barrage.common.Const;
@@ -18,6 +20,7 @@ import java.util.Date;
  * @Date 2021/5/12 10:28
  **/
 @Service
+@Slf4j
 public class BarrageServiceImpl implements BarrageService {
 
     /**
@@ -37,7 +40,8 @@ public class BarrageServiceImpl implements BarrageService {
      */
     @Override
     public void dealWithBarrageMessage(String text) {
+        log.info("[BarrageServiceImpl]-[dealWithBarrageMessage]-[text:{}]", text);
         NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(text));
-        System.out.println(text);
+        // redisUtils.listPush(Const.BARRAGE_REDIS_LIST_KEY, JSONUtil.toJsonStr(new Barrage(null, Long.valueOf(VIDEO_ID), new Date(), text)));
     }
 }
