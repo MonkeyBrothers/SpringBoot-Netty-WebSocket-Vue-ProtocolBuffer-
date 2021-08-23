@@ -1,9 +1,10 @@
 package top.houry.netty.barrage.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * @Desc redis 工具类
@@ -20,11 +21,19 @@ public class RedisUtils {
      *
      * @param key   数据key
      * @param value 数据值
-     * @return 返回存放的位置
      */
-    public long listPush(String key, String value) {
-        Long count = redisTemplate.opsForList().rightPush(key, value);
-        return count == null ? 0L : count;
+    public void listPush(String key, String value) {
+        redisTemplate.opsForList().rightPush(key, value);
+    }
+
+    /**
+     * 获取所有的集合数据
+     *
+     * @param key 指定的RedisKey
+     * @returnK 数据集合
+     */
+    public List<String> listGetAll(String key) {
+        return redisTemplate.opsForList().range(key, 0, -1);
     }
 
     /**

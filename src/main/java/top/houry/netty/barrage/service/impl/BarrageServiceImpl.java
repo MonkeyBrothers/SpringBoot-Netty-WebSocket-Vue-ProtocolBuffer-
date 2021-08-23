@@ -23,13 +23,6 @@ import java.util.Date;
 @Slf4j
 public class BarrageServiceImpl implements BarrageService {
 
-    /**
-     * 视频id
-     * <p>目前就一个video，这里暂时模拟一个id</p>
-     */
-    private static final String VIDEO_ID = "2222222222";
-
-
     @Autowired
     private RedisUtils redisUtils;
 
@@ -42,6 +35,6 @@ public class BarrageServiceImpl implements BarrageService {
     public void dealWithBarrageMessage(String text) {
         log.info("[BarrageServiceImpl]-[dealWithBarrageMessage]-[text:{}]", text);
         NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(text));
-        // redisUtils.listPush(Const.BARRAGE_REDIS_LIST_KEY, JSONUtil.toJsonStr(new Barrage(null, Long.valueOf(VIDEO_ID), new Date(), text)));
+        redisUtils.listPush(Const.RedisKey.BARRAGE_REDIS_LIST_KEY, JSONUtil.toJsonStr(new Barrage(null, 1394820394583923485L, new Date(), text)));
     }
 }
