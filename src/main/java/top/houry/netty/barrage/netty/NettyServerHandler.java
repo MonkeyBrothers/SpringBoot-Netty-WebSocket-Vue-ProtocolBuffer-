@@ -45,7 +45,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
         /// log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]", ctx.channel().toString(), JSONUtil.toJsonStr(msg.text()));
         try {
             BarrageVo barrageVo = JSONUtil.toBean(msg.text(), BarrageVo.class);
-            BarrageRouteEnum.findByType(barrageVo.getMsgType()).getService().dealWithBarrageMessage(barrageVo.getContext());
+            BarrageRouteEnum.findByType(barrageVo.getMsgType()).getService().dealWithBarrageMessage(barrageVo.getContext(), ctx);
         } catch (JSONException e) {
             ctx.close();
             log.error("[JSONException]-[NettyServerHandler]-[channelRead0]", e);

@@ -1,5 +1,7 @@
 package top.houry.netty.barrage.service.impl;
 
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
 import org.springframework.stereotype.Service;
 import top.houry.netty.barrage.service.BarrageService;
 
@@ -12,10 +14,15 @@ import top.houry.netty.barrage.service.BarrageService;
 public class HeartBeatServiceImpl implements BarrageService {
     /**
      * 处理心跳逻辑
+     *
      * @param text 弹幕信息
+     * @param ctx  通道上下文信息
      */
     @Override
-    public void dealWithBarrageMessage(String text) {
-
+    public void dealWithBarrageMessage(String text, ChannelHandlerContext ctx) {
+        // 如果想对心跳进行回复，可以在此方法中进行回复
+//        ctx.writeAndFlush("").addListener((ChannelFutureListener) future -> {
+//
+//        });
     }
 }
