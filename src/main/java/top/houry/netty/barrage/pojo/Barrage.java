@@ -36,5 +36,10 @@ public class Barrage implements Serializable {
      */
     private String msg;
 
+    /**
+     * 视频播放时间
+     */
+    private String videoPlayTime;
+
 
 }

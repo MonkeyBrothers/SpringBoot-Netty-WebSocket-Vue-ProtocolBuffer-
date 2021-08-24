@@ -37,6 +37,6 @@ public class BarrageServiceImpl implements BarrageService {
     public void dealWithBarrageMessage(String text, ChannelHandlerContext ctx) {
         log.info("[BarrageServiceImpl]-[dealWithBarrageMessage]-[text:{}]", text);
         NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(text));
-        redisUtils.listPush(Const.RedisKey.BARRAGE_REDIS_LIST_KEY, JSONUtil.toJsonStr(new Barrage(null, 1394820394583923485L, new Date(), text)));
+        redisUtils.listPush(Const.RedisKey.BARRAGE_REDIS_LIST_KEY, JSONUtil.toJsonStr(new Barrage(null, 1394820394583923485L, new Date(), text, null)));
     }
 }
