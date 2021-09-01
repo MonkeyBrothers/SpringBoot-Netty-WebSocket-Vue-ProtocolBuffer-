@@ -11,7 +11,7 @@ import top.houry.netty.barrage.service.BarrageService;
  * @Date 2021/8/16
  **/
 @Service
-public class HeartBeatServiceImpl implements BarrageService {
+public class HeartBeatBarrageServiceImpl implements BarrageService {
     /**
      * 处理心跳逻辑
      *

@@ -22,7 +22,7 @@ import java.util.Date;
  **/
 @Service
 @Slf4j
-public class BarrageServiceImpl implements BarrageService {
+public class DealWithBarrageServiceImpl implements BarrageService {
 
     @Autowired
     private RedisUtils redisUtils;

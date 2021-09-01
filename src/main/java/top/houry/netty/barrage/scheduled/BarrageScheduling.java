@@ -36,7 +36,13 @@ public class BarrageScheduling {
         NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(JSONUtil.toBean(ContextUtil.getContext(barrageInfoList), Barrage.class).getMsg()));
     }
 
-
-
+    /**
+     * 推送在线人数
+     */
+    @Scheduled(fixedRate = 5000)
+    public void pushOnlineNum() {
+        String onlinePopulation = redisUtils.get(Const.RedisKey.BARRAGE_ONLINE_POPULATION_KEY);
+        NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(onlinePopulation));
+    }
 
 }

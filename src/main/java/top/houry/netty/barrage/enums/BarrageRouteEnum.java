@@ -16,8 +16,8 @@ import java.util.Optional;
  **/
 public enum BarrageRouteEnum {
 
-    HEART_BEAT_SERVICE("heart_beat", "heartBeatServiceImpl"),
-    BARRAGE_MESSAGE("barrage_msg", "barrageServiceImpl"),
+    HEART_BEAT_SERVICE("heart_beat", "heartBeatBarrageServiceImpl"),
+    BARRAGE_MESSAGE("barrage_msg", "dealWithBarrageServiceImpl"),
 
 
 

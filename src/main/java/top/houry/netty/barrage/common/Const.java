@@ -15,7 +15,7 @@ public interface Const {
         /**
          * 实时在线人数统计key
          */
-        public static final String REA_TIME_ONLINE_POPULATION_KEY = "REA:TIME:ONLINE:POPULATION:KEY";
+        public static final String BARRAGE_ONLINE_POPULATION_KEY = "BARRAGE:ONLINE:POPULATION:KEY";
         /**
          * 历史观看总次数
          */

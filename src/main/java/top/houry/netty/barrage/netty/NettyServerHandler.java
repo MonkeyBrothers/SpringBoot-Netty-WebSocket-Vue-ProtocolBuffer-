@@ -1,6 +1,5 @@
 package top.houry.netty.barrage.netty;
 
-import cn.hutool.extra.spring.SpringUtil;
 import cn.hutool.json.JSONException;
 import cn.hutool.json.JSONUtil;
 import io.netty.channel.ChannelHandlerContext;
@@ -11,11 +10,8 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import top.houry.netty.barrage.common.Const;
 import top.houry.netty.barrage.enums.BarrageRouteEnum;
-import top.houry.netty.barrage.service.BarrageService;
-import top.houry.netty.barrage.service.impl.BarrageServiceImpl;
+import top.houry.netty.barrage.service.impl.OnlinePeopleNumServiceImpl;
 import top.houry.netty.barrage.utils.SpringContextUtil;
 import top.houry.netty.barrage.vo.BarrageVo;
 
@@ -87,6 +83,8 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        // 把上线人数记录到Redis中
+        SpringContextUtil.getBean(OnlinePeopleNumServiceImpl.class).incrementOne();
 
     }
 
@@ -98,7 +96,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
      */
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-
+        SpringContextUtil.getBean(OnlinePeopleNumServiceImpl.class).decrementOne();
     }
 
     /**
@@ -110,8 +108,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        log.error("[NettyServerHandler]-[exceptionCaught]-[Exception]");
-        cause.printStackTrace();
+        log.error("[NettyServerHandler]-[exceptionCaught]-[Exception]", cause);
         ctx.channel().close();
         CLIENT_CHANNELS.remove(ctx.channel());
     }
@@ -145,7 +142,6 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
             }
         }
     }
-
 
 
 }

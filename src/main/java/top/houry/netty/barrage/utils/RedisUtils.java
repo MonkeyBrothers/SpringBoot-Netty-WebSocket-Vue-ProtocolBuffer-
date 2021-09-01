@@ -47,4 +47,32 @@ public class RedisUtils {
         this.redisTemplate.opsForHash().put(key, hKey, value);
     }
 
+    /**
+     * 给指定的key的数值增加1
+     *
+     * @param key key
+     */
+    public void increment(String key) {
+        redisTemplate.opsForValue().increment(key);
+    }
+
+    /**
+     * 给指定的key的数值减少1
+     *
+     * @param key key
+     */
+    public void decrement(String key) {
+        redisTemplate.opsForValue().decrement(key);
+    }
+
+    /**
+     * 根据key获取value值
+     *
+     * @param key key
+     * @return value值
+     */
+    public String get(String key) {
+        return redisTemplate.opsForValue().get(key);
+    }
+
 }
