@@ -6,12 +6,11 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import top.houry.netty.barrage.common.Const;
+import top.houry.netty.barrage.common.RedisKeyConst;
 import top.houry.netty.barrage.netty.NettyServerHandler;
 import top.houry.netty.barrage.pojo.Barrage;
 import top.houry.netty.barrage.service.BarrageService;
 import top.houry.netty.barrage.utils.RedisUtils;
-import top.houry.netty.barrage.utils.XssUtil;
 
 import java.util.Date;
 
@@ -37,6 +36,6 @@ public class DealWithBarrageServiceImpl implements BarrageService {
     public void dealWithBarrageMessage(String text, ChannelHandlerContext ctx) {
         log.info("[BarrageServiceImpl]-[dealWithBarrageMessage]-[text:{}]", text);
         NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(text));
-        redisUtils.listPush(Const.RedisKey.BARRAGE_REDIS_LIST_KEY, JSONUtil.toJsonStr(new Barrage(null, 1394820394583923485L, new Date(), text, null)));
+        redisUtils.listPush(RedisKeyConst.BARRAGE_REDIS_LIST_KEY, JSONUtil.toJsonStr(new Barrage(null, 1394820394583923485L, new Date(), text, null)));
     }
 }

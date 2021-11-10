@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import top.houry.netty.barrage.common.Const;
+import top.houry.netty.barrage.common.RedisKeyConst;
 import top.houry.netty.barrage.netty.NettyServerHandler;
 import top.houry.netty.barrage.pojo.Barrage;
 import top.houry.netty.barrage.utils.ContextUtil;
@@ -32,7 +32,7 @@ public class BarrageScheduling {
     @Scheduled(fixedRate = 5000)
     public void pushHistoryBarrage() {
         NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(ContextUtil.getContext(Arrays.asList(ContextUtil.context))));
-        List<String> barrageInfoList = redisUtils.listGetAll(Const.RedisKey.BARRAGE_REDIS_LIST_KEY);
+        List<String> barrageInfoList = redisUtils.listGetAll(RedisKeyConst.BARRAGE_REDIS_LIST_KEY);
         NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(JSONUtil.toBean(ContextUtil.getContext(barrageInfoList), Barrage.class).getMsg()));
     }
 
@@ -41,7 +41,7 @@ public class BarrageScheduling {
      */
     @Scheduled(fixedRate = 5000)
     public void pushOnlineNum() {
-        String onlinePopulation = redisUtils.get(Const.RedisKey.BARRAGE_ONLINE_POPULATION_KEY);
+        String onlinePopulation = redisUtils.get(RedisKeyConst.BARRAGE_ONLINE_POPULATION_KEY);
         NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(onlinePopulation));
     }
 
