@@ -1,0 +1,19 @@
+syntax = "proto3";
+option java_package = "top.houry.netty.barrage.proto";
+option java_outer_classname = "BarrageProto";
+
+// 总的消息体
+message Barrage {
+  string msgType = 1;
+  bytes bytesData = 2;
+}
+
+// 心跳回复包
+message HeartBeatResp {
+
+}
+
+// 心跳请求包
+message HeartHeatReq {
+
+}
