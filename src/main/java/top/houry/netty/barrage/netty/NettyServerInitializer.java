@@ -32,7 +32,7 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast("webSocketServerProtocolHandler", new WebSocketServerProtocolHandler("/ws"));
 
         pipeline.addLast("protobufVarint32FrameDecoder", new ProtobufVarint32FrameDecoder());
-        pipeline.addLast(new ProtobufDecoder(BarrageProto.BarrageResponse.getDefaultInstance()));
+        pipeline.addLast("protobufDecoder", new ProtobufDecoder(BarrageProto.BarrageResponse.getDefaultInstance()));
         pipeline.addLast("protobufVarint32LengthFieldPrepender", new ProtobufVarint32LengthFieldPrepender());
         pipeline.addLast("protobufEncoder", new ProtobufEncoder());
 
