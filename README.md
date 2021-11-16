@@ -10,7 +10,8 @@
 
 3.目前1.0版本已经发布，前后端没有分离。
 
-项目地址 https://gitee.com/MonkeyBrothers/barrage/tree/V1.0/
+#### V1.0 版本项目地址 
+https://gitee.com/MonkeyBrothers/barrage/tree/V1.0/
 
 #### 介绍
 基于springboot-2.4.3、redis、netty打造的高并后端发弹幕系统
@@ -20,6 +21,7 @@
 http://barrage.houry.top:8080/index
 #### 安装教程
 1.启动springboot
+
 2.启动前端服务（开发中）
 
 
