@@ -9,10 +9,11 @@
 2.项目会一直维护下去，不定时更新。
 
 3.目前1.0版本已经发布，前后端没有分离。
+
 项目地址 https://gitee.com/MonkeyBrothers/barrage/tree/V1.0/
 
 #### 介绍
-基于springboot-2.4.3、thymeleaf、redis、netty打造的高并发弹幕系统
+基于springboot-2.4.3、redis、netty打造的高并后端发弹幕系统
 
 
 #### 演示地址
@@ -22,7 +23,7 @@ http://barrage.houry.top:8080/index
 2.启动前端服务（开发中）
 
 
-#### 未分离效果截图
+#### V1.0版本效果截图
 ![avatar](/images/1.png)
 ![avatar](/images/2.png)
 ![avatar](/images/3.png)
