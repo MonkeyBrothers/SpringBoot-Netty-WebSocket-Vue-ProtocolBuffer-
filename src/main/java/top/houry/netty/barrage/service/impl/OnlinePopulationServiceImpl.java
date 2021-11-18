@@ -13,8 +13,13 @@ import top.houry.netty.barrage.utils.RedisUtils;
  **/
 @Service
 public class OnlinePopulationServiceImpl implements OnlinePopulationService {
-    @Autowired
+
     private RedisUtils redisUtils;
+
+    @Autowired
+    public void setRedisUtils(RedisUtils redisUtils) {
+        this.redisUtils = redisUtils;
+    }
 
 
     @Override

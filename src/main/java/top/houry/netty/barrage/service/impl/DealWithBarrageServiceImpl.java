@@ -23,8 +23,13 @@ import java.util.Date;
 @Slf4j
 public class DealWithBarrageServiceImpl implements BarrageService {
 
-    @Autowired
+
     private RedisUtils redisUtils;
+
+    @Autowired
+    public void setRedisUtils(RedisUtils redisUtils) {
+        this.redisUtils = redisUtils;
+    }
 
     /**
      * 处理上送的弹幕信息
