@@ -15,13 +15,18 @@
     <description>netty-视频弹幕聊天网页</description>
     <properties>
         <java.version>1.8</java.version>
+
+        <java.version>1.8</java.version>
+        <version.netty>4.1.59.Final</version.netty>
+        <version.commons-lang3>3.12.0</version.commons-lang3>
+
     </properties>
     <dependencies>
 
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.59.Final</version>
+            <version>${version.netty}</version>
         </dependency>
 
         <dependency>
@@ -29,6 +34,13 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${version.commons-lang3}</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.projectlombok</groupId>

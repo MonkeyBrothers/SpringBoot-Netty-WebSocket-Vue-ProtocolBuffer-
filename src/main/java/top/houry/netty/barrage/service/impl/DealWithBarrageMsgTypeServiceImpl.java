@@ -6,9 +6,11 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import top.houry.netty.barrage.annotation.BarrageAnnotation;
 import top.houry.netty.barrage.common.RedisKeyConst;
 import top.houry.netty.barrage.netty.NettyServerHandler;
 import top.houry.netty.barrage.pojo.Barrage;
+import top.houry.netty.barrage.proto.BarrageProto;
 import top.houry.netty.barrage.service.BarrageMsgTypeService;
 import top.houry.netty.barrage.utils.RedisUtils;
 
@@ -34,13 +36,13 @@ public class DealWithBarrageMsgTypeServiceImpl implements BarrageMsgTypeService 
     /**
      * 处理上送的弹幕信息
      *
-     * @param text 弹幕信息
-     * @param ctx  通道上下文信息
+     * @param barrage {@link BarrageProto}
+     * @param ctx     通道上下文信息
      */
     @Override
-    public void dealWithBarrageMessage(String text, ChannelHandlerContext ctx) {
-        log.info("[BarrageServiceImpl]-[dealWithBarrageMessage]-[text:{}]", text);
-        NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(text));
-        redisUtils.listPush(RedisKeyConst.BARRAGE_REDIS_LIST_KEY, JSONUtil.toJsonStr(new Barrage(null, 1394820394583923485L, new Date(), text, null)));
+    public void dealWithBarrageMessage(BarrageProto.Barrage barrage, ChannelHandlerContext ctx) {
+//        log.info("[BarrageServiceImpl]-[dealWithBarrageMessage]-[text:{}]", text);
+//        NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(text));
+//        redisUtils.listPush(RedisKeyConst.BARRAGE_REDIS_LIST_KEY, JSONUtil.toJsonStr(new Barrage(null, 1394820394583923485L, new Date(), text, null)));
     }
 }

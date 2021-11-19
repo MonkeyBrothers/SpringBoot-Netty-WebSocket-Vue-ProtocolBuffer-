@@ -1,19 +1,18 @@
 package top.houry.netty.barrage.netty;
 
 import cn.hutool.json.JSONException;
-import cn.hutool.json.JSONUtil;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
-import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
-import top.houry.netty.barrage.enums.BarrageRouteEnum;
+import org.apache.commons.lang3.StringUtils;
+import top.houry.netty.barrage.proto.BarrageProto;
 import top.houry.netty.barrage.service.impl.OnlinePopulationServiceImpl;
+import top.houry.netty.barrage.utils.BarrageMsgBeanUtils;
 import top.houry.netty.barrage.utils.SpringContextUtil;
-import top.houry.netty.barrage.vo.BarrageVo;
 
 /**
  * @Desc 配置netty-handler
@@ -21,7 +20,7 @@ import top.houry.netty.barrage.vo.BarrageVo;
  * @Date 2021/3/2 9:30
  **/
 @Slf4j
-public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
+public class NettyServerHandler extends SimpleChannelInboundHandler<BarrageProto.Barrage> {
 
     /**
      * 用于记录和管理所有客户端的channel
@@ -32,16 +31,19 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<TextWebSocke
     /**
      * 读取发送的消息
      *
-     * @param ctx 通道上下文
-     * @param msg 信息内容
+     * @param ctx     通道上下文
+     * @param barrage 信息内容
      * @throws Exception
      */
     @Override
-    public void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame msg) throws Exception {
-        /// log.info("[NettyServerHandler]-[channelRead0]-[{}]-[recvMsg = {}]", ctx.channel().toString(), JSONUtil.toJsonStr(msg.text()));
+    public void channelRead0(ChannelHandlerContext ctx, BarrageProto.Barrage barrage) throws Exception {
         try {
-            BarrageVo barrageVo = JSONUtil.toBean(msg.text(), BarrageVo.class);
-            BarrageRouteEnum.findByType(barrageVo.getMsgType()).getService().dealWithBarrageMessage(barrageVo.getContext(), ctx);
+            String msgType = barrage.getMsgType();
+            if (StringUtils.isBlank(msgType)) {
+               log.info("[NettyServerHandler]-[channelRead0]-[msgType]-[不存在]");
+                return;
+            }
+            BarrageMsgBeanUtils.getService(msgType).dealWithBarrageMessage(barrage, ctx);
         } catch (JSONException e) {
             ctx.close();
             log.error("[JSONException]-[NettyServerHandler]-[channelRead0]", e);

@@ -28,10 +28,10 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast("httpServerCodec", new HttpServerCodec());
         pipeline.addLast("httpObjectAggregator", new HttpObjectAggregator(1024));
         pipeline.addLast("chunkedWriteHandler", new ChunkedWriteHandler());
-        pipeline.addLast("idleStateHandler", new IdleStateHandler(10, 0, 0, TimeUnit.SECONDS));
+//        pipeline.addLast("idleStateHandler", new IdleStateHandler(10, 0, 0, TimeUnit.SECONDS));
         pipeline.addLast("webSocketServerProtocolHandler", new WebSocketServerProtocolHandler("/ws"));
         pipeline.addLast("protobufVarint32FrameDecoder", new ProtobufVarint32FrameDecoder());
-        pipeline.addLast("protobufDecoder", new ProtobufDecoder(BarrageProto.BarrageResponse.getDefaultInstance()));
+        pipeline.addLast("protobufDecoder", new ProtobufDecoder(BarrageProto.Barrage.getDefaultInstance()));
         pipeline.addLast("protobufVarint32LengthFieldPrepender", new ProtobufVarint32LengthFieldPrepender());
         pipeline.addLast("protobufEncoder", new ProtobufEncoder());
         pipeline.addLast("nettyServerHandler", new NettyServerHandler());
