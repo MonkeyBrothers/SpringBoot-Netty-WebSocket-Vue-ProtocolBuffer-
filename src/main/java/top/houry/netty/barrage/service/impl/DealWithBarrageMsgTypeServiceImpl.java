@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import top.houry.netty.barrage.common.RedisKeyConst;
 import top.houry.netty.barrage.netty.NettyServerHandler;
 import top.houry.netty.barrage.pojo.Barrage;
-import top.houry.netty.barrage.service.BarrageService;
+import top.houry.netty.barrage.service.BarrageMsgTypeService;
 import top.houry.netty.barrage.utils.RedisUtils;
 
 import java.util.Date;
@@ -21,7 +21,7 @@ import java.util.Date;
  **/
 @Service
 @Slf4j
-public class DealWithBarrageServiceImpl implements BarrageService {
+public class DealWithBarrageMsgTypeServiceImpl implements BarrageMsgTypeService {
 
 
     private RedisUtils redisUtils;

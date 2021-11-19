@@ -8,7 +8,7 @@ import java.util.Random;
  * @Author houry
  * @Date 2021/3/8 16:11
  **/
-public class ContextUtil {
+public class BarrageContentUtils {
     public static String[] context = {
             "最美的人儿",
             "我们都是追梦人！",

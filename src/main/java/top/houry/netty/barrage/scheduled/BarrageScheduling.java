@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import top.houry.netty.barrage.common.RedisKeyConst;
 import top.houry.netty.barrage.netty.NettyServerHandler;
 import top.houry.netty.barrage.pojo.Barrage;
-import top.houry.netty.barrage.utils.ContextUtil;
+import top.houry.netty.barrage.utils.BarrageContentUtils;
 import top.houry.netty.barrage.utils.RedisUtils;
 
 import java.util.Arrays;
@@ -31,9 +31,9 @@ public class BarrageScheduling {
      */
     @Scheduled(fixedRate = 5000)
     public void pushHistoryBarrage() {
-        NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(ContextUtil.getContext(Arrays.asList(ContextUtil.context))));
+        NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(BarrageContentUtils.getContext(Arrays.asList(BarrageContentUtils.context))));
         List<String> barrageInfoList = redisUtils.listGetAll(RedisKeyConst.BARRAGE_REDIS_LIST_KEY);
-        NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(JSONUtil.toBean(ContextUtil.getContext(barrageInfoList), Barrage.class).getMsg()));
+        NettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(JSONUtil.toBean(BarrageContentUtils.getContext(barrageInfoList), Barrage.class).getMsg()));
     }
 
     /**

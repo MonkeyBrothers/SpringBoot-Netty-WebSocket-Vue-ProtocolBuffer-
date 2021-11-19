@@ -1,9 +1,8 @@
 package top.houry.netty.barrage.service.impl;
 
-import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import org.springframework.stereotype.Service;
-import top.houry.netty.barrage.service.BarrageService;
+import top.houry.netty.barrage.service.BarrageMsgTypeService;
 
 /**
  * @Desc 心跳包信息
@@ -11,7 +10,7 @@ import top.houry.netty.barrage.service.BarrageService;
  * @Date 2021/8/16
  **/
 @Service
-public class HeartBeatBarrageServiceImpl implements BarrageService {
+public class HeartBeatBarrageMsgTypeServiceImpl implements BarrageMsgTypeService {
     /**
      * 处理心跳逻辑
      *
