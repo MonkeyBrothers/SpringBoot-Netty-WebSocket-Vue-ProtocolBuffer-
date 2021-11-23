@@ -13,12 +13,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>barrage</name>
     <description>netty-视频弹幕聊天网页</description>
-    <properties>
-        <java.version>1.8</java.version>
 
+    <properties>
         <java.version>1.8</java.version>
         <version.netty>4.1.59.Final</version.netty>
         <version.commons-lang3>3.12.0</version.commons-lang3>
+        <version.hutool-all>5.4.4</version.hutool-all>
+        <version.protobuf-java>3.6.1</version.protobuf-java>
 
     </properties>
     <dependencies>
@@ -56,7 +57,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.4.4</version>
+            <version>${version.hutool-all}</version>
         </dependency>
 
         <dependency>
@@ -73,7 +74,7 @@
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>3.6.1</version>
+            <version>${version.protobuf-java}</version>
         </dependency>
 
         <dependency>
