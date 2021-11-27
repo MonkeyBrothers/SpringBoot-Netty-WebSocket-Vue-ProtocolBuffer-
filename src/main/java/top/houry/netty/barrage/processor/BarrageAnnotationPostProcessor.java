@@ -7,7 +7,11 @@ import org.springframework.stereotype.Component;
 import top.houry.netty.barrage.annotation.BarrageAnnotation;
 import top.houry.netty.barrage.utils.BarrageMsgBeanUtils;
 
-
+/**
+ * @Desc 自定义消息注解处理类
+ * @Author houruiyang
+ * @Date 2021/11/27
+ **/
 @Component
 public class BarrageAnnotationPostProcessor implements BeanPostProcessor {
 
