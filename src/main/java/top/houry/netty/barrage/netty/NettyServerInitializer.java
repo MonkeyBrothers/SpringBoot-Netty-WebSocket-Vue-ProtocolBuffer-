@@ -10,6 +10,7 @@ import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
+import io.netty.handler.ipfilter.RuleBasedIpFilter;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.handler.timeout.IdleStateHandler;
 import top.houry.netty.barrage.proto.BarrageProto;
@@ -25,10 +26,11 @@ public class NettyServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel socketChannel) {
         ChannelPipeline pipeline = socketChannel.pipeline();
+        pipeline.addLast("nettyServerIpFilterHandler", new RuleBasedIpFilter(new NettyServerIpFilterHandler()));
         pipeline.addLast("httpServerCodec", new HttpServerCodec());
         pipeline.addLast("httpObjectAggregator", new HttpObjectAggregator(1024));
         pipeline.addLast("chunkedWriteHandler", new ChunkedWriteHandler());
-//        pipeline.addLast("idleStateHandler", new IdleStateHandler(10, 0, 0, TimeUnit.SECONDS));
+        pipeline.addLast("idleStateHandler", new IdleStateHandler(10, 0, 0, TimeUnit.SECONDS));
         pipeline.addLast("webSocketServerProtocolHandler", new WebSocketServerProtocolHandler("/ws"));
         pipeline.addLast("protobufVarint32FrameDecoder", new ProtobufVarint32FrameDecoder());
         pipeline.addLast("protobufDecoder", new ProtobufDecoder(BarrageProto.Barrage.getDefaultInstance()));
