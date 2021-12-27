@@ -39,6 +39,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<BarrageProto
     public void channelRead0(ChannelHandlerContext ctx, BarrageProto.Barrage barrage) throws Exception {
         try {
             String msgType = barrage.getMsgType();
+            System.out.println(msgType);
             if (StringUtils.isBlank(msgType)) {
                log.info("[NettyServerHandler]-[channelRead0]-[msgType]-[不存在]");
                 return;
