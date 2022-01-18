@@ -5,7 +5,7 @@ package top.houry.netty.barrage.service;
  * @Author houruiyang
  * @Date 2021/9/1
  **/
-public interface OnlinePopulationService {
+public interface BarrageOnlinePopulationService {
 
     void incrementOne();
 

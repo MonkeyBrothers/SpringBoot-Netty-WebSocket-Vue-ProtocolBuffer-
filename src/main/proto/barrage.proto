@@ -17,3 +17,11 @@ message HeartBeatResp {
 message HeartHeatReq {
 
 }
+
+// 弹幕消息内容
+message ServerReceive {
+  string userId = 1;
+  string videoId = 2;
+  string msg = 3;
+  string msgColor = 4;
+}
