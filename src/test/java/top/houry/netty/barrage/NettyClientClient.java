@@ -59,22 +59,7 @@ public class NettyClientClient {
                });
 
            }
-//            for(int i=0; i<100; i++) {
-//                 channel.writeAndFlush(getCourseInstructExecutionResultMessage());
-////                channel.writeAndFlush(systemBreak());
-//
-//            }
-//            channel.writeAndFlush(heart());
-//            while (true) {
-//                Thread.sleep(5000);
-//                channel.writeAndFlush(getRobotMotionReqMessage()).addListener(future1 -> {
-//                    if(future1.isSuccess()){
-//                        System.out.println("111");
-//                    }else{
-//                        future1.cause().printStackTrace();
-//                    }
-//                });
-//            }
+
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }

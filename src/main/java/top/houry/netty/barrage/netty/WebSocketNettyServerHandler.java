@@ -42,7 +42,7 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
                log.info("[NettyServerHandler]-[channelRead0]-[msgType]-[不存在]");
                 return;
             }
-            BarrageMsgBeanUtils.getService(msgType).dealWithBarrageMessage(barrage, ctx);
+            //BarrageMsgBeanUtils.getService(msgType).dealWithBarrageMessage(barrage, ctx);
         } catch (JSONException e) {
             ctx.close();
             log.error("[JSONException]-[NettyServerHandler]-[channelRead0]", e);
