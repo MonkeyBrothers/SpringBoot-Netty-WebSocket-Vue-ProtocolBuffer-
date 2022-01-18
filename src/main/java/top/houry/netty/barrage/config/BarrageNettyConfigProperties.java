@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  **/
 @Configuration
 @ConfigurationProperties(prefix = "netty")
-public class NettyConfigProperties {
+public class BarrageNettyConfigProperties {
 
     /**
      * netty 服务端监听端口

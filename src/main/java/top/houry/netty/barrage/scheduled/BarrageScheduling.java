@@ -22,8 +22,13 @@ import java.util.List;
 //@Component
 @Slf4j
 public class BarrageScheduling {
-    @Autowired
+
     private BarrageRedisUtils redisUtils;
+
+    @Autowired
+    public void setRedisUtils(BarrageRedisUtils redisUtils) {
+        this.redisUtils = redisUtils;
+    }
 
     /**
      * 定时任务推送历史弹幕 fixedRate = 3000  3秒推送一次

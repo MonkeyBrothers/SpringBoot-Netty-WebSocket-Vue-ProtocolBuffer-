@@ -11,10 +11,15 @@ import top.houry.netty.barrage.netty.WebSocketNettyServer;
  * @Date 2021/3/2 8:48
  **/
 @Component
-public class BarrageRunner implements ApplicationRunner {
+public class BarrageNettyServerRunner implements ApplicationRunner {
+
+
+    private WebSocketNettyServer nettyServer;
 
     @Autowired
-    private WebSocketNettyServer nettyServer;
+    public void setNettyServer(WebSocketNettyServer nettyServer) {
+        this.nettyServer = nettyServer;
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {

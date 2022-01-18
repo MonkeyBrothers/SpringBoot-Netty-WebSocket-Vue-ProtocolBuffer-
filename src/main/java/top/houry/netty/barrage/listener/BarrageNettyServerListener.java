@@ -12,14 +12,14 @@ import lombok.extern.slf4j.Slf4j;
  * @Date 2021/4/21 15:57
  **/
 @Slf4j
-public class NettyServerListener implements ChannelFutureListener {
+public class BarrageNettyServerListener implements ChannelFutureListener {
 
     /**
      * 端口号
      */
     private final Integer port;
 
-    public NettyServerListener(Integer port) {
+    public BarrageNettyServerListener(Integer port) {
         this.port = port;
     }
 

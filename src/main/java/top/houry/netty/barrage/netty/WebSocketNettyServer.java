@@ -8,8 +8,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import top.houry.netty.barrage.config.NettyConfigProperties;
-import top.houry.netty.barrage.listener.NettyServerListener;
+import top.houry.netty.barrage.config.BarrageNettyConfigProperties;
+import top.houry.netty.barrage.listener.BarrageNettyServerListener;
 
 /**
  * @Desc netty 服务
@@ -21,10 +21,10 @@ import top.houry.netty.barrage.listener.NettyServerListener;
 public class WebSocketNettyServer {
 
 
-    private NettyConfigProperties nettyConfigProperties;
+    private BarrageNettyConfigProperties nettyConfigProperties;
 
     @Autowired
-    public void setNettyConfigProperties(NettyConfigProperties nettyConfigProperties) {
+    public void setNettyConfigProperties(BarrageNettyConfigProperties nettyConfigProperties) {
         this.nettyConfigProperties = nettyConfigProperties;
     }
 
@@ -59,7 +59,7 @@ public class WebSocketNettyServer {
         try {
             ServerBootstrap server = new ServerBootstrap();
             server.group(boss, worker).channel(NioServerSocketChannel.class).childHandler(new WebSocketNettyServerInitializer());
-            ChannelFuture channelFuture = server.bind(nettyConfigProperties.getServerPort()).addListener(new NettyServerListener(nettyConfigProperties.getServerPort())).sync();
+            ChannelFuture channelFuture = server.bind(nettyConfigProperties.getServerPort()).addListener(new BarrageNettyServerListener(nettyConfigProperties.getServerPort())).sync();
             channelFuture.channel().closeFuture().sync();
         } catch (Exception e) {
             log.error("[NettyServer]-[startNettyServer]-[Exception]", e);
