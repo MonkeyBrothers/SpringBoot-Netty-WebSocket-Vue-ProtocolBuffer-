@@ -45,7 +45,7 @@ public class BarrageMsgBeanUtils {
      * @return 对应的bean
      */
     public static BarrageMsgTypeService getService(String msgType) {
-        return SpringContextUtil.getBean(BARRAGE_MSG_BEAN.get(msgType));
+        return BarrageSpringContextUtil.getBean(BARRAGE_MSG_BEAN.get(msgType));
     }
 
 }

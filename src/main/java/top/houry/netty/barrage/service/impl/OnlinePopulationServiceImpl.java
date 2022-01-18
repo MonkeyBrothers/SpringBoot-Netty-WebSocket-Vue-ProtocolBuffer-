@@ -2,9 +2,9 @@ package top.houry.netty.barrage.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import top.houry.netty.barrage.common.RedisKeyConst;
+import top.houry.netty.barrage.common.BarrageRedisKeyConst;
 import top.houry.netty.barrage.service.OnlinePopulationService;
-import top.houry.netty.barrage.utils.RedisUtils;
+import top.houry.netty.barrage.utils.BarrageRedisUtils;
 
 /**
  * @Desc
@@ -14,21 +14,21 @@ import top.houry.netty.barrage.utils.RedisUtils;
 @Service
 public class OnlinePopulationServiceImpl implements OnlinePopulationService {
 
-    private RedisUtils redisUtils;
+    private BarrageRedisUtils redisUtils;
 
     @Autowired
-    public void setRedisUtils(RedisUtils redisUtils) {
+    public void setRedisUtils(BarrageRedisUtils redisUtils) {
         this.redisUtils = redisUtils;
     }
 
 
     @Override
     public void incrementOne() {
-        redisUtils.increment(RedisKeyConst.BARRAGE_ONLINE_POPULATION_KEY);
+        redisUtils.increment(BarrageRedisKeyConst.BARRAGE_ONLINE_POPULATION_KEY);
     }
 
     @Override
     public void decrementOne() {
-        redisUtils.decrement(RedisKeyConst.BARRAGE_ONLINE_POPULATION_KEY);
+        redisUtils.decrement(BarrageRedisKeyConst.BARRAGE_ONLINE_POPULATION_KEY);
     }
 }

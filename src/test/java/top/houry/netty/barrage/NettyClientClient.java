@@ -1,6 +1,6 @@
 package top.houry.netty.barrage;
 
-
+import com.google.protobuf.ByteString;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -18,19 +18,14 @@ import org.slf4j.LoggerFactory;
 import top.houry.netty.barrage.proto.BarrageProto;
 
 import java.net.URI;
-import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
-/**
- * WSocket 客户端
- *
- * @author chenqian09
- */
+
 public class NettyClientClient {
 
     private static final Logger logger = LoggerFactory.getLogger(NettyClientClient.class);
-    private static String serverIp = "10.252.72.159";
+    private static String serverIp = "localhost";
     private static int serverPort = 9999;
-//    ws://twinklejxedttest.58v5.cn:80/ws
 
     public static void main(String[] args) throws Exception {
         EventLoopGroup group = new NioEventLoopGroup();
@@ -50,25 +45,40 @@ public class NettyClientClient {
             handshaker.handshake(channel);
             future = handler.handshakeFuture().sync();
 
-            while (true) {
-                channel.writeAndFlush(hearBeat()).addListener(future1 -> {
-                    if(future1.isSuccess()){
-                        System.out.println("111");
-                    }else{
-                        future1.cause().printStackTrace();
-                    }
-                });
-                Thread.sleep(5000);
-            }
+            BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
+            builder.setMsgType("hearBeat");
+            builder.setBytesData(ByteString.copyFromUtf8("hello"));
+           while (true) {
+               TimeUnit.SECONDS.sleep(2);
+               channel.writeAndFlush(builder).addListener(future1 -> {
+                   if(future1.isSuccess()){
+                       System.out.println("111");
+                   }else{
+                       future1.cause().printStackTrace();
+                   }
+               });
+
+           }
+//            for(int i=0; i<100; i++) {
+//                 channel.writeAndFlush(getCourseInstructExecutionResultMessage());
+////                channel.writeAndFlush(systemBreak());
+//
+//            }
+//            channel.writeAndFlush(heart());
+//            while (true) {
+//                Thread.sleep(5000);
+//                channel.writeAndFlush(getRobotMotionReqMessage()).addListener(future1 -> {
+//                    if(future1.isSuccess()){
+//                        System.out.println("111");
+//                    }else{
+//                        future1.cause().printStackTrace();
+//                    }
+//                });
+//            }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
     }
 
 
-    public static BarrageProto.Barrage hearBeat() {
-        BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
-        builder.setMsgType("heartbeat");
-        return builder.build();
-    }
 }

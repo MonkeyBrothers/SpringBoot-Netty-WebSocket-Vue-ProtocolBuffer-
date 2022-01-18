@@ -12,8 +12,8 @@ import top.houry.netty.barrage.service.BarrageMsgTypeService;
  * @Date 2021/8/16
  **/
 @Service
-@BarrageAnnotation(msgType = "heartbeat")
-public class HeartBeatBarrageMsgTypeServiceImpl implements BarrageMsgTypeService {
+@BarrageAnnotation(msgType = "heartBeat")
+public class BarrageHeartBeatMsgServiceImpl implements BarrageMsgTypeService {
     /**
      * 处理心跳逻辑
      *

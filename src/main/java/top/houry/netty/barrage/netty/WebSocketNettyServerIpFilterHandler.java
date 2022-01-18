@@ -10,10 +10,10 @@ import java.net.InetSocketAddress;
  * @Author houruiyang
  * @Date 2021/11/27
  **/
-public class NettyServerIpFilterHandler implements IpFilterRule {
+public class WebSocketNettyServerIpFilterHandler implements IpFilterRule {
 
     /**
-     * 定义Ip匹配规则，这里只有返回true才会执行 {@link NettyServerIpFilterHandler#ruleType}
+     * 定义Ip匹配规则，这里只有返回true才会执行 {@link WebSocketNettyServerIpFilterHandler#ruleType}
      *
      * @param inetSocketAddress InetSocketAddress
      * @return true-执行自定义策略 false-不执行自定义策略

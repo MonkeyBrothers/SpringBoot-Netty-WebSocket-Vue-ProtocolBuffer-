@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
-import top.houry.netty.barrage.netty.NettyServer;
+import top.houry.netty.barrage.netty.WebSocketNettyServer;
 /**
  * @Desc 抽取公共的需要在SpringBoot加载完毕之后加载的业务
  * @Author houry
@@ -14,7 +14,7 @@ import top.houry.netty.barrage.netty.NettyServer;
 public class BarrageRunner implements ApplicationRunner {
 
     @Autowired
-    private NettyServer nettyServer;
+    private WebSocketNettyServer nettyServer;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {

@@ -5,7 +5,7 @@ package top.houry.netty.barrage.common;
  * @Author houry
  * @Date 2021/4/29 11:36
  **/
-public interface RedisKeyConst {
+public interface BarrageRedisKeyConst {
 
     /**
      * 弹幕在redis中存放的key

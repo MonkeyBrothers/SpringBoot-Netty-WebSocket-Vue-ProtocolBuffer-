@@ -2,7 +2,7 @@ package top.houry.netty.barrage.enums;
 
 import lombok.Getter;
 import top.houry.netty.barrage.service.BarrageMsgTypeService;
-import top.houry.netty.barrage.utils.SpringContextUtil;
+import top.houry.netty.barrage.utils.BarrageSpringContextUtil;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -25,7 +25,7 @@ public enum BarrageRouteEnum {
 
 
     public BarrageMsgTypeService getService() {
-        return (BarrageMsgTypeService) Optional.of(SpringContextUtil.getBean(this.getBeanName())).orElse(null);
+        return (BarrageMsgTypeService) Optional.of(BarrageSpringContextUtil.getBean(this.getBeanName())).orElse(null);
     }
 
     /**

@@ -12,9 +12,14 @@ import java.util.List;
  * @Date 2021/3/29 14:10
  **/
 @Component
-public class RedisUtils {
-    @Autowired
+public class BarrageRedisUtils {
+
     private StringRedisTemplate redisTemplate;
+
+    @Autowired
+    public void setRedisTemplate(StringRedisTemplate redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     /**
      * 存放数据集合

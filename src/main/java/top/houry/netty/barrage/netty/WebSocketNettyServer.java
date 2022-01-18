@@ -18,7 +18,7 @@ import top.houry.netty.barrage.listener.NettyServerListener;
  **/
 @Component
 @Slf4j
-public class NettyServer {
+public class WebSocketNettyServer {
 
 
     private NettyConfigProperties nettyConfigProperties;
@@ -31,11 +31,11 @@ public class NettyServer {
     /**
      * socket 连接处理循环组
      */
-    EventLoopGroup boss = new NioEventLoopGroup(1, new NettyThreadFactory("netty-screen-boss"));
+    EventLoopGroup boss = new NioEventLoopGroup(1, new WebSocketNettyThreadFactory("netty-screen-boss"));
     /**
      * socket 业务处理循环组
      */
-    EventLoopGroup worker = new NioEventLoopGroup(1, new NettyThreadFactory("netty-screen-worker"));
+    EventLoopGroup worker = new NioEventLoopGroup(1, new WebSocketNettyThreadFactory("netty-screen-worker"));
 
 
     /**
@@ -58,7 +58,7 @@ public class NettyServer {
     public void startNettyServer() {
         try {
             ServerBootstrap server = new ServerBootstrap();
-            server.group(boss, worker).channel(NioServerSocketChannel.class).childHandler(new NettyServerInitializer());
+            server.group(boss, worker).channel(NioServerSocketChannel.class).childHandler(new WebSocketNettyServerInitializer());
             ChannelFuture channelFuture = server.bind(nettyConfigProperties.getServerPort()).addListener(new NettyServerListener(nettyConfigProperties.getServerPort())).sync();
             channelFuture.channel().closeFuture().sync();
         } catch (Exception e) {

@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Author houry
  * @Date 2021/4/29 10:22
  **/
-public class NettyThreadFactory implements ThreadFactory {
+public class WebSocketNettyThreadFactory implements ThreadFactory {
     /**
      * 线程组
      */
@@ -22,13 +22,10 @@ public class NettyThreadFactory implements ThreadFactory {
      */
     public final String namePrefix;
 
-    public NettyThreadFactory(String name) {
+    public WebSocketNettyThreadFactory(String name) {
         SecurityManager s = System.getSecurityManager();
         threadGroup = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
         if (null == name || "".equals(name.trim())) name = "pool";
-        /**
-         * 线程池数量
-         */
         AtomicInteger poolNumber = new AtomicInteger(1);
         namePrefix = name + "-" + poolNumber.getAndIncrement() + "-thread-";
     }

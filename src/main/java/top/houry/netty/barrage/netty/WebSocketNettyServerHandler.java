@@ -10,9 +10,7 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import top.houry.netty.barrage.proto.BarrageProto;
-import top.houry.netty.barrage.service.impl.OnlinePopulationServiceImpl;
 import top.houry.netty.barrage.utils.BarrageMsgBeanUtils;
-import top.houry.netty.barrage.utils.SpringContextUtil;
 
 /**
  * @Desc 配置netty-handler
@@ -20,7 +18,7 @@ import top.houry.netty.barrage.utils.SpringContextUtil;
  * @Date 2021/3/2 9:30
  **/
 @Slf4j
-public class NettyServerHandler extends SimpleChannelInboundHandler<BarrageProto.Barrage> {
+public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<BarrageProto.Barrage> {
 
     /**
      * 用于记录和管理所有客户端的channel
@@ -62,7 +60,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<BarrageProto
      */
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        log.info("[{}]-[handlerAdded]", ctx.channel().toString());
+        log.info("[NettyServerHandler]-[handlerAdded]-[{}]", ctx.channel().toString());
         CLIENT_CHANNELS.add(ctx.channel());
     }
 
@@ -74,7 +72,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<BarrageProto
      */
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
-        log.info("[{}]-[handlerRemoved]", ctx.channel().toString());
+        log.info("[NettyServerHandler]-[handlerRemoved]-[{}]", ctx.channel().toString());
         CLIENT_CHANNELS.remove(ctx.channel());
     }
 
@@ -86,8 +84,9 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<BarrageProto
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("有客户端连接");
         // 把上线人数记录到Redis中
-        SpringContextUtil.getBean(OnlinePopulationServiceImpl.class).incrementOne();
+       //  SpringContextUtil.getBean(OnlinePopulationServiceImpl.class).incrementOne();
 
     }
 
@@ -99,7 +98,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<BarrageProto
      */
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        SpringContextUtil.getBean(OnlinePopulationServiceImpl.class).decrementOne();
+       // SpringContextUtil.getBean(OnlinePopulationServiceImpl.class).decrementOne();
     }
 
     /**
@@ -130,17 +129,17 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<BarrageProto
             IdleStateEvent event = (IdleStateEvent) evt;
             switch (event.state()) {
                 case READER_IDLE:
-                    log.info("[没有接收到：{}的信息心跳信息，将断开连接回收资源]", ctx.toString());
+                    log.info("[NettyServerHandler]-[userEventTriggered]-[没有接收到：{}的信息心跳信息，将断开连接回收资源]", ctx.toString());
                     ctx.channel().close();
                     break;
                 case WRITER_IDLE:
-                    log.info("写空闲");
+                    log.info("[NettyServerHandler]-[userEventTriggered]-[写空闲]");
                     break;
                 case ALL_IDLE:
-                    log.info("读写空闲");
+                    log.info("[NettyServerHandler]-[userEventTriggered]-[读写空闲]");
                     break;
                 default:
-                    log.info("非法状态");
+                    log.info("[NettyServerHandler]-[userEventTriggered]-[非法状态]");
                     throw new IllegalStateException("非法状态！");
             }
         }
