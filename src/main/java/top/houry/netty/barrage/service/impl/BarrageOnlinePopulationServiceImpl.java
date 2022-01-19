@@ -3,7 +3,7 @@ package top.houry.netty.barrage.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.houry.netty.barrage.common.BarrageRedisKeyConst;
-import top.houry.netty.barrage.service.BarrageOnlinePopulationService;
+import top.houry.netty.barrage.service.IBarrageOnlinePopulationService;
 import top.houry.netty.barrage.utils.BarrageRedisUtils;
 
 /**
@@ -12,7 +12,7 @@ import top.houry.netty.barrage.utils.BarrageRedisUtils;
  * @Date 2021/9/1
  **/
 @Service
-public class BarrageOnlinePopulationServiceImpl implements BarrageOnlinePopulationService {
+public class BarrageOnlinePopulationServiceImpl implements IBarrageOnlinePopulationService {
 
     private BarrageRedisUtils redisUtils;
 

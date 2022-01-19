@@ -13,11 +13,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> {
+public class TestWebSocketNettyClientHandler extends SimpleChannelInboundHandler<Object> {
 
-    private static final Logger logger = LoggerFactory.getLogger(WebSocketClientHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(TestWebSocketNettyClientHandler.class);
 
-    private WebSocketClientHandshaker handshaker = null;
+    private WebSocketClientHandshaker handShaker = null;
     private ChannelPromise handshakeFuture = null;
 
     @Override
@@ -28,9 +28,9 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
 
-        if (!this.handshaker.isHandshakeComplete()) {
+        if (!this.handShaker.isHandshakeComplete()) {
             FullHttpResponse response = (FullHttpResponse) msg;
-            this.handshaker.finishHandshake(ctx.channel(), response);
+            this.handShaker.finishHandshake(ctx.channel(), response);
             this.handshakeFuture.setSuccess();
             return;
         }
@@ -57,8 +57,8 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
         ctx.channel().close();
     }
 
-    public void setHandshaker(WebSocketClientHandshaker handshaker) {
-        this.handshaker = handshaker;
+    public void setHandShaker(WebSocketClientHandshaker handShaker) {
+        this.handShaker = handShaker;
     }
 
     public ChannelFuture handshakeFuture() {

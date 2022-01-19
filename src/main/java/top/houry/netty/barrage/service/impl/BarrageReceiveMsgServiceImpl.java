@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import top.houry.netty.barrage.annotation.BarrageAnnotation;
 import top.houry.netty.barrage.proto.BarrageProto;
-import top.houry.netty.barrage.service.BarrageMsgTypeService;
+import top.houry.netty.barrage.service.IBarrageMsgTypeService;
 
 /**
  * @Desc 服务器接收客户端发送过来的弹幕信息
@@ -15,7 +15,7 @@ import top.houry.netty.barrage.service.BarrageMsgTypeService;
 @Service
 @BarrageAnnotation(msgType = "server.receive")
 @Slf4j
-public class BarrageReceiveMsgServiceImpl implements BarrageMsgTypeService {
+public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
     @Override
     public void dealWithBarrageMessage(BarrageProto.Barrage barrage, ChannelHandlerContext ctx) {
 

@@ -3,7 +3,7 @@ package top.houry.netty.barrage.service;
 import io.netty.channel.ChannelHandlerContext;
 import top.houry.netty.barrage.proto.BarrageProto;
 
-public interface BarrageMsgTypeService {
+public interface IBarrageMsgTypeService {
     /**
      * 处理上送的弹幕信息
      *

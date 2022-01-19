@@ -1,7 +1,7 @@
 package top.houry.netty.barrage.utils;
 
 import top.houry.netty.barrage.annotation.BarrageAnnotation;
-import top.houry.netty.barrage.service.BarrageMsgTypeService;
+import top.houry.netty.barrage.service.IBarrageMsgTypeService;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -44,7 +44,7 @@ public class BarrageMsgBeanUtils {
      * @param msgType 自定义的注解的消息类型{@link BarrageAnnotation#msgType}
      * @return 对应的bean
      */
-    public static BarrageMsgTypeService getService(String msgType) {
+    public static IBarrageMsgTypeService getService(String msgType) {
         return BarrageSpringContextUtil.getBean(BARRAGE_MSG_BEAN.get(msgType));
     }
 

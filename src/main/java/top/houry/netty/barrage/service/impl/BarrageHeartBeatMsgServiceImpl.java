@@ -1,10 +1,11 @@
 package top.houry.netty.barrage.service.impl;
 
 import io.netty.channel.ChannelHandlerContext;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import top.houry.netty.barrage.annotation.BarrageAnnotation;
 import top.houry.netty.barrage.proto.BarrageProto;
-import top.houry.netty.barrage.service.BarrageMsgTypeService;
+import top.houry.netty.barrage.service.IBarrageMsgTypeService;
 
 /**
  * @Desc 心跳包信息
@@ -12,8 +13,9 @@ import top.houry.netty.barrage.service.BarrageMsgTypeService;
  * @Date 2021/8/16
  **/
 @Service
-@BarrageAnnotation(msgType = "heartBeat")
-public class BarrageHeartBeatMsgServiceImpl implements BarrageMsgTypeService {
+@BarrageAnnotation(msgType = "server.heartBeat")
+@Slf4j
+public class BarrageHeartBeatMsgServiceImpl implements IBarrageMsgTypeService {
     /**
      * 处理心跳逻辑
      *
@@ -22,10 +24,6 @@ public class BarrageHeartBeatMsgServiceImpl implements BarrageMsgTypeService {
      */
     @Override
     public void dealWithBarrageMessage(BarrageProto.Barrage barrage, ChannelHandlerContext ctx) {
-        System.out.println("-----");
-        // 如果想对心跳进行回复，可以在此方法中进行回复
-//        ctx.writeAndFlush("").addListener((ChannelFutureListener) future -> {
-//
-//        });
+        log.info("[BarrageHeartBeatMsgServiceImpl]-[dealWithBarrageMessage]-[接收到心跳]-[ctx:{}]", ctx.channel().toString());
     }
 }

@@ -31,11 +31,11 @@ public class WebSocketNettyServer {
     /**
      * socket 连接处理循环组
      */
-    EventLoopGroup boss = new NioEventLoopGroup(1, new WebSocketNettyThreadFactory("netty-screen-boss"));
+    EventLoopGroup boss = new NioEventLoopGroup(1, new WebSocketNettyServerThreadFactory("netty-screen-boss"));
     /**
      * socket 业务处理循环组
      */
-    EventLoopGroup worker = new NioEventLoopGroup(1, new WebSocketNettyThreadFactory("netty-screen-worker"));
+    EventLoopGroup worker = new NioEventLoopGroup(1, new WebSocketNettyServerThreadFactory("netty-screen-worker"));
 
 
     /**
@@ -45,9 +45,9 @@ public class WebSocketNettyServer {
         try {
             boss.shutdownGracefully();
             worker.shutdownGracefully();
-            log.info("[NettyServer]-[shutDownNettyServer]-[shutDown]");
+            log.info("[WebSocketNettyServer]-[shutDownNettyServer]-[shutDown]");
         } catch (Exception e) {
-            log.error("[NettyServer]-[shutDownNettyServer]-[Exception]");
+            log.error("[WebSocketNettyServer]-[shutDownNettyServer]-[Exception]");
         }
 
     }
@@ -62,11 +62,11 @@ public class WebSocketNettyServer {
             ChannelFuture channelFuture = server.bind(nettyConfigProperties.getServerPort()).addListener(new BarrageNettyServerListener(nettyConfigProperties.getServerPort())).sync();
             channelFuture.channel().closeFuture().sync();
         } catch (Exception e) {
-            log.error("[NettyServer]-[startNettyServer]-[Exception]", e);
+            log.error("[WebSocketNettyServer]-[startNettyServer]-[Exception]", e);
         } finally {
             boss.shutdownGracefully();
             worker.shutdownGracefully();
-            log.info("[NettyServer]-[startNettyServer]-[shutdownGracefully]");
+            log.info("[WebSocketNettyServer]-[startNettyServer]-[shutdownGracefully]");
         }
 
     }

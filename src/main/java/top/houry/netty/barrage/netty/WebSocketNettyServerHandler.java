@@ -37,18 +37,14 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
     public void channelRead0(ChannelHandlerContext ctx, BarrageProto.Barrage barrage) throws Exception {
         try {
             String msgType = barrage.getMsgType();
-            System.out.println(msgType);
-            if (StringUtils.isBlank(msgType)) {
-               log.info("[NettyServerHandler]-[channelRead0]-[msgType]-[不存在]");
+            if (StringUtils.isBlank(msgType) || !BarrageMsgBeanUtils.exist(msgType)) {
+               log.info("[WebSocketNettyServerHandler]-[channelRead0]-[msgType:{}]-[不存在]", msgType);
                 return;
             }
-            //BarrageMsgBeanUtils.getService(msgType).dealWithBarrageMessage(barrage, ctx);
-        } catch (JSONException e) {
-            ctx.close();
-            log.error("[JSONException]-[NettyServerHandler]-[channelRead0]", e);
+            BarrageMsgBeanUtils.getService(msgType).dealWithBarrageMessage(barrage, ctx);
         } catch (Exception e) {
             ctx.close();
-            log.error("[EXCEPTION]-[NettyServerHandler]-[channelRead0]", e);
+            log.error("[EXCEPTION]-[WebSocketNettyServerHandler]-[channelRead0]", e);
         }
     }
 
@@ -60,7 +56,7 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
      */
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        log.info("[NettyServerHandler]-[handlerAdded]-[{}]", ctx.channel().toString());
+        log.info("[WebSocketNettyServerHandler]-[handlerAdded]-[{}]", ctx.channel().toString());
         CLIENT_CHANNELS.add(ctx.channel());
     }
 
@@ -72,7 +68,7 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
      */
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
-        log.info("[NettyServerHandler]-[handlerRemoved]-[{}]", ctx.channel().toString());
+        log.info("[WebSocketNettyServerHandler]-[handlerRemoved]-[{}]", ctx.channel().toString());
         CLIENT_CHANNELS.remove(ctx.channel());
     }
 
@@ -110,7 +106,7 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        log.error("[NettyServerHandler]-[exceptionCaught]-[Exception]", cause);
+        log.error("[WebSocketNettyServerHandler]-[exceptionCaught]-[Exception]", cause);
         ctx.channel().close();
         CLIENT_CHANNELS.remove(ctx.channel());
     }
@@ -129,17 +125,17 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
             IdleStateEvent event = (IdleStateEvent) evt;
             switch (event.state()) {
                 case READER_IDLE:
-                    log.info("[NettyServerHandler]-[userEventTriggered]-[没有接收到：{}的信息心跳信息，将断开连接回收资源]", ctx.toString());
+                    log.info("[WebSocketNettyServerHandler]-[userEventTriggered]-[没有接收到：{}的信息心跳信息，将断开连接回收资源]", ctx.toString());
                     ctx.channel().close();
                     break;
                 case WRITER_IDLE:
-                    log.info("[NettyServerHandler]-[userEventTriggered]-[写空闲]");
+                    log.info("[WebSocketNettyServerHandler]-[userEventTriggered]-[写空闲]");
                     break;
                 case ALL_IDLE:
-                    log.info("[NettyServerHandler]-[userEventTriggered]-[读写空闲]");
+                    log.info("[WebSocketNettyServerHandler]-[userEventTriggered]-[读写空闲]");
                     break;
                 default:
-                    log.info("[NettyServerHandler]-[userEventTriggered]-[非法状态]");
+                    log.info("[WebSocketNettyServerHandler]-[userEventTriggered]-[非法状态]");
                     throw new IllegalStateException("非法状态！");
             }
         }

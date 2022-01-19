@@ -20,7 +20,7 @@ import java.util.List;
 import static io.netty.buffer.Unpooled.wrappedBuffer;
 
 
-public class WebSocketClientInit extends ChannelInitializer<SocketChannel> {
+public class TestWebSocketNettyClientInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel channel) {
@@ -30,7 +30,7 @@ public class WebSocketClientInit extends ChannelInitializer<SocketChannel> {
                 .addLast(new HttpObjectAggregator(65536))
                 .addLast(new ProtobufVarint32FrameDecoder())
                 .addLast(new ProtobufVarint32LengthFieldPrepender())
-                .addLast("client_handler", new WebSocketClientHandler())
+                .addLast("testWebSocketNettyClientHandler", new TestWebSocketNettyClientHandler())
                 .addLast(new MessageToMessageEncoder<MessageLiteOrBuilder>() {
                     @Override
                     protected void encode(ChannelHandlerContext ctx, MessageLiteOrBuilder msg, List<Object> out) throws Exception {
