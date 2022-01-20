@@ -20,6 +20,9 @@ public class TestWebSocketNettyClientHandler extends SimpleChannelInboundHandler
     private WebSocketClientHandshaker handShaker = null;
     private ChannelPromise handshakeFuture = null;
 
+
+
+
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         this.handshakeFuture = ctx.newPromise();

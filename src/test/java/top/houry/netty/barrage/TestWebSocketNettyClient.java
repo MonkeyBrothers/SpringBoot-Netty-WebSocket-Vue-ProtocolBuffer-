@@ -15,6 +15,7 @@ import io.netty.handler.codec.http.websocketx.WebSocketVersion;
 import top.houry.netty.barrage.proto.BarrageProto;
 
 import java.net.URI;
+import java.util.concurrent.TimeUnit;
 
 
 public class TestWebSocketNettyClient {
@@ -40,18 +41,18 @@ public class TestWebSocketNettyClient {
             BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
             builder.setMsgType("server.heartBeat");
             builder.setBytesData(ByteString.copyFromUtf8("hello"));
-            // while (true) {
+            while (true) {
 
-            channel.writeAndFlush(builder).addListener(future1 -> {
-                if (future1.isSuccess()) {
-                    System.out.println("111");
-                } else {
-                    future1.cause().printStackTrace();
-                }
-            });
-            //TimeUnit.SECONDS.sleep(2);
+                channel.writeAndFlush(builder).addListener(future1 -> {
+                    if (future1.isSuccess()) {
+                        System.out.println("111");
+                    } else {
+                        future1.cause().printStackTrace();
+                    }
+                });
+                TimeUnit.SECONDS.sleep(2);
 
-            // }
+            }
 
         } catch (Exception e) {
 
