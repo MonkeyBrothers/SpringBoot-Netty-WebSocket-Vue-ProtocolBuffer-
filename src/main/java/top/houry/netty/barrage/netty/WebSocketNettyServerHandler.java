@@ -10,6 +10,7 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import top.houry.netty.barrage.proto.BarrageProto;
+import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 import top.houry.netty.barrage.utils.BarrageMsgBeanUtils;
 
 /**
@@ -69,7 +70,7 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         log.info("[WebSocketNettyServerHandler]-[handlerRemoved]-[{}]", ctx.channel().toString());
-        CLIENT_CHANNELS.remove(ctx.channel());
+        BarrageConnectInfoUtils.removeChannelInfoByChannelHandlerContext(ctx);
     }
 
     /**

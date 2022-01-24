@@ -13,7 +13,7 @@ import top.houry.netty.barrage.service.IBarrageMsgTypeService;
  * @Date 2022/1/18
  **/
 @Service
-@BarrageAnnotation(msgType = "server.receive")
+@BarrageAnnotation(msgType = "web.client.barrage")
 @Slf4j
 public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
     @Override

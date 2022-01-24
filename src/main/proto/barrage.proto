@@ -18,10 +18,22 @@ message HeartHeatReq {
 
 }
 
-// 弹幕消息内容
-message ServerReceive {
+// web客户端弹幕消息内容
+message WebClientSendBarrage {
   string userId = 1;
   string videoId = 2;
   string msg = 3;
   string msgColor = 4;
+}
+
+// web客户端登录信息
+message WebClientLogin {
+  string userId = 1;
+  string videoId = 2;
+}
+
+// web客户端退出信息
+message WebClientLogout {
+  string userId = 1;
+  string videoId = 2;
 }

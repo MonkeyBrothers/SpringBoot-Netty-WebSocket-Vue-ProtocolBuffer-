@@ -5,9 +5,11 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import top.houry.netty.barrage.common.BarrageRedisKeyConst;
 import top.houry.netty.barrage.netty.WebSocketNettyServerHandler;
 import top.houry.netty.barrage.pojo.Barrage;
+import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 import top.houry.netty.barrage.utils.BarrageContentUtils;
 import top.houry.netty.barrage.utils.BarrageRedisUtils;
 
@@ -19,7 +21,7 @@ import java.util.List;
  * @Author houry
  * @Date 2021/5/10 15:05
  **/
-//@Component
+@Component
 @Slf4j
 public class BarrageScheduling {
 
@@ -35,18 +37,19 @@ public class BarrageScheduling {
      */
     @Scheduled(fixedRate = 5000)
     public void pushHistoryBarrage() {
-        WebSocketNettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(BarrageContentUtils.getContext(Arrays.asList(BarrageContentUtils.context))));
-        List<String> barrageInfoList = redisUtils.listGetAll(BarrageRedisKeyConst.BARRAGE_REDIS_LIST_KEY);
-        WebSocketNettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(JSONUtil.toBean(BarrageContentUtils.getContext(barrageInfoList), Barrage.class).getMsg()));
+        System.out.println(BarrageConnectInfoUtils.BASE_CONNECT_INFO_MAP.toString());
+//        WebSocketNettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(BarrageContentUtils.getContext(Arrays.asList(BarrageContentUtils.context))));
+//        List<String> barrageInfoList = redisUtils.listGetAll(BarrageRedisKeyConst.BARRAGE_REDIS_LIST_KEY);
+//        WebSocketNettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(JSONUtil.toBean(BarrageContentUtils.getContext(barrageInfoList), Barrage.class).getMsg()));
     }
 
     /**
      * 推送在线人数
      */
-    @Scheduled(fixedRate = 5000)
-    public void pushOnlineNum() {
-        String onlinePopulation = redisUtils.get(BarrageRedisKeyConst.BARRAGE_ONLINE_POPULATION_KEY);
-        WebSocketNettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(onlinePopulation));
-    }
+//    @Scheduled(fixedRate = 5000)
+//    public void pushOnlineNum() {
+//        String onlinePopulation = redisUtils.get(BarrageRedisKeyConst.BARRAGE_ONLINE_POPULATION_KEY);
+//        WebSocketNettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(onlinePopulation));
+//    }
 
 }

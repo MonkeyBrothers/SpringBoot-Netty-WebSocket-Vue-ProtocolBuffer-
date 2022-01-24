@@ -13,7 +13,7 @@ import top.houry.netty.barrage.service.IBarrageMsgTypeService;
  * @Date 2021/8/16
  **/
 @Service
-@BarrageAnnotation(msgType = "server.heartBeat")
+@BarrageAnnotation(msgType = "web.client.heartBeat")
 @Slf4j
 public class BarrageHeartBeatMsgServiceImpl implements IBarrageMsgTypeService {
     /**

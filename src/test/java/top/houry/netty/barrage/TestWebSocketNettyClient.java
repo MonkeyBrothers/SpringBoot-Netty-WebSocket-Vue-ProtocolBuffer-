@@ -38,9 +38,18 @@ public class TestWebSocketNettyClient {
 
             handler.handshakeFuture().sync();
 
+//            BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
+//            builder.setMsgType("server.heartBeat");
+//            builder.setBytesData(ByteString.copyFromUtf8("hello"));
+
+
+
             BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
-            builder.setMsgType("server.heartBeat");
-            builder.setBytesData(ByteString.copyFromUtf8("hello"));
+            builder.setMsgType("web.client.login");
+            BarrageProto.WebClientLogin.Builder login = BarrageProto.WebClientLogin.newBuilder();
+            login.setUserId("18429384029348532");
+            login.setVideoId("74283940596332214");
+            builder.setBytesData(login.build().toByteString());
             while (true) {
 
                 channel.writeAndFlush(builder).addListener(future1 -> {
