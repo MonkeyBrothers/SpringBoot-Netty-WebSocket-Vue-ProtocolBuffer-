@@ -45,8 +45,8 @@ public class TestWebSocketNettyClient {
 
 
             BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
-            builder.setMsgType("web.client.login");
-            BarrageProto.WebClientLogin.Builder login = BarrageProto.WebClientLogin.newBuilder();
+            builder.setMsgType("web.client.barrage");
+            BarrageProto.WebClientSendBarrage.Builder login = BarrageProto.WebClientSendBarrage.newBuilder();
             login.setUserId("18429384029348532");
             login.setVideoId("74283940596332214");
             builder.setBytesData(login.build().toByteString());
