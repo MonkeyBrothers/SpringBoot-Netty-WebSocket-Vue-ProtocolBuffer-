@@ -638,8 +638,8 @@ public final class BarrageProto {
 
     }
 
-    public interface HeartBeatRespOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:HeartBeatResp)
+    public interface WebClientHeartBeatRespOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:WebClientHeartBeatResp)
             com.google.protobuf.MessageOrBuilder {
     }
     /**
@@ -647,18 +647,18 @@ public final class BarrageProto {
      * 心跳回复包
      * </pre>
      *
-     * Protobuf type {@code HeartBeatResp}
+     * Protobuf type {@code WebClientHeartBeatResp}
      */
-    public  static final class HeartBeatResp extends
+    public  static final class WebClientHeartBeatResp extends
             com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:HeartBeatResp)
-            HeartBeatRespOrBuilder {
+            // @@protoc_insertion_point(message_implements:WebClientHeartBeatResp)
+            WebClientHeartBeatRespOrBuilder {
         private static final long serialVersionUID = 0L;
-        // Use HeartBeatResp.newBuilder() to construct.
-        private HeartBeatResp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        // Use WebClientHeartBeatResp.newBuilder() to construct.
+        private WebClientHeartBeatResp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
-        private HeartBeatResp() {
+        private WebClientHeartBeatResp() {
         }
 
         @java.lang.Override
@@ -666,7 +666,7 @@ public final class BarrageProto {
         getUnknownFields() {
             return this.unknownFields;
         }
-        private HeartBeatResp(
+        private WebClientHeartBeatResp(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
@@ -705,15 +705,15 @@ public final class BarrageProto {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return top.houry.netty.barrage.proto.BarrageProto.internal_static_HeartBeatResp_descriptor;
+            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientHeartBeatResp_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return top.houry.netty.barrage.proto.BarrageProto.internal_static_HeartBeatResp_fieldAccessorTable
+            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientHeartBeatResp_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp.class, top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp.Builder.class);
+                            top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp.class, top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp.Builder.class);
         }
 
         private byte memoizedIsInitialized = -1;
@@ -749,10 +749,10 @@ public final class BarrageProto {
             if (obj == this) {
                 return true;
             }
-            if (!(obj instanceof top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp)) {
+            if (!(obj instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp)) {
                 return super.equals(obj);
             }
-            top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp other = (top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp) obj;
+            top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp other = (top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp) obj;
 
             boolean result = true;
             result = result && unknownFields.equals(other.unknownFields);
@@ -771,69 +771,69 @@ public final class BarrageProto {
             return hash;
         }
 
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parseFrom(
                 java.nio.ByteBuffer data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parseFrom(
                 java.nio.ByteBuffer data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parseFrom(
                 com.google.protobuf.ByteString data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parseFrom(
                 com.google.protobuf.ByteString data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parseFrom(byte[] data)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parseFrom(byte[] data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parseFrom(
                 byte[] data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parseFrom(java.io.InputStream input)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parseFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parseFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parseDelimitedFrom(java.io.InputStream input)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parseDelimitedFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parseDelimitedFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parseDelimitedFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parseFrom(
                 com.google.protobuf.CodedInputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parseFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -846,7 +846,7 @@ public final class BarrageProto {
         public static Builder newBuilder() {
             return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp prototype) {
+        public static Builder newBuilder(top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -866,26 +866,26 @@ public final class BarrageProto {
          * 心跳回复包
          * </pre>
          *
-         * Protobuf type {@code HeartBeatResp}
+         * Protobuf type {@code WebClientHeartBeatResp}
          */
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:HeartBeatResp)
-                top.houry.netty.barrage.proto.BarrageProto.HeartBeatRespOrBuilder {
+                // @@protoc_insertion_point(builder_implements:WebClientHeartBeatResp)
+                top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatRespOrBuilder {
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_HeartBeatResp_descriptor;
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientHeartBeatResp_descriptor;
             }
 
             @java.lang.Override
             protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_HeartBeatResp_fieldAccessorTable
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientHeartBeatResp_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
-                                top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp.class, top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp.Builder.class);
+                                top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp.class, top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp.Builder.class);
             }
 
-            // Construct using top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp.newBuilder()
+            // Construct using top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp.newBuilder()
             private Builder() {
                 maybeForceBuilderInitialization();
             }
@@ -909,17 +909,17 @@ public final class BarrageProto {
             @java.lang.Override
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_HeartBeatResp_descriptor;
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientHeartBeatResp_descriptor;
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp getDefaultInstanceForType() {
-                return top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp.getDefaultInstance();
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp getDefaultInstanceForType() {
+                return top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp.getDefaultInstance();
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp build() {
-                top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp result = buildPartial();
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp build() {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp result = buildPartial();
                 if (!result.isInitialized()) {
                     throw newUninitializedMessageException(result);
                 }
@@ -927,8 +927,8 @@ public final class BarrageProto {
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp buildPartial() {
-                top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp result = new top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp(this);
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp buildPartial() {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp result = new top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp(this);
                 onBuilt();
                 return result;
             }
@@ -967,16 +967,16 @@ public final class BarrageProto {
             }
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp) {
-                    return mergeFrom((top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp)other);
+                if (other instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp) {
+                    return mergeFrom((top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp)other);
                 } else {
                     super.mergeFrom(other);
                     return this;
                 }
             }
 
-            public Builder mergeFrom(top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp other) {
-                if (other == top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp.getDefaultInstance()) return this;
+            public Builder mergeFrom(top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp other) {
+                if (other == top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp.getDefaultInstance()) return this;
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
                 return this;
@@ -992,11 +992,11 @@ public final class BarrageProto {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp parsedMessage = null;
+                top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp) e.getUnfinishedMessage();
+                    parsedMessage = (top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
                     if (parsedMessage != null) {
@@ -1018,48 +1018,48 @@ public final class BarrageProto {
             }
 
 
-            // @@protoc_insertion_point(builder_scope:HeartBeatResp)
+            // @@protoc_insertion_point(builder_scope:WebClientHeartBeatResp)
         }
 
-        // @@protoc_insertion_point(class_scope:HeartBeatResp)
-        private static final top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:WebClientHeartBeatResp)
+        private static final top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp DEFAULT_INSTANCE;
         static {
-            DEFAULT_INSTANCE = new top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp();
+            DEFAULT_INSTANCE = new top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp();
         }
 
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp getDefaultInstance() {
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp getDefaultInstance() {
             return DEFAULT_INSTANCE;
         }
 
-        private static final com.google.protobuf.Parser<HeartBeatResp>
-                PARSER = new com.google.protobuf.AbstractParser<HeartBeatResp>() {
+        private static final com.google.protobuf.Parser<WebClientHeartBeatResp>
+                PARSER = new com.google.protobuf.AbstractParser<WebClientHeartBeatResp>() {
             @java.lang.Override
-            public HeartBeatResp parsePartialFrom(
+            public WebClientHeartBeatResp parsePartialFrom(
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
-                return new HeartBeatResp(input, extensionRegistry);
+                return new WebClientHeartBeatResp(input, extensionRegistry);
             }
         };
 
-        public static com.google.protobuf.Parser<HeartBeatResp> parser() {
+        public static com.google.protobuf.Parser<WebClientHeartBeatResp> parser() {
             return PARSER;
         }
 
         @java.lang.Override
-        public com.google.protobuf.Parser<HeartBeatResp> getParserForType() {
+        public com.google.protobuf.Parser<WebClientHeartBeatResp> getParserForType() {
             return PARSER;
         }
 
         @java.lang.Override
-        public top.houry.netty.barrage.proto.BarrageProto.HeartBeatResp getDefaultInstanceForType() {
+        public top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
 
     }
 
-    public interface HeartHeatReqOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:HeartHeatReq)
+    public interface WebClientHeartBeatReqOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:WebClientHeartBeatReq)
             com.google.protobuf.MessageOrBuilder {
     }
     /**
@@ -1067,18 +1067,18 @@ public final class BarrageProto {
      * 心跳请求包
      * </pre>
      *
-     * Protobuf type {@code HeartHeatReq}
+     * Protobuf type {@code WebClientHeartBeatReq}
      */
-    public  static final class HeartHeatReq extends
+    public  static final class WebClientHeartBeatReq extends
             com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:HeartHeatReq)
-            HeartHeatReqOrBuilder {
+            // @@protoc_insertion_point(message_implements:WebClientHeartBeatReq)
+            WebClientHeartBeatReqOrBuilder {
         private static final long serialVersionUID = 0L;
-        // Use HeartHeatReq.newBuilder() to construct.
-        private HeartHeatReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        // Use WebClientHeartBeatReq.newBuilder() to construct.
+        private WebClientHeartBeatReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
-        private HeartHeatReq() {
+        private WebClientHeartBeatReq() {
         }
 
         @java.lang.Override
@@ -1086,7 +1086,7 @@ public final class BarrageProto {
         getUnknownFields() {
             return this.unknownFields;
         }
-        private HeartHeatReq(
+        private WebClientHeartBeatReq(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1125,15 +1125,15 @@ public final class BarrageProto {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return top.houry.netty.barrage.proto.BarrageProto.internal_static_HeartHeatReq_descriptor;
+            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientHeartBeatReq_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return top.houry.netty.barrage.proto.BarrageProto.internal_static_HeartHeatReq_fieldAccessorTable
+            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientHeartBeatReq_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq.class, top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq.Builder.class);
+                            top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq.class, top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq.Builder.class);
         }
 
         private byte memoizedIsInitialized = -1;
@@ -1169,10 +1169,10 @@ public final class BarrageProto {
             if (obj == this) {
                 return true;
             }
-            if (!(obj instanceof top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq)) {
+            if (!(obj instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq)) {
                 return super.equals(obj);
             }
-            top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq other = (top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq) obj;
+            top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq other = (top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq) obj;
 
             boolean result = true;
             result = result && unknownFields.equals(other.unknownFields);
@@ -1191,69 +1191,69 @@ public final class BarrageProto {
             return hash;
         }
 
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parseFrom(
                 java.nio.ByteBuffer data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parseFrom(
                 java.nio.ByteBuffer data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parseFrom(
                 com.google.protobuf.ByteString data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parseFrom(
                 com.google.protobuf.ByteString data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parseFrom(byte[] data)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parseFrom(byte[] data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parseFrom(
                 byte[] data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parseFrom(java.io.InputStream input)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parseFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parseFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parseDelimitedFrom(java.io.InputStream input)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parseDelimitedFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parseDelimitedFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parseDelimitedFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parseFrom(
                 com.google.protobuf.CodedInputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parseFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -1266,7 +1266,7 @@ public final class BarrageProto {
         public static Builder newBuilder() {
             return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq prototype) {
+        public static Builder newBuilder(top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -1286,26 +1286,26 @@ public final class BarrageProto {
          * 心跳请求包
          * </pre>
          *
-         * Protobuf type {@code HeartHeatReq}
+         * Protobuf type {@code WebClientHeartBeatReq}
          */
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:HeartHeatReq)
-                top.houry.netty.barrage.proto.BarrageProto.HeartHeatReqOrBuilder {
+                // @@protoc_insertion_point(builder_implements:WebClientHeartBeatReq)
+                top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReqOrBuilder {
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_HeartHeatReq_descriptor;
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientHeartBeatReq_descriptor;
             }
 
             @java.lang.Override
             protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_HeartHeatReq_fieldAccessorTable
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientHeartBeatReq_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
-                                top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq.class, top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq.Builder.class);
+                                top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq.class, top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq.Builder.class);
             }
 
-            // Construct using top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq.newBuilder()
+            // Construct using top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq.newBuilder()
             private Builder() {
                 maybeForceBuilderInitialization();
             }
@@ -1329,17 +1329,17 @@ public final class BarrageProto {
             @java.lang.Override
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_HeartHeatReq_descriptor;
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientHeartBeatReq_descriptor;
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq getDefaultInstanceForType() {
-                return top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq.getDefaultInstance();
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq getDefaultInstanceForType() {
+                return top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq.getDefaultInstance();
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq build() {
-                top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq result = buildPartial();
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq build() {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq result = buildPartial();
                 if (!result.isInitialized()) {
                     throw newUninitializedMessageException(result);
                 }
@@ -1347,8 +1347,8 @@ public final class BarrageProto {
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq buildPartial() {
-                top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq result = new top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq(this);
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq buildPartial() {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq result = new top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq(this);
                 onBuilt();
                 return result;
             }
@@ -1387,16 +1387,16 @@ public final class BarrageProto {
             }
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq) {
-                    return mergeFrom((top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq)other);
+                if (other instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq) {
+                    return mergeFrom((top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq)other);
                 } else {
                     super.mergeFrom(other);
                     return this;
                 }
             }
 
-            public Builder mergeFrom(top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq other) {
-                if (other == top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq.getDefaultInstance()) return this;
+            public Builder mergeFrom(top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq other) {
+                if (other == top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq.getDefaultInstance()) return this;
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
                 return this;
@@ -1412,11 +1412,11 @@ public final class BarrageProto {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq parsedMessage = null;
+                top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq) e.getUnfinishedMessage();
+                    parsedMessage = (top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
                     if (parsedMessage != null) {
@@ -1438,48 +1438,48 @@ public final class BarrageProto {
             }
 
 
-            // @@protoc_insertion_point(builder_scope:HeartHeatReq)
+            // @@protoc_insertion_point(builder_scope:WebClientHeartBeatReq)
         }
 
-        // @@protoc_insertion_point(class_scope:HeartHeatReq)
-        private static final top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:WebClientHeartBeatReq)
+        private static final top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq DEFAULT_INSTANCE;
         static {
-            DEFAULT_INSTANCE = new top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq();
+            DEFAULT_INSTANCE = new top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq();
         }
 
-        public static top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq getDefaultInstance() {
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq getDefaultInstance() {
             return DEFAULT_INSTANCE;
         }
 
-        private static final com.google.protobuf.Parser<HeartHeatReq>
-                PARSER = new com.google.protobuf.AbstractParser<HeartHeatReq>() {
+        private static final com.google.protobuf.Parser<WebClientHeartBeatReq>
+                PARSER = new com.google.protobuf.AbstractParser<WebClientHeartBeatReq>() {
             @java.lang.Override
-            public HeartHeatReq parsePartialFrom(
+            public WebClientHeartBeatReq parsePartialFrom(
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
-                return new HeartHeatReq(input, extensionRegistry);
+                return new WebClientHeartBeatReq(input, extensionRegistry);
             }
         };
 
-        public static com.google.protobuf.Parser<HeartHeatReq> parser() {
+        public static com.google.protobuf.Parser<WebClientHeartBeatReq> parser() {
             return PARSER;
         }
 
         @java.lang.Override
-        public com.google.protobuf.Parser<HeartHeatReq> getParserForType() {
+        public com.google.protobuf.Parser<WebClientHeartBeatReq> getParserForType() {
             return PARSER;
         }
 
         @java.lang.Override
-        public top.houry.netty.barrage.proto.BarrageProto.HeartHeatReq getDefaultInstanceForType() {
+        public top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatReq getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
 
     }
 
-    public interface WebClientSendBarrageOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:WebClientSendBarrage)
+    public interface WebClientSendBarrageReqOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:WebClientSendBarrageReq)
             com.google.protobuf.MessageOrBuilder {
 
         /**
@@ -1527,18 +1527,18 @@ public final class BarrageProto {
      * web客户端弹幕消息内容
      * </pre>
      *
-     * Protobuf type {@code WebClientSendBarrage}
+     * Protobuf type {@code WebClientSendBarrageReq}
      */
-    public  static final class WebClientSendBarrage extends
+    public  static final class WebClientSendBarrageReq extends
             com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:WebClientSendBarrage)
-            WebClientSendBarrageOrBuilder {
+            // @@protoc_insertion_point(message_implements:WebClientSendBarrageReq)
+            WebClientSendBarrageReqOrBuilder {
         private static final long serialVersionUID = 0L;
-        // Use WebClientSendBarrage.newBuilder() to construct.
-        private WebClientSendBarrage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        // Use WebClientSendBarrageReq.newBuilder() to construct.
+        private WebClientSendBarrageReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
-        private WebClientSendBarrage() {
+        private WebClientSendBarrageReq() {
             userId_ = "";
             videoId_ = "";
             msg_ = "";
@@ -1550,7 +1550,7 @@ public final class BarrageProto {
         getUnknownFields() {
             return this.unknownFields;
         }
-        private WebClientSendBarrage(
+        private WebClientSendBarrageReq(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1614,15 +1614,15 @@ public final class BarrageProto {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrage_descriptor;
+            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrageReq_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrage_fieldAccessorTable
+            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrageReq_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage.class, top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage.Builder.class);
+                            top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq.class, top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq.Builder.class);
         }
 
         public static final int USERID_FIELD_NUMBER = 1;
@@ -1818,10 +1818,10 @@ public final class BarrageProto {
             if (obj == this) {
                 return true;
             }
-            if (!(obj instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage)) {
+            if (!(obj instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq)) {
                 return super.equals(obj);
             }
-            top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage other = (top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage) obj;
+            top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq other = (top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq) obj;
 
             boolean result = true;
             result = result && getUserId()
@@ -1856,69 +1856,69 @@ public final class BarrageProto {
             return hash;
         }
 
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parseFrom(
                 java.nio.ByteBuffer data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parseFrom(
                 java.nio.ByteBuffer data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parseFrom(
                 com.google.protobuf.ByteString data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parseFrom(
                 com.google.protobuf.ByteString data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parseFrom(byte[] data)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parseFrom(byte[] data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parseFrom(
                 byte[] data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parseFrom(java.io.InputStream input)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parseFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parseFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parseDelimitedFrom(java.io.InputStream input)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parseDelimitedFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parseDelimitedFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parseDelimitedFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parseFrom(
                 com.google.protobuf.CodedInputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parseFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -1931,7 +1931,7 @@ public final class BarrageProto {
         public static Builder newBuilder() {
             return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage prototype) {
+        public static Builder newBuilder(top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -1951,26 +1951,26 @@ public final class BarrageProto {
          * web客户端弹幕消息内容
          * </pre>
          *
-         * Protobuf type {@code WebClientSendBarrage}
+         * Protobuf type {@code WebClientSendBarrageReq}
          */
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:WebClientSendBarrage)
-                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageOrBuilder {
+                // @@protoc_insertion_point(builder_implements:WebClientSendBarrageReq)
+                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReqOrBuilder {
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrage_descriptor;
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrageReq_descriptor;
             }
 
             @java.lang.Override
             protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrage_fieldAccessorTable
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrageReq_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
-                                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage.class, top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage.Builder.class);
+                                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq.class, top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq.Builder.class);
             }
 
-            // Construct using top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage.newBuilder()
+            // Construct using top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq.newBuilder()
             private Builder() {
                 maybeForceBuilderInitialization();
             }
@@ -2002,17 +2002,17 @@ public final class BarrageProto {
             @java.lang.Override
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrage_descriptor;
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrageReq_descriptor;
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage getDefaultInstanceForType() {
-                return top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage.getDefaultInstance();
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq getDefaultInstanceForType() {
+                return top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq.getDefaultInstance();
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage build() {
-                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage result = buildPartial();
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq build() {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq result = buildPartial();
                 if (!result.isInitialized()) {
                     throw newUninitializedMessageException(result);
                 }
@@ -2020,8 +2020,8 @@ public final class BarrageProto {
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage buildPartial() {
-                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage result = new top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage(this);
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq buildPartial() {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq result = new top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq(this);
                 result.userId_ = userId_;
                 result.videoId_ = videoId_;
                 result.msg_ = msg_;
@@ -2064,16 +2064,16 @@ public final class BarrageProto {
             }
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage) {
-                    return mergeFrom((top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage)other);
+                if (other instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq) {
+                    return mergeFrom((top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq)other);
                 } else {
                     super.mergeFrom(other);
                     return this;
                 }
             }
 
-            public Builder mergeFrom(top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage other) {
-                if (other == top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage.getDefaultInstance()) return this;
+            public Builder mergeFrom(top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq other) {
+                if (other == top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq.getDefaultInstance()) return this;
                 if (!other.getUserId().isEmpty()) {
                     userId_ = other.userId_;
                     onChanged();
@@ -2105,11 +2105,11 @@ public final class BarrageProto {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage parsedMessage = null;
+                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage) e.getUnfinishedMessage();
+                    parsedMessage = (top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
                     if (parsedMessage != null) {
@@ -2407,48 +2407,735 @@ public final class BarrageProto {
             }
 
 
-            // @@protoc_insertion_point(builder_scope:WebClientSendBarrage)
+            // @@protoc_insertion_point(builder_scope:WebClientSendBarrageReq)
         }
 
-        // @@protoc_insertion_point(class_scope:WebClientSendBarrage)
-        private static final top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:WebClientSendBarrageReq)
+        private static final top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq DEFAULT_INSTANCE;
         static {
-            DEFAULT_INSTANCE = new top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage();
+            DEFAULT_INSTANCE = new top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq();
         }
 
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage getDefaultInstance() {
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq getDefaultInstance() {
             return DEFAULT_INSTANCE;
         }
 
-        private static final com.google.protobuf.Parser<WebClientSendBarrage>
-                PARSER = new com.google.protobuf.AbstractParser<WebClientSendBarrage>() {
+        private static final com.google.protobuf.Parser<WebClientSendBarrageReq>
+                PARSER = new com.google.protobuf.AbstractParser<WebClientSendBarrageReq>() {
             @java.lang.Override
-            public WebClientSendBarrage parsePartialFrom(
+            public WebClientSendBarrageReq parsePartialFrom(
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
-                return new WebClientSendBarrage(input, extensionRegistry);
+                return new WebClientSendBarrageReq(input, extensionRegistry);
             }
         };
 
-        public static com.google.protobuf.Parser<WebClientSendBarrage> parser() {
+        public static com.google.protobuf.Parser<WebClientSendBarrageReq> parser() {
             return PARSER;
         }
 
         @java.lang.Override
-        public com.google.protobuf.Parser<WebClientSendBarrage> getParserForType() {
+        public com.google.protobuf.Parser<WebClientSendBarrageReq> getParserForType() {
             return PARSER;
         }
 
         @java.lang.Override
-        public top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrage getDefaultInstanceForType() {
+        public top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageReq getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
 
     }
 
-    public interface WebClientLoginOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:WebClientLogin)
+    public interface WebClientSendBarrageRespOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:WebClientSendBarrageResp)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>string msg = 1;</code>
+         */
+        java.lang.String getMsg();
+        /**
+         * <code>string msg = 1;</code>
+         */
+        com.google.protobuf.ByteString
+        getMsgBytes();
+
+        /**
+         * <code>string msgColor = 2;</code>
+         */
+        java.lang.String getMsgColor();
+        /**
+         * <code>string msgColor = 2;</code>
+         */
+        com.google.protobuf.ByteString
+        getMsgColorBytes();
+    }
+    /**
+     * Protobuf type {@code WebClientSendBarrageResp}
+     */
+    public  static final class WebClientSendBarrageResp extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:WebClientSendBarrageResp)
+            WebClientSendBarrageRespOrBuilder {
+        private static final long serialVersionUID = 0L;
+        // Use WebClientSendBarrageResp.newBuilder() to construct.
+        private WebClientSendBarrageResp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+        private WebClientSendBarrageResp() {
+            msg_ = "";
+            msgColor_ = "";
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+        private WebClientSendBarrageResp(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            this();
+            if (extensionRegistry == null) {
+                throw new java.lang.NullPointerException();
+            }
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        case 10: {
+                            java.lang.String s = input.readStringRequireUtf8();
+
+                            msg_ = s;
+                            break;
+                        }
+                        case 18: {
+                            java.lang.String s = input.readStringRequireUtf8();
+
+                            msgColor_ = s;
+                            break;
+                        }
+                        default: {
+                            if (!parseUnknownFieldProto3(
+                                    input, unknownFields, extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrageResp_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrageResp_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp.class, top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp.Builder.class);
+        }
+
+        public static final int MSG_FIELD_NUMBER = 1;
+        private volatile java.lang.Object msg_;
+        /**
+         * <code>string msg = 1;</code>
+         */
+        public java.lang.String getMsg() {
+            java.lang.Object ref = msg_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                msg_ = s;
+                return s;
+            }
+        }
+        /**
+         * <code>string msg = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+        getMsgBytes() {
+            java.lang.Object ref = msg_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                msg_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        public static final int MSGCOLOR_FIELD_NUMBER = 2;
+        private volatile java.lang.Object msgColor_;
+        /**
+         * <code>string msgColor = 2;</code>
+         */
+        public java.lang.String getMsgColor() {
+            java.lang.Object ref = msgColor_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                msgColor_ = s;
+                return s;
+            }
+        }
+        /**
+         * <code>string msgColor = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+        getMsgColorBytes() {
+            java.lang.Object ref = msgColor_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                msgColor_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        private byte memoizedIsInitialized = -1;
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            if (!getMsgBytes().isEmpty()) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, msg_);
+            }
+            if (!getMsgColorBytes().isEmpty()) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 2, msgColor_);
+            }
+            unknownFields.writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (!getMsgBytes().isEmpty()) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, msg_);
+            }
+            if (!getMsgColorBytes().isEmpty()) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, msgColor_);
+            }
+            size += unknownFields.getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp)) {
+                return super.equals(obj);
+            }
+            top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp other = (top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp) obj;
+
+            boolean result = true;
+            result = result && getMsg()
+                    .equals(other.getMsg());
+            result = result && getMsgColor()
+                    .equals(other.getMsgColor());
+            result = result && unknownFields.equals(other.unknownFields);
+            return result;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + MSG_FIELD_NUMBER;
+            hash = (53 * hash) + getMsg().hashCode();
+            hash = (37 * hash) + MSGCOLOR_FIELD_NUMBER;
+            hash = (53 * hash) + getMsgColor().hashCode();
+            hash = (29 * hash) + unknownFields.hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() { return newBuilder(); }
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+        /**
+         * Protobuf type {@code WebClientSendBarrageResp}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:WebClientSendBarrageResp)
+                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageRespOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrageResp_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrageResp_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp.class, top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp.Builder.class);
+            }
+
+            // Construct using top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3
+                        .alwaysUseFieldBuilders) {
+                }
+            }
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                msg_ = "";
+
+                msgColor_ = "";
+
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientSendBarrageResp_descriptor;
+            }
+
+            @java.lang.Override
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp getDefaultInstanceForType() {
+                return top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp build() {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp buildPartial() {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp result = new top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp(this);
+                result.msg_ = msg_;
+                result.msgColor_ = msgColor_;
+                onBuilt();
+                return result;
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return (Builder) super.clone();
+            }
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return (Builder) super.setField(field, value);
+            }
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return (Builder) super.clearField(field);
+            }
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return (Builder) super.clearOneof(oneof);
+            }
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return (Builder) super.setRepeatedField(field, index, value);
+            }
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return (Builder) super.addRepeatedField(field, value);
+            }
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp) {
+                    return mergeFrom((top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp)other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp other) {
+                if (other == top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp.getDefaultInstance()) return this;
+                if (!other.getMsg().isEmpty()) {
+                    msg_ = other.msg_;
+                    onChanged();
+                }
+                if (!other.getMsgColor().isEmpty()) {
+                    msgColor_ = other.msgColor_;
+                    onChanged();
+                }
+                this.mergeUnknownFields(other.unknownFields);
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp) e.getUnfinishedMessage();
+                    throw e.unwrapIOException();
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private java.lang.Object msg_ = "";
+            /**
+             * <code>string msg = 1;</code>
+             */
+            public java.lang.String getMsg() {
+                java.lang.Object ref = msg_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    msg_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+            /**
+             * <code>string msg = 1;</code>
+             */
+            public com.google.protobuf.ByteString
+            getMsgBytes() {
+                java.lang.Object ref = msg_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    msg_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+            /**
+             * <code>string msg = 1;</code>
+             */
+            public Builder setMsg(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+
+                msg_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>string msg = 1;</code>
+             */
+            public Builder clearMsg() {
+
+                msg_ = getDefaultInstance().getMsg();
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>string msg = 1;</code>
+             */
+            public Builder setMsgBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+
+                msg_ = value;
+                onChanged();
+                return this;
+            }
+
+            private java.lang.Object msgColor_ = "";
+            /**
+             * <code>string msgColor = 2;</code>
+             */
+            public java.lang.String getMsgColor() {
+                java.lang.Object ref = msgColor_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    msgColor_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+            /**
+             * <code>string msgColor = 2;</code>
+             */
+            public com.google.protobuf.ByteString
+            getMsgColorBytes() {
+                java.lang.Object ref = msgColor_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    msgColor_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+            /**
+             * <code>string msgColor = 2;</code>
+             */
+            public Builder setMsgColor(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+
+                msgColor_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>string msgColor = 2;</code>
+             */
+            public Builder clearMsgColor() {
+
+                msgColor_ = getDefaultInstance().getMsgColor();
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>string msgColor = 2;</code>
+             */
+            public Builder setMsgColorBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+
+                msgColor_ = value;
+                onChanged();
+                return this;
+            }
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFieldsProto3(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:WebClientSendBarrageResp)
+        }
+
+        // @@protoc_insertion_point(class_scope:WebClientSendBarrageResp)
+        private static final top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp DEFAULT_INSTANCE;
+        static {
+            DEFAULT_INSTANCE = new top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp();
+        }
+
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<WebClientSendBarrageResp>
+                PARSER = new com.google.protobuf.AbstractParser<WebClientSendBarrageResp>() {
+            @java.lang.Override
+            public WebClientSendBarrageResp parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new WebClientSendBarrageResp(input, extensionRegistry);
+            }
+        };
+
+        public static com.google.protobuf.Parser<WebClientSendBarrageResp> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<WebClientSendBarrageResp> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public top.houry.netty.barrage.proto.BarrageProto.WebClientSendBarrageResp getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+    }
+
+    public interface WebClientLoginReqOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:WebClientLoginReq)
             com.google.protobuf.MessageOrBuilder {
 
         /**
@@ -2476,18 +3163,18 @@ public final class BarrageProto {
      * web客户端登录信息
      * </pre>
      *
-     * Protobuf type {@code WebClientLogin}
+     * Protobuf type {@code WebClientLoginReq}
      */
-    public  static final class WebClientLogin extends
+    public  static final class WebClientLoginReq extends
             com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:WebClientLogin)
-            WebClientLoginOrBuilder {
+            // @@protoc_insertion_point(message_implements:WebClientLoginReq)
+            WebClientLoginReqOrBuilder {
         private static final long serialVersionUID = 0L;
-        // Use WebClientLogin.newBuilder() to construct.
-        private WebClientLogin(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        // Use WebClientLoginReq.newBuilder() to construct.
+        private WebClientLoginReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
-        private WebClientLogin() {
+        private WebClientLoginReq() {
             userId_ = "";
             videoId_ = "";
         }
@@ -2497,7 +3184,7 @@ public final class BarrageProto {
         getUnknownFields() {
             return this.unknownFields;
         }
-        private WebClientLogin(
+        private WebClientLoginReq(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2549,15 +3236,15 @@ public final class BarrageProto {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogin_descriptor;
+            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLoginReq_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogin_fieldAccessorTable
+            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLoginReq_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            top.houry.netty.barrage.proto.BarrageProto.WebClientLogin.class, top.houry.netty.barrage.proto.BarrageProto.WebClientLogin.Builder.class);
+                            top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq.class, top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq.Builder.class);
         }
 
         public static final int USERID_FIELD_NUMBER = 1;
@@ -2673,10 +3360,10 @@ public final class BarrageProto {
             if (obj == this) {
                 return true;
             }
-            if (!(obj instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientLogin)) {
+            if (!(obj instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq)) {
                 return super.equals(obj);
             }
-            top.houry.netty.barrage.proto.BarrageProto.WebClientLogin other = (top.houry.netty.barrage.proto.BarrageProto.WebClientLogin) obj;
+            top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq other = (top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq) obj;
 
             boolean result = true;
             result = result && getUserId()
@@ -2703,69 +3390,69 @@ public final class BarrageProto {
             return hash;
         }
 
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parseFrom(
                 java.nio.ByteBuffer data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parseFrom(
                 java.nio.ByteBuffer data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parseFrom(
                 com.google.protobuf.ByteString data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parseFrom(
                 com.google.protobuf.ByteString data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parseFrom(byte[] data)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parseFrom(byte[] data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parseFrom(
                 byte[] data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parseFrom(java.io.InputStream input)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parseFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parseFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parseDelimitedFrom(java.io.InputStream input)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parseDelimitedFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parseDelimitedFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parseDelimitedFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parseFrom(
                 com.google.protobuf.CodedInputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parseFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -2778,7 +3465,7 @@ public final class BarrageProto {
         public static Builder newBuilder() {
             return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(top.houry.netty.barrage.proto.BarrageProto.WebClientLogin prototype) {
+        public static Builder newBuilder(top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -2798,26 +3485,26 @@ public final class BarrageProto {
          * web客户端登录信息
          * </pre>
          *
-         * Protobuf type {@code WebClientLogin}
+         * Protobuf type {@code WebClientLoginReq}
          */
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:WebClientLogin)
-                top.houry.netty.barrage.proto.BarrageProto.WebClientLoginOrBuilder {
+                // @@protoc_insertion_point(builder_implements:WebClientLoginReq)
+                top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReqOrBuilder {
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogin_descriptor;
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLoginReq_descriptor;
             }
 
             @java.lang.Override
             protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogin_fieldAccessorTable
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLoginReq_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
-                                top.houry.netty.barrage.proto.BarrageProto.WebClientLogin.class, top.houry.netty.barrage.proto.BarrageProto.WebClientLogin.Builder.class);
+                                top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq.class, top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq.Builder.class);
             }
 
-            // Construct using top.houry.netty.barrage.proto.BarrageProto.WebClientLogin.newBuilder()
+            // Construct using top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq.newBuilder()
             private Builder() {
                 maybeForceBuilderInitialization();
             }
@@ -2845,17 +3532,17 @@ public final class BarrageProto {
             @java.lang.Override
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogin_descriptor;
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLoginReq_descriptor;
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.WebClientLogin getDefaultInstanceForType() {
-                return top.houry.netty.barrage.proto.BarrageProto.WebClientLogin.getDefaultInstance();
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq getDefaultInstanceForType() {
+                return top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq.getDefaultInstance();
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.WebClientLogin build() {
-                top.houry.netty.barrage.proto.BarrageProto.WebClientLogin result = buildPartial();
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq build() {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq result = buildPartial();
                 if (!result.isInitialized()) {
                     throw newUninitializedMessageException(result);
                 }
@@ -2863,8 +3550,8 @@ public final class BarrageProto {
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.WebClientLogin buildPartial() {
-                top.houry.netty.barrage.proto.BarrageProto.WebClientLogin result = new top.houry.netty.barrage.proto.BarrageProto.WebClientLogin(this);
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq buildPartial() {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq result = new top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq(this);
                 result.userId_ = userId_;
                 result.videoId_ = videoId_;
                 onBuilt();
@@ -2905,16 +3592,16 @@ public final class BarrageProto {
             }
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientLogin) {
-                    return mergeFrom((top.houry.netty.barrage.proto.BarrageProto.WebClientLogin)other);
+                if (other instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq) {
+                    return mergeFrom((top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq)other);
                 } else {
                     super.mergeFrom(other);
                     return this;
                 }
             }
 
-            public Builder mergeFrom(top.houry.netty.barrage.proto.BarrageProto.WebClientLogin other) {
-                if (other == top.houry.netty.barrage.proto.BarrageProto.WebClientLogin.getDefaultInstance()) return this;
+            public Builder mergeFrom(top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq other) {
+                if (other == top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq.getDefaultInstance()) return this;
                 if (!other.getUserId().isEmpty()) {
                     userId_ = other.userId_;
                     onChanged();
@@ -2938,11 +3625,11 @@ public final class BarrageProto {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                top.houry.netty.barrage.proto.BarrageProto.WebClientLogin parsedMessage = null;
+                top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (top.houry.netty.barrage.proto.BarrageProto.WebClientLogin) e.getUnfinishedMessage();
+                    parsedMessage = (top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
                     if (parsedMessage != null) {
@@ -3102,48 +3789,48 @@ public final class BarrageProto {
             }
 
 
-            // @@protoc_insertion_point(builder_scope:WebClientLogin)
+            // @@protoc_insertion_point(builder_scope:WebClientLoginReq)
         }
 
-        // @@protoc_insertion_point(class_scope:WebClientLogin)
-        private static final top.houry.netty.barrage.proto.BarrageProto.WebClientLogin DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:WebClientLoginReq)
+        private static final top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq DEFAULT_INSTANCE;
         static {
-            DEFAULT_INSTANCE = new top.houry.netty.barrage.proto.BarrageProto.WebClientLogin();
+            DEFAULT_INSTANCE = new top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq();
         }
 
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogin getDefaultInstance() {
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq getDefaultInstance() {
             return DEFAULT_INSTANCE;
         }
 
-        private static final com.google.protobuf.Parser<WebClientLogin>
-                PARSER = new com.google.protobuf.AbstractParser<WebClientLogin>() {
+        private static final com.google.protobuf.Parser<WebClientLoginReq>
+                PARSER = new com.google.protobuf.AbstractParser<WebClientLoginReq>() {
             @java.lang.Override
-            public WebClientLogin parsePartialFrom(
+            public WebClientLoginReq parsePartialFrom(
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
-                return new WebClientLogin(input, extensionRegistry);
+                return new WebClientLoginReq(input, extensionRegistry);
             }
         };
 
-        public static com.google.protobuf.Parser<WebClientLogin> parser() {
+        public static com.google.protobuf.Parser<WebClientLoginReq> parser() {
             return PARSER;
         }
 
         @java.lang.Override
-        public com.google.protobuf.Parser<WebClientLogin> getParserForType() {
+        public com.google.protobuf.Parser<WebClientLoginReq> getParserForType() {
             return PARSER;
         }
 
         @java.lang.Override
-        public top.houry.netty.barrage.proto.BarrageProto.WebClientLogin getDefaultInstanceForType() {
+        public top.houry.netty.barrage.proto.BarrageProto.WebClientLoginReq getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
 
     }
 
-    public interface WebClientLogoutOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:WebClientLogout)
+    public interface WebClientLogoutReqOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:WebClientLogoutReq)
             com.google.protobuf.MessageOrBuilder {
 
         /**
@@ -3171,18 +3858,18 @@ public final class BarrageProto {
      * web客户端退出信息
      * </pre>
      *
-     * Protobuf type {@code WebClientLogout}
+     * Protobuf type {@code WebClientLogoutReq}
      */
-    public  static final class WebClientLogout extends
+    public  static final class WebClientLogoutReq extends
             com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:WebClientLogout)
-            WebClientLogoutOrBuilder {
+            // @@protoc_insertion_point(message_implements:WebClientLogoutReq)
+            WebClientLogoutReqOrBuilder {
         private static final long serialVersionUID = 0L;
-        // Use WebClientLogout.newBuilder() to construct.
-        private WebClientLogout(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        // Use WebClientLogoutReq.newBuilder() to construct.
+        private WebClientLogoutReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
-        private WebClientLogout() {
+        private WebClientLogoutReq() {
             userId_ = "";
             videoId_ = "";
         }
@@ -3192,7 +3879,7 @@ public final class BarrageProto {
         getUnknownFields() {
             return this.unknownFields;
         }
-        private WebClientLogout(
+        private WebClientLogoutReq(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3244,15 +3931,15 @@ public final class BarrageProto {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogout_descriptor;
+            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogoutReq_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogout_fieldAccessorTable
+            return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogoutReq_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            top.houry.netty.barrage.proto.BarrageProto.WebClientLogout.class, top.houry.netty.barrage.proto.BarrageProto.WebClientLogout.Builder.class);
+                            top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq.class, top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq.Builder.class);
         }
 
         public static final int USERID_FIELD_NUMBER = 1;
@@ -3368,10 +4055,10 @@ public final class BarrageProto {
             if (obj == this) {
                 return true;
             }
-            if (!(obj instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientLogout)) {
+            if (!(obj instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq)) {
                 return super.equals(obj);
             }
-            top.houry.netty.barrage.proto.BarrageProto.WebClientLogout other = (top.houry.netty.barrage.proto.BarrageProto.WebClientLogout) obj;
+            top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq other = (top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq) obj;
 
             boolean result = true;
             result = result && getUserId()
@@ -3398,69 +4085,69 @@ public final class BarrageProto {
             return hash;
         }
 
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parseFrom(
                 java.nio.ByteBuffer data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parseFrom(
                 java.nio.ByteBuffer data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parseFrom(
                 com.google.protobuf.ByteString data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parseFrom(
                 com.google.protobuf.ByteString data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parseFrom(byte[] data)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parseFrom(byte[] data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parseFrom(
                 byte[] data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parseFrom(java.io.InputStream input)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parseFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parseFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parseDelimitedFrom(java.io.InputStream input)
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parseDelimitedFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parseDelimitedFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parseDelimitedFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parseFrom(
                 com.google.protobuf.CodedInputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parseFrom(
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parseFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -3473,7 +4160,7 @@ public final class BarrageProto {
         public static Builder newBuilder() {
             return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(top.houry.netty.barrage.proto.BarrageProto.WebClientLogout prototype) {
+        public static Builder newBuilder(top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -3493,26 +4180,26 @@ public final class BarrageProto {
          * web客户端退出信息
          * </pre>
          *
-         * Protobuf type {@code WebClientLogout}
+         * Protobuf type {@code WebClientLogoutReq}
          */
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:WebClientLogout)
-                top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutOrBuilder {
+                // @@protoc_insertion_point(builder_implements:WebClientLogoutReq)
+                top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReqOrBuilder {
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogout_descriptor;
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogoutReq_descriptor;
             }
 
             @java.lang.Override
             protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogout_fieldAccessorTable
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogoutReq_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
-                                top.houry.netty.barrage.proto.BarrageProto.WebClientLogout.class, top.houry.netty.barrage.proto.BarrageProto.WebClientLogout.Builder.class);
+                                top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq.class, top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq.Builder.class);
             }
 
-            // Construct using top.houry.netty.barrage.proto.BarrageProto.WebClientLogout.newBuilder()
+            // Construct using top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq.newBuilder()
             private Builder() {
                 maybeForceBuilderInitialization();
             }
@@ -3540,17 +4227,17 @@ public final class BarrageProto {
             @java.lang.Override
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogout_descriptor;
+                return top.houry.netty.barrage.proto.BarrageProto.internal_static_WebClientLogoutReq_descriptor;
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.WebClientLogout getDefaultInstanceForType() {
-                return top.houry.netty.barrage.proto.BarrageProto.WebClientLogout.getDefaultInstance();
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq getDefaultInstanceForType() {
+                return top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq.getDefaultInstance();
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.WebClientLogout build() {
-                top.houry.netty.barrage.proto.BarrageProto.WebClientLogout result = buildPartial();
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq build() {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq result = buildPartial();
                 if (!result.isInitialized()) {
                     throw newUninitializedMessageException(result);
                 }
@@ -3558,8 +4245,8 @@ public final class BarrageProto {
             }
 
             @java.lang.Override
-            public top.houry.netty.barrage.proto.BarrageProto.WebClientLogout buildPartial() {
-                top.houry.netty.barrage.proto.BarrageProto.WebClientLogout result = new top.houry.netty.barrage.proto.BarrageProto.WebClientLogout(this);
+            public top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq buildPartial() {
+                top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq result = new top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq(this);
                 result.userId_ = userId_;
                 result.videoId_ = videoId_;
                 onBuilt();
@@ -3600,16 +4287,16 @@ public final class BarrageProto {
             }
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientLogout) {
-                    return mergeFrom((top.houry.netty.barrage.proto.BarrageProto.WebClientLogout)other);
+                if (other instanceof top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq) {
+                    return mergeFrom((top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq)other);
                 } else {
                     super.mergeFrom(other);
                     return this;
                 }
             }
 
-            public Builder mergeFrom(top.houry.netty.barrage.proto.BarrageProto.WebClientLogout other) {
-                if (other == top.houry.netty.barrage.proto.BarrageProto.WebClientLogout.getDefaultInstance()) return this;
+            public Builder mergeFrom(top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq other) {
+                if (other == top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq.getDefaultInstance()) return this;
                 if (!other.getUserId().isEmpty()) {
                     userId_ = other.userId_;
                     onChanged();
@@ -3633,11 +4320,11 @@ public final class BarrageProto {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                top.houry.netty.barrage.proto.BarrageProto.WebClientLogout parsedMessage = null;
+                top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (top.houry.netty.barrage.proto.BarrageProto.WebClientLogout) e.getUnfinishedMessage();
+                    parsedMessage = (top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
                     if (parsedMessage != null) {
@@ -3797,41 +4484,41 @@ public final class BarrageProto {
             }
 
 
-            // @@protoc_insertion_point(builder_scope:WebClientLogout)
+            // @@protoc_insertion_point(builder_scope:WebClientLogoutReq)
         }
 
-        // @@protoc_insertion_point(class_scope:WebClientLogout)
-        private static final top.houry.netty.barrage.proto.BarrageProto.WebClientLogout DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:WebClientLogoutReq)
+        private static final top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq DEFAULT_INSTANCE;
         static {
-            DEFAULT_INSTANCE = new top.houry.netty.barrage.proto.BarrageProto.WebClientLogout();
+            DEFAULT_INSTANCE = new top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq();
         }
 
-        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogout getDefaultInstance() {
+        public static top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq getDefaultInstance() {
             return DEFAULT_INSTANCE;
         }
 
-        private static final com.google.protobuf.Parser<WebClientLogout>
-                PARSER = new com.google.protobuf.AbstractParser<WebClientLogout>() {
+        private static final com.google.protobuf.Parser<WebClientLogoutReq>
+                PARSER = new com.google.protobuf.AbstractParser<WebClientLogoutReq>() {
             @java.lang.Override
-            public WebClientLogout parsePartialFrom(
+            public WebClientLogoutReq parsePartialFrom(
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
-                return new WebClientLogout(input, extensionRegistry);
+                return new WebClientLogoutReq(input, extensionRegistry);
             }
         };
 
-        public static com.google.protobuf.Parser<WebClientLogout> parser() {
+        public static com.google.protobuf.Parser<WebClientLogoutReq> parser() {
             return PARSER;
         }
 
         @java.lang.Override
-        public com.google.protobuf.Parser<WebClientLogout> getParserForType() {
+        public com.google.protobuf.Parser<WebClientLogoutReq> getParserForType() {
             return PARSER;
         }
 
         @java.lang.Override
-        public top.houry.netty.barrage.proto.BarrageProto.WebClientLogout getDefaultInstanceForType() {
+        public top.houry.netty.barrage.proto.BarrageProto.WebClientLogoutReq getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
 
@@ -3843,30 +4530,35 @@ public final class BarrageProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internal_static_Barrage_fieldAccessorTable;
     private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_HeartBeatResp_descriptor;
+            internal_static_WebClientHeartBeatResp_descriptor;
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_HeartBeatResp_fieldAccessorTable;
+            internal_static_WebClientHeartBeatResp_fieldAccessorTable;
     private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_HeartHeatReq_descriptor;
+            internal_static_WebClientHeartBeatReq_descriptor;
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_HeartHeatReq_fieldAccessorTable;
+            internal_static_WebClientHeartBeatReq_fieldAccessorTable;
     private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_WebClientSendBarrage_descriptor;
+            internal_static_WebClientSendBarrageReq_descriptor;
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_WebClientSendBarrage_fieldAccessorTable;
+            internal_static_WebClientSendBarrageReq_fieldAccessorTable;
     private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_WebClientLogin_descriptor;
+            internal_static_WebClientSendBarrageResp_descriptor;
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_WebClientLogin_fieldAccessorTable;
+            internal_static_WebClientSendBarrageResp_fieldAccessorTable;
     private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_WebClientLogout_descriptor;
+            internal_static_WebClientLoginReq_descriptor;
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_WebClientLogout_fieldAccessorTable;
+            internal_static_WebClientLoginReq_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_WebClientLogoutReq_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_WebClientLogoutReq_fieldAccessorTable;
 
     public static com.google.protobuf.Descriptors.FileDescriptor
     getDescriptor() {
@@ -3877,14 +4569,16 @@ public final class BarrageProto {
     static {
         java.lang.String[] descriptorData = {
                 "\n\rbarrage.proto\"-\n\007Barrage\022\017\n\007msgType\030\001 " +
-                        "\001(\t\022\021\n\tbytesData\030\002 \001(\014\"\017\n\rHeartBeatResp\"" +
-                        "\016\n\014HeartHeatReq\"V\n\024WebClientSendBarrage\022" +
-                        "\016\n\006userId\030\001 \001(\t\022\017\n\007videoId\030\002 \001(\t\022\013\n\003msg\030" +
-                        "\003 \001(\t\022\020\n\010msgColor\030\004 \001(\t\"1\n\016WebClientLogi" +
-                        "n\022\016\n\006userId\030\001 \001(\t\022\017\n\007videoId\030\002 \001(\t\"2\n\017We" +
-                        "bClientLogout\022\016\n\006userId\030\001 \001(\t\022\017\n\007videoId" +
-                        "\030\002 \001(\tB-\n\035top.houry.netty.barrage.protoB" +
-                        "\014BarrageProtob\006proto3"
+                        "\001(\t\022\021\n\tbytesData\030\002 \001(\014\"\030\n\026WebClientHeart" +
+                        "BeatResp\"\027\n\025WebClientHeartBeatReq\"Y\n\027Web" +
+                        "ClientSendBarrageReq\022\016\n\006userId\030\001 \001(\t\022\017\n\007" +
+                        "videoId\030\002 \001(\t\022\013\n\003msg\030\003 \001(\t\022\020\n\010msgColor\030\004" +
+                        " \001(\t\"9\n\030WebClientSendBarrageResp\022\013\n\003msg\030" +
+                        "\001 \001(\t\022\020\n\010msgColor\030\002 \001(\t\"4\n\021WebClientLogi" +
+                        "nReq\022\016\n\006userId\030\001 \001(\t\022\017\n\007videoId\030\002 \001(\t\"5\n" +
+                        "\022WebClientLogoutReq\022\016\n\006userId\030\001 \001(\t\022\017\n\007v" +
+                        "ideoId\030\002 \001(\tB-\n\035top.houry.netty.barrage." +
+                        "protoB\014BarrageProtob\006proto3"
         };
         com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
                 new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3904,35 +4598,41 @@ public final class BarrageProto {
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_Barrage_descriptor,
                 new java.lang.String[] { "MsgType", "BytesData", });
-        internal_static_HeartBeatResp_descriptor =
+        internal_static_WebClientHeartBeatResp_descriptor =
                 getDescriptor().getMessageTypes().get(1);
-        internal_static_HeartBeatResp_fieldAccessorTable = new
+        internal_static_WebClientHeartBeatResp_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_HeartBeatResp_descriptor,
+                internal_static_WebClientHeartBeatResp_descriptor,
                 new java.lang.String[] { });
-        internal_static_HeartHeatReq_descriptor =
+        internal_static_WebClientHeartBeatReq_descriptor =
                 getDescriptor().getMessageTypes().get(2);
-        internal_static_HeartHeatReq_fieldAccessorTable = new
+        internal_static_WebClientHeartBeatReq_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_HeartHeatReq_descriptor,
+                internal_static_WebClientHeartBeatReq_descriptor,
                 new java.lang.String[] { });
-        internal_static_WebClientSendBarrage_descriptor =
+        internal_static_WebClientSendBarrageReq_descriptor =
                 getDescriptor().getMessageTypes().get(3);
-        internal_static_WebClientSendBarrage_fieldAccessorTable = new
+        internal_static_WebClientSendBarrageReq_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_WebClientSendBarrage_descriptor,
+                internal_static_WebClientSendBarrageReq_descriptor,
                 new java.lang.String[] { "UserId", "VideoId", "Msg", "MsgColor", });
-        internal_static_WebClientLogin_descriptor =
+        internal_static_WebClientSendBarrageResp_descriptor =
                 getDescriptor().getMessageTypes().get(4);
-        internal_static_WebClientLogin_fieldAccessorTable = new
+        internal_static_WebClientSendBarrageResp_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_WebClientLogin_descriptor,
-                new java.lang.String[] { "UserId", "VideoId", });
-        internal_static_WebClientLogout_descriptor =
+                internal_static_WebClientSendBarrageResp_descriptor,
+                new java.lang.String[] { "Msg", "MsgColor", });
+        internal_static_WebClientLoginReq_descriptor =
                 getDescriptor().getMessageTypes().get(5);
-        internal_static_WebClientLogout_fieldAccessorTable = new
+        internal_static_WebClientLoginReq_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_WebClientLogout_descriptor,
+                internal_static_WebClientLoginReq_descriptor,
+                new java.lang.String[] { "UserId", "VideoId", });
+        internal_static_WebClientLogoutReq_descriptor =
+                getDescriptor().getMessageTypes().get(6);
+        internal_static_WebClientLogoutReq_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_WebClientLogoutReq_descriptor,
                 new java.lang.String[] { "UserId", "VideoId", });
     }
 

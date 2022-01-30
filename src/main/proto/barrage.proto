@@ -9,31 +9,37 @@ message Barrage {
 }
 
 // 心跳回复包
-message HeartBeatResp {
+message WebClientHeartBeatResp {
 
 }
 
 // 心跳请求包
-message HeartHeatReq {
+message WebClientHeartBeatReq {
 
 }
 
-// web客户端弹幕消息内容
-message WebClientSendBarrage {
+// web客户端弹幕消息内容请求
+message WebClientSendBarrageReq {
   string userId = 1;
   string videoId = 2;
   string msg = 3;
   string msgColor = 4;
 }
 
+// web客户端弹幕消息内容响应
+message WebClientSendBarrageResp {
+  string msg = 1;
+  string msgColor = 2;
+}
+
 // web客户端登录信息
-message WebClientLogin {
+message WebClientLoginReq {
   string userId = 1;
   string videoId = 2;
 }
 
 // web客户端退出信息
-message WebClientLogout {
+message WebClientLogoutReq {
   string userId = 1;
   string videoId = 2;
 }

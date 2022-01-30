@@ -81,7 +81,6 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("有客户端连接");
         // 把上线人数记录到Redis中
        //  SpringContextUtil.getBean(OnlinePopulationServiceImpl.class).incrementOne();
 

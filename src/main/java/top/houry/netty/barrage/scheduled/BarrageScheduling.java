@@ -21,7 +21,7 @@ import java.util.List;
  * @Author houry
  * @Date 2021/5/10 15:05
  **/
-@Component
+//@Component
 @Slf4j
 public class BarrageScheduling {
 
@@ -37,7 +37,7 @@ public class BarrageScheduling {
      */
     @Scheduled(fixedRate = 5000)
     public void pushHistoryBarrage() {
-        System.out.println(BarrageConnectInfoUtils.BASE_CONNECT_INFO_MAP.toString());
+       // System.out.println(BarrageConnectInfoUtils.BASE_CONNECT_INFO_MAP.toString());
 //        WebSocketNettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(BarrageContentUtils.getContext(Arrays.asList(BarrageContentUtils.context))));
 //        List<String> barrageInfoList = redisUtils.listGetAll(BarrageRedisKeyConst.BARRAGE_REDIS_LIST_KEY);
 //        WebSocketNettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(JSONUtil.toBean(BarrageContentUtils.getContext(barrageInfoList), Barrage.class).getMsg()));
