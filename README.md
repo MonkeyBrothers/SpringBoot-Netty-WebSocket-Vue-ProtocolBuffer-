@@ -6,7 +6,8 @@
 
 #### 介绍
 基于springboot-2.4.3、redis、netty、protocol buffer打造的高并前后端分离的弹幕系统。
-功能包括：断网重连，实时开关弹幕、设置弹幕颜色，标识自己发送的弹幕，音量调节等功能。
+
+【主要功能】断网重连，实时开关弹幕、设置弹幕颜色，标识自己发送的弹幕，音量调节等功能。
 
 
 #### 特别说明
@@ -22,11 +23,11 @@ http://barrage.houry.top:8080/index
 #### 安装教程
 1.启动springboot
 
-2.启动前端服务（开发中）
+2.启动前端服务
 
 
 #### 历史版本
-[前后端未分离 V1.0版本] https://gitee.com/MonkeyBrothers/barrage/tree/V1.0/
+【前后端未分离版本】-【V1.0版本】https://gitee.com/MonkeyBrothers/barrage/tree/V1.0/
 
 
 #### V1.0版本效果截图

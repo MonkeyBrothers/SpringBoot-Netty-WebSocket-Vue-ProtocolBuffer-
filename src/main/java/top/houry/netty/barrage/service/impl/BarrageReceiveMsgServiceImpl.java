@@ -26,6 +26,7 @@ import java.util.List;
 public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
 
     private IBarrageSendMsgToClientService barrageSendMsgToClientService;
+
     @Autowired
     public void setBarrageSendMsgToClientService(IBarrageSendMsgToClientService barrageSendMsgToClientService) {
         this.barrageSendMsgToClientService = barrageSendMsgToClientService;
