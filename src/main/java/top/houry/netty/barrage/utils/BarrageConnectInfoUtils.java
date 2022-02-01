@@ -1,16 +1,13 @@
 package top.houry.netty.barrage.utils;
 
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelId;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.CollectionUtils;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @Desc 弹幕连接信息
@@ -19,14 +16,11 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  **/
 public class BarrageConnectInfoUtils {
 
-    private static final ReadWriteLock READ_WRITE_LOCK = new ReentrantReadWriteLock();
-    private static final Lock READ_LOCK = READ_WRITE_LOCK.readLock();
-    private static final Lock WRITE_LOCK = READ_WRITE_LOCK.writeLock();
 
     /**
      * 维护了视频ID和目前观看视频的用户的通道
      */
-    public static final Map<String, List<ChannelHandlerContext>> BASE_CONNECT_INFO_MAP = new ConcurrentHashMap<>(256);
+    public static final Map<String, CopyOnWriteArrayList<ChannelHandlerContext>> BASE_CONNECT_INFO_MAP = new ConcurrentHashMap<>(256);
 
     public static final Map<ChannelHandlerContext, String> BASE_CHANNEL_VIDEO_MAP = new ConcurrentHashMap<>(256);
 
@@ -54,19 +48,13 @@ public class BarrageConnectInfoUtils {
         if (StringUtils.isBlank(videoId) || null == context || !context.channel().isActive()) return false;
         List<ChannelHandlerContext> channelHandlerContexts = BASE_CONNECT_INFO_MAP.get(videoId);
         if (CollectionUtils.isEmpty(channelHandlerContexts)) {
-            BASE_CONNECT_INFO_MAP.put(videoId, Collections.singletonList(context));
+            CopyOnWriteArrayList<ChannelHandlerContext> contexts = new CopyOnWriteArrayList<>();
+            contexts.add(context);
+            BASE_CONNECT_INFO_MAP.put(videoId, contexts);
             return true;
         }
-        try {
-            WRITE_LOCK.lock();
-            BASE_CHANNEL_VIDEO_MAP.put(context, videoId);
-            return channelHandlerContexts.add(context);
-        } catch (Exception e) {
-            return false;
-        } finally {
-            WRITE_LOCK.unlock();
-        }
-
+        BASE_CHANNEL_VIDEO_MAP.put(context, videoId);
+        return channelHandlerContexts.add(context);
     }
 
     /**
@@ -81,14 +69,7 @@ public class BarrageConnectInfoUtils {
         List<ChannelHandlerContext> channelHandlerContexts = BASE_CONNECT_INFO_MAP.get(videoId);
         if (CollectionUtils.isEmpty(channelHandlerContexts)) return true;
         if (!channelHandlerContexts.contains(context)) return true;
-        try {
-            WRITE_LOCK.lock();
-            return channelHandlerContexts.remove(context);
-        } catch (Exception e) {
-            return false;
-        } finally {
-            WRITE_LOCK.unlock();
-        }
+        return channelHandlerContexts.remove(context);
     }
 
     /**
@@ -103,9 +84,6 @@ public class BarrageConnectInfoUtils {
 
         return false;
     }
-
-
-
 
 
 }

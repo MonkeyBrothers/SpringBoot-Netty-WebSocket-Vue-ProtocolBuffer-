@@ -4,6 +4,7 @@ import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import top.houry.netty.barrage.annotation.BarrageAnnotation;
 import top.houry.netty.barrage.common.BarrageMsgTypeConst;
 import top.houry.netty.barrage.proto.BarrageProto;
@@ -30,9 +31,9 @@ public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
             String userId = StringUtils.isBlank(clientSendBarrage.getUserId()) ? "" : clientSendBarrage.getUserId();
             String videId = StringUtils.isBlank(clientSendBarrage.getVideoId()) ? "" : clientSendBarrage.getVideoId();
             log.info("[Req]-[BarrageReceiveMsgServiceImpl]-[dealWithBarrageMessage]-[msg:{}]-[userId:{}]-[videId:{}]", msg, userId, videId);
-            List<ChannelHandlerContext> channelHandlerContextListByVideId = BarrageConnectInfoUtils.getChannelHandlerContextListByVideId(videId);
-            // 排除自己的通道，防止弹幕发送重复
-            channelHandlerContextListByVideId.stream().filter(v -> !v.equals(ctx)).forEach(v ->{
+            List<ChannelHandlerContext> channelHandlerContextLists = BarrageConnectInfoUtils.getChannelHandlerContextListByVideId(videId);
+            if (CollectionUtils.isEmpty(channelHandlerContextLists)) return;
+            channelHandlerContextLists.stream().filter(v -> !v.equals(ctx)).forEach(v -> {
                 BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
                 BarrageProto.WebClientSendBarrageResp.Builder client = BarrageProto.WebClientSendBarrageResp.newBuilder();
                 client.setMsg(msg);
@@ -41,7 +42,6 @@ public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
                 builder.setBytesData(client.build().toByteString());
                 v.writeAndFlush(builder);
             });
-
         } catch (Exception e) {
             log.error("[Exception]-[BarrageReceiveMsgServiceImpl]-[dealWithBarrageMessage]", e);
         }
