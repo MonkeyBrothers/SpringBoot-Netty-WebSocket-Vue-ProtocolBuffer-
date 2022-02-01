@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import top.houry.netty.barrage.annotation.BarrageAnnotation;
-import top.houry.netty.barrage.common.BarrageMsgTypeConst;
+import top.houry.netty.barrage.consts.BarrageMsgTypeConst;
 import top.houry.netty.barrage.proto.BarrageProto;
 import top.houry.netty.barrage.service.IBarrageMsgTypeService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;

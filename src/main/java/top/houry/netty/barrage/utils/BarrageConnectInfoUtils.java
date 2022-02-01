@@ -4,6 +4,7 @@ import io.netty.channel.ChannelHandlerContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.CollectionUtils;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -80,9 +81,10 @@ public class BarrageConnectInfoUtils {
      */
     public static boolean removeChannelInfoByChannelHandlerContext(ChannelHandlerContext context) {
         String videId = BASE_CHANNEL_VIDEO_MAP.get(context);
-
-
-        return false;
+        if (StringUtils.isBlank(videId)) return true;
+        List<ChannelHandlerContext> contexts = getChannelHandlerContextListByVideId(videId);
+        if (CollectionUtils.isEmpty(contexts)) return true;
+        return contexts.remove(context);
     }
 
 

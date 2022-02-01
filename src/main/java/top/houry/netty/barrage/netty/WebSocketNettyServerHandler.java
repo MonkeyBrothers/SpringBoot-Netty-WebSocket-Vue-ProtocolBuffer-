@@ -1,12 +1,8 @@
 package top.houry.netty.barrage.netty;
 
-import cn.hutool.json.JSONException;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.channel.group.ChannelGroup;
-import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.timeout.IdleStateEvent;
-import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import top.houry.netty.barrage.proto.BarrageProto;
@@ -20,12 +16,6 @@ import top.houry.netty.barrage.utils.BarrageMsgBeanUtils;
  **/
 @Slf4j
 public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<BarrageProto.Barrage> {
-
-    /**
-     * 用于记录和管理所有客户端的channel
-     */
-    public static final ChannelGroup CLIENT_CHANNELS = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
-
 
     /**
      * 读取发送的消息
@@ -58,7 +48,6 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         log.info("[WebSocketNettyServerHandler]-[handlerAdded]-[{}]", ctx.channel().toString());
-        CLIENT_CHANNELS.add(ctx.channel());
     }
 
     /**
@@ -70,6 +59,7 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         log.info("[WebSocketNettyServerHandler]-[handlerRemoved]-[{}]", ctx.channel().toString());
+        // 因为会有断网的情况，这里需要把断网的连接信息从缓存中清除
         BarrageConnectInfoUtils.removeChannelInfoByChannelHandlerContext(ctx);
     }
 
@@ -81,8 +71,6 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        // 把上线人数记录到Redis中
-       //  SpringContextUtil.getBean(OnlinePopulationServiceImpl.class).incrementOne();
 
     }
 
@@ -94,7 +82,6 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
      */
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-       // SpringContextUtil.getBean(OnlinePopulationServiceImpl.class).decrementOne();
     }
 
     /**
@@ -108,7 +95,6 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         log.error("[WebSocketNettyServerHandler]-[exceptionCaught]-[Exception]", cause);
         ctx.channel().close();
-        CLIENT_CHANNELS.remove(ctx.channel());
     }
 
 

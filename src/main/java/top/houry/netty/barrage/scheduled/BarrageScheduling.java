@@ -1,55 +1,46 @@
 package top.houry.netty.barrage.scheduled;
 
-import cn.hutool.json.JSONUtil;
-import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
+import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import top.houry.netty.barrage.common.BarrageRedisKeyConst;
-import top.houry.netty.barrage.netty.WebSocketNettyServerHandler;
-import top.houry.netty.barrage.pojo.Barrage;
+import org.springframework.util.CollectionUtils;
+import top.houry.netty.barrage.service.IBarrageSendMsgToClientService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 import top.houry.netty.barrage.utils.BarrageContentUtils;
 import top.houry.netty.barrage.utils.BarrageRedisUtils;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
- * @Desc 为所有的连接客户端推送历史弹幕信息
+ * @Desc
  * @Author houry
  * @Date 2021/5/10 15:05
  **/
-//@Component
+@Component
 @Slf4j
 public class BarrageScheduling {
 
     private BarrageRedisUtils redisUtils;
 
+    private IBarrageSendMsgToClientService barrageSendMsgToClientService;
+
+    @Autowired
+    public void setBarrageSendMsgToClientService(IBarrageSendMsgToClientService barrageSendMsgToClientService) {
+        this.barrageSendMsgToClientService = barrageSendMsgToClientService;
+    }
     @Autowired
     public void setRedisUtils(BarrageRedisUtils redisUtils) {
         this.redisUtils = redisUtils;
     }
 
-    /**
-     * 定时任务推送历史弹幕 fixedRate = 3000  3秒推送一次
-     */
-    @Scheduled(fixedRate = 5000)
-    public void pushHistoryBarrage() {
-       // System.out.println(BarrageConnectInfoUtils.BASE_CONNECT_INFO_MAP.toString());
-//        WebSocketNettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(BarrageContentUtils.getContext(Arrays.asList(BarrageContentUtils.context))));
-//        List<String> barrageInfoList = redisUtils.listGetAll(BarrageRedisKeyConst.BARRAGE_REDIS_LIST_KEY);
-//        WebSocketNettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(JSONUtil.toBean(BarrageContentUtils.getContext(barrageInfoList), Barrage.class).getMsg()));
-    }
 
-    /**
-     * 推送在线人数
-     */
-//    @Scheduled(fixedRate = 5000)
-//    public void pushOnlineNum() {
-//        String onlinePopulation = redisUtils.get(BarrageRedisKeyConst.BARRAGE_ONLINE_POPULATION_KEY);
-//        WebSocketNettyServerHandler.CLIENT_CHANNELS.writeAndFlush(new TextWebSocketFrame(onlinePopulation));
-//    }
+    @Scheduled(fixedRate = 3000)
+    public void pushHistoryBarrage() {
+        List<ChannelHandlerContext> contexts = BarrageConnectInfoUtils.getChannelHandlerContextListByVideId("1294384753222123");
+        if (CollectionUtils.isEmpty(contexts)) return;
+        contexts.forEach(v -> barrageSendMsgToClientService.sendMsg(BarrageContentUtils.getContext(), null, v));
+    }
 
 }

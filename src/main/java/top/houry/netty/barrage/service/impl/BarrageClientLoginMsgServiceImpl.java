@@ -5,10 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import top.houry.netty.barrage.annotation.BarrageAnnotation;
-import top.houry.netty.barrage.common.BarrageMsgTypeConst;
+import top.houry.netty.barrage.consts.BarrageMsgTypeConst;
 import top.houry.netty.barrage.proto.BarrageProto;
 import top.houry.netty.barrage.service.IBarrageMsgTypeService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
+import top.houry.netty.barrage.utils.BarrageContentUtils;
 
 /**
  * @Desc
@@ -28,6 +29,13 @@ public class BarrageClientLoginMsgServiceImpl implements IBarrageMsgTypeService 
             String videoId = StringUtils.isBlank(loginInfo.getVideoId()) ? "" : loginInfo.getVideoId();
             log.info("[Req]-[BarrageClientLoginMsgServiceImpl]-[dealWithBarrageMessage]-[userId:{}]-[videoId:{}]", userId, videoId);
             BarrageConnectInfoUtils.addChannelInfoToBaseMap(videoId, ctx);
+
+            BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
+            BarrageProto.WebClientLoginResp.Builder loginResp = BarrageProto.WebClientLoginResp.newBuilder();
+            loginResp.setBarrageTotalCount(BarrageContentUtils.context.length);
+            builder.setBytesData(loginResp.build().toByteString());
+            builder.setMsgType(BarrageMsgTypeConst.WEB_CLIENT_LOGIN_RESP);
+            ctx.writeAndFlush(builder);
         } catch (Exception e) {
             log.error("[Exception]-[BarrageClientLoginMsgServiceImpl]-[dealWithBarrageMessage]", e);
         }

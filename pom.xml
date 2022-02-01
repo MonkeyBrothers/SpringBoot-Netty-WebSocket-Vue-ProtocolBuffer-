@@ -49,8 +49,6 @@
             <optional>true</optional>
         </dependency>
 
-<!--      、-->
-
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
@@ -90,8 +88,6 @@
 
     <build>
         <finalName>barrage</finalName>
-
-
         <extensions>
             <extension>
                 <groupId>kr.motd.maven</groupId>

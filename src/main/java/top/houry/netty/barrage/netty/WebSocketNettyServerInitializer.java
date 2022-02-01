@@ -1,18 +1,10 @@
 package top.houry.netty.barrage.netty;
 
-import com.google.protobuf.MessageLite;
-import com.google.protobuf.MessageLiteOrBuilder;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import io.netty.handler.codec.MessageToMessageEncoder;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
-import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame;
-import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.codec.http.websocketx.extensions.compression.WebSocketServerCompressionHandler;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
@@ -20,13 +12,10 @@ import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.handler.timeout.IdleStateHandler;
-import top.houry.netty.barrage.common.BarrageWebSocketConst;
+import top.houry.netty.barrage.consts.BarrageWebSocketConst;
 import top.houry.netty.barrage.proto.BarrageProto;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import static io.netty.buffer.Unpooled.wrappedBuffer;
 
 /**
  * @Desc 配置netty pipeline

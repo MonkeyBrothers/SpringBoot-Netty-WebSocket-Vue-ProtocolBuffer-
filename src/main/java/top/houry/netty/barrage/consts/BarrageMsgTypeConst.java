@@ -1,4 +1,4 @@
-package top.houry.netty.barrage.common;
+package top.houry.netty.barrage.consts;
 
 /**
  * @Desc

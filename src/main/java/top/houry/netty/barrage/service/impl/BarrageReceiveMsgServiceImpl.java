@@ -3,12 +3,14 @@ package top.houry.netty.barrage.service.impl;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import top.houry.netty.barrage.annotation.BarrageAnnotation;
-import top.houry.netty.barrage.common.BarrageMsgTypeConst;
+import top.houry.netty.barrage.consts.BarrageMsgTypeConst;
 import top.houry.netty.barrage.proto.BarrageProto;
 import top.houry.netty.barrage.service.IBarrageMsgTypeService;
+import top.houry.netty.barrage.service.IBarrageSendMsgToClientService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 
 import java.util.List;
@@ -22,6 +24,13 @@ import java.util.List;
 @BarrageAnnotation(msgType = BarrageMsgTypeConst.WEB_CLIENT_BARRAGE_REQ)
 @Slf4j
 public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
+
+    private IBarrageSendMsgToClientService barrageSendMsgToClientService;
+    @Autowired
+    public void setBarrageSendMsgToClientService(IBarrageSendMsgToClientService barrageSendMsgToClientService) {
+        this.barrageSendMsgToClientService = barrageSendMsgToClientService;
+    }
+
     @Override
     public void dealWithBarrageMessage(BarrageProto.Barrage barrage, ChannelHandlerContext ctx) {
         try {
@@ -33,15 +42,7 @@ public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
             log.info("[Req]-[BarrageReceiveMsgServiceImpl]-[dealWithBarrageMessage]-[msg:{}]-[userId:{}]-[videId:{}]", msg, userId, videId);
             List<ChannelHandlerContext> channelHandlerContextLists = BarrageConnectInfoUtils.getChannelHandlerContextListByVideId(videId);
             if (CollectionUtils.isEmpty(channelHandlerContextLists)) return;
-            channelHandlerContextLists.stream().filter(v -> !v.equals(ctx)).forEach(v -> {
-                BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
-                BarrageProto.WebClientSendBarrageResp.Builder client = BarrageProto.WebClientSendBarrageResp.newBuilder();
-                client.setMsg(msg);
-                client.setMsgColor(msgColor);
-                builder.setMsgType(BarrageMsgTypeConst.WEB_CLIENT_BARRAGE_RESP);
-                builder.setBytesData(client.build().toByteString());
-                v.writeAndFlush(builder);
-            });
+            channelHandlerContextLists.stream().filter(v -> !v.equals(ctx)).forEach(v -> barrageSendMsgToClientService.sendMsg(msg, msgColor, v));
         } catch (Exception e) {
             log.error("[Exception]-[BarrageReceiveMsgServiceImpl]-[dealWithBarrageMessage]", e);
         }

@@ -2,7 +2,7 @@ package top.houry.netty.barrage.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import top.houry.netty.barrage.common.BarrageRedisKeyConst;
+import top.houry.netty.barrage.consts.BarrageRedisKeyConst;
 import top.houry.netty.barrage.service.IBarrageOnlinePopulationService;
 import top.houry.netty.barrage.utils.BarrageRedisUtils;
 

@@ -4,7 +4,7 @@ option java_outer_classname = "BarrageProto";
 
 // 总的消息体
 message Barrage {
-  string msgType = 1;
+  string msgType  = 1;
   bytes bytesData = 2;
 }
 
@@ -20,26 +20,30 @@ message WebClientHeartBeatReq {
 
 // web客户端弹幕消息内容请求
 message WebClientSendBarrageReq {
-  string userId = 1;
-  string videoId = 2;
-  string msg = 3;
+  string userId   = 1;
+  string videoId  = 2;
+  string msg      = 3;
   string msgColor = 4;
 }
 
 // web客户端弹幕消息内容响应
 message WebClientSendBarrageResp {
-  string msg = 1;
+  string msg      = 1;
   string msgColor = 2;
 }
 
 // web客户端登录信息
 message WebClientLoginReq {
-  string userId = 1;
-  string videoId = 2;
+  string userId   = 1;
+  string videoId  = 2;
+}
+// web客户端登录信息响应
+message WebClientLoginResp {
+  int32 barrageTotalCount = 1;
 }
 
 // web客户端退出信息
 message WebClientLogoutReq {
-  string userId = 1;
-  string videoId = 2;
+  string userId   = 1;
+  string videoId  = 2;
 }
