@@ -5,7 +5,9 @@
 
 
 ### 版本介绍
-基于springboot-2.4.3、redis、netty、protocol buffer打造的高并前后端分离的弹幕系统。
+后端基于springboot-2.4.3、redis、netty、protocol buffer。
+
+前端基于vue。
 
 ### 主要功能
 断网重连，实时开关弹幕、设置弹幕颜色，标识自己发送的弹幕，音量调节等功能。
