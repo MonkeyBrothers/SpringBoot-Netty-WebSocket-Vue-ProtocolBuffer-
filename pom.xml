@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.4.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>top.houry.netty</groupId>
     <artifactId>barrage</artifactId>
@@ -65,7 +65,6 @@
             <artifactId>commons-pool2</artifactId>
         </dependency>
 
-        <!-- protocol buffer 相关-->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>

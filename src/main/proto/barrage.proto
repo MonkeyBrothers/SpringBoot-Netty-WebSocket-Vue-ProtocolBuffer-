@@ -10,7 +10,7 @@ message Barrage {
 
 // 心跳回复包
 message WebClientHeartBeatResp {
-
+  int32 barrageTotalCount = 1;
 }
 
 // 心跳请求包

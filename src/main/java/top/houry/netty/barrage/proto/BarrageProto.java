@@ -641,6 +641,11 @@ public final class BarrageProto {
     public interface WebClientHeartBeatRespOrBuilder extends
             // @@protoc_insertion_point(interface_extends:WebClientHeartBeatResp)
             com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>int32 barrageTotalCount = 1;</code>
+         */
+        int getBarrageTotalCount();
     }
     /**
      * <pre>
@@ -659,6 +664,7 @@ public final class BarrageProto {
             super(builder);
         }
         private WebClientHeartBeatResp() {
+            barrageTotalCount_ = 0;
         }
 
         @java.lang.Override
@@ -674,6 +680,7 @@ public final class BarrageProto {
             if (extensionRegistry == null) {
                 throw new java.lang.NullPointerException();
             }
+            int mutable_bitField0_ = 0;
             com.google.protobuf.UnknownFieldSet.Builder unknownFields =
                     com.google.protobuf.UnknownFieldSet.newBuilder();
             try {
@@ -684,6 +691,11 @@ public final class BarrageProto {
                         case 0:
                             done = true;
                             break;
+                        case 8: {
+
+                            barrageTotalCount_ = input.readInt32();
+                            break;
+                        }
                         default: {
                             if (!parseUnknownFieldProto3(
                                     input, unknownFields, extensionRegistry, tag)) {
@@ -716,6 +728,15 @@ public final class BarrageProto {
                             top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp.class, top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp.Builder.class);
         }
 
+        public static final int BARRAGETOTALCOUNT_FIELD_NUMBER = 1;
+        private int barrageTotalCount_;
+        /**
+         * <code>int32 barrageTotalCount = 1;</code>
+         */
+        public int getBarrageTotalCount() {
+            return barrageTotalCount_;
+        }
+
         private byte memoizedIsInitialized = -1;
         @java.lang.Override
         public final boolean isInitialized() {
@@ -730,6 +751,9 @@ public final class BarrageProto {
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output)
                 throws java.io.IOException {
+            if (barrageTotalCount_ != 0) {
+                output.writeInt32(1, barrageTotalCount_);
+            }
             unknownFields.writeTo(output);
         }
 
@@ -739,6 +763,10 @@ public final class BarrageProto {
             if (size != -1) return size;
 
             size = 0;
+            if (barrageTotalCount_ != 0) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(1, barrageTotalCount_);
+            }
             size += unknownFields.getSerializedSize();
             memoizedSize = size;
             return size;
@@ -755,6 +783,8 @@ public final class BarrageProto {
             top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp other = (top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp) obj;
 
             boolean result = true;
+            result = result && (getBarrageTotalCount()
+                    == other.getBarrageTotalCount());
             result = result && unknownFields.equals(other.unknownFields);
             return result;
         }
@@ -766,6 +796,8 @@ public final class BarrageProto {
             }
             int hash = 41;
             hash = (19 * hash) + getDescriptor().hashCode();
+            hash = (37 * hash) + BARRAGETOTALCOUNT_FIELD_NUMBER;
+            hash = (53 * hash) + getBarrageTotalCount();
             hash = (29 * hash) + unknownFields.hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -903,6 +935,8 @@ public final class BarrageProto {
             @java.lang.Override
             public Builder clear() {
                 super.clear();
+                barrageTotalCount_ = 0;
+
                 return this;
             }
 
@@ -929,6 +963,7 @@ public final class BarrageProto {
             @java.lang.Override
             public top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp buildPartial() {
                 top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp result = new top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp(this);
+                result.barrageTotalCount_ = barrageTotalCount_;
                 onBuilt();
                 return result;
             }
@@ -977,6 +1012,9 @@ public final class BarrageProto {
 
             public Builder mergeFrom(top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp other) {
                 if (other == top.houry.netty.barrage.proto.BarrageProto.WebClientHeartBeatResp.getDefaultInstance()) return this;
+                if (other.getBarrageTotalCount() != 0) {
+                    setBarrageTotalCount(other.getBarrageTotalCount());
+                }
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
                 return this;
@@ -1003,6 +1041,32 @@ public final class BarrageProto {
                         mergeFrom(parsedMessage);
                     }
                 }
+                return this;
+            }
+
+            private int barrageTotalCount_ ;
+            /**
+             * <code>int32 barrageTotalCount = 1;</code>
+             */
+            public int getBarrageTotalCount() {
+                return barrageTotalCount_;
+            }
+            /**
+             * <code>int32 barrageTotalCount = 1;</code>
+             */
+            public Builder setBarrageTotalCount(int value) {
+
+                barrageTotalCount_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>int32 barrageTotalCount = 1;</code>
+             */
+            public Builder clearBarrageTotalCount() {
+
+                barrageTotalCount_ = 0;
+                onChanged();
                 return this;
             }
             @java.lang.Override
@@ -5066,17 +5130,18 @@ public final class BarrageProto {
     static {
         java.lang.String[] descriptorData = {
                 "\n\rbarrage.proto\"-\n\007Barrage\022\017\n\007msgType\030\001 " +
-                        "\001(\t\022\021\n\tbytesData\030\002 \001(\014\"\030\n\026WebClientHeart" +
-                        "BeatResp\"\027\n\025WebClientHeartBeatReq\"Y\n\027Web" +
-                        "ClientSendBarrageReq\022\016\n\006userId\030\001 \001(\t\022\017\n\007" +
-                        "videoId\030\002 \001(\t\022\013\n\003msg\030\003 \001(\t\022\020\n\010msgColor\030\004" +
-                        " \001(\t\"9\n\030WebClientSendBarrageResp\022\013\n\003msg\030" +
-                        "\001 \001(\t\022\020\n\010msgColor\030\002 \001(\t\"4\n\021WebClientLogi" +
-                        "nReq\022\016\n\006userId\030\001 \001(\t\022\017\n\007videoId\030\002 \001(\t\"/\n" +
-                        "\022WebClientLoginResp\022\031\n\021barrageTotalCount" +
-                        "\030\001 \001(\005\"5\n\022WebClientLogoutReq\022\016\n\006userId\030\001" +
-                        " \001(\t\022\017\n\007videoId\030\002 \001(\tB-\n\035top.houry.netty" +
-                        ".barrage.protoB\014BarrageProtob\006proto3"
+                        "\001(\t\022\021\n\tbytesData\030\002 \001(\014\"3\n\026WebClientHeart" +
+                        "BeatResp\022\031\n\021barrageTotalCount\030\001 \001(\005\"\027\n\025W" +
+                        "ebClientHeartBeatReq\"Y\n\027WebClientSendBar" +
+                        "rageReq\022\016\n\006userId\030\001 \001(\t\022\017\n\007videoId\030\002 \001(\t" +
+                        "\022\013\n\003msg\030\003 \001(\t\022\020\n\010msgColor\030\004 \001(\t\"9\n\030WebCl" +
+                        "ientSendBarrageResp\022\013\n\003msg\030\001 \001(\t\022\020\n\010msgC" +
+                        "olor\030\002 \001(\t\"4\n\021WebClientLoginReq\022\016\n\006userI" +
+                        "d\030\001 \001(\t\022\017\n\007videoId\030\002 \001(\t\"/\n\022WebClientLog" +
+                        "inResp\022\031\n\021barrageTotalCount\030\001 \001(\005\"5\n\022Web" +
+                        "ClientLogoutReq\022\016\n\006userId\030\001 \001(\t\022\017\n\007video" +
+                        "Id\030\002 \001(\tB-\n\035top.houry.netty.barrage.prot" +
+                        "oB\014BarrageProtob\006proto3"
         };
         com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
                 new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5101,7 +5166,7 @@ public final class BarrageProto {
         internal_static_WebClientHeartBeatResp_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_WebClientHeartBeatResp_descriptor,
-                new java.lang.String[] { });
+                new java.lang.String[] { "BarrageTotalCount", });
         internal_static_WebClientHeartBeatReq_descriptor =
                 getDescriptor().getMessageTypes().get(2);
         internal_static_WebClientHeartBeatReq_fieldAccessorTable = new

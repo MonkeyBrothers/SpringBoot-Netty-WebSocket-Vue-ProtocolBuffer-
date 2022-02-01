@@ -1,5 +1,6 @@
 package top.houry.netty.barrage.service.impl;
 
+import cn.hutool.json.JSONUtil;
 import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -7,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import top.houry.netty.barrage.annotation.BarrageAnnotation;
+import top.houry.netty.barrage.bo.BarrageMsgBo;
 import top.houry.netty.barrage.consts.BarrageMsgTypeConst;
+import top.houry.netty.barrage.consts.BarrageRedisKeyConst;
 import top.houry.netty.barrage.proto.BarrageProto;
 import top.houry.netty.barrage.service.IBarrageMsgTypeService;
 import top.houry.netty.barrage.service.IBarrageSendMsgToClientService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
+import top.houry.netty.barrage.utils.BarrageRedisUtils;
 
 import java.util.List;
 
@@ -25,7 +29,14 @@ import java.util.List;
 @Slf4j
 public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
 
+    private BarrageRedisUtils redisUtils;
+
     private IBarrageSendMsgToClientService barrageSendMsgToClientService;
+
+    @Autowired
+    public void setRedisUtils(BarrageRedisUtils redisUtils) {
+        this.redisUtils = redisUtils;
+    }
 
     @Autowired
     public void setBarrageSendMsgToClientService(IBarrageSendMsgToClientService barrageSendMsgToClientService) {
@@ -41,6 +52,9 @@ public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
             String userId = StringUtils.isBlank(clientSendBarrage.getUserId()) ? "" : clientSendBarrage.getUserId();
             String videId = StringUtils.isBlank(clientSendBarrage.getVideoId()) ? "" : clientSendBarrage.getVideoId();
             log.info("[Req]-[BarrageReceiveMsgServiceImpl]-[dealWithBarrageMessage]-[msg:{}]-[userId:{}]-[videId:{}]", msg, userId, videId);
+
+            redisUtils.listPush(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + "1294384753222123", JSONUtil.toJsonStr(new BarrageMsgBo(msg, msgColor, userId, videId)));
+
             List<ChannelHandlerContext> channelHandlerContextLists = BarrageConnectInfoUtils.getChannelHandlerContextListByVideId(videId);
             if (CollectionUtils.isEmpty(channelHandlerContextLists)) return;
             channelHandlerContextLists.stream().filter(v -> !v.equals(ctx)).forEach(v -> barrageSendMsgToClientService.sendMsg(msg, msgColor, v));
