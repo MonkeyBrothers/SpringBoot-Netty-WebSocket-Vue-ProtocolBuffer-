@@ -39,7 +39,8 @@ message WebClientLoginReq {
 }
 // web客户端登录信息响应
 message WebClientLoginResp {
-  int32 barrageTotalCount = 1;
+  int32 barrageTotalCount         = 1;
+  repeated string msgColorList    = 2;
 }
 
 // web客户端退出信息

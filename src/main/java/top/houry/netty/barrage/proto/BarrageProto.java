@@ -3909,6 +3909,25 @@ public final class BarrageProto {
          * <code>int32 barrageTotalCount = 1;</code>
          */
         int getBarrageTotalCount();
+
+        /**
+         * <code>repeated string msgColorList = 2;</code>
+         */
+        java.util.List<java.lang.String>
+        getMsgColorListList();
+        /**
+         * <code>repeated string msgColorList = 2;</code>
+         */
+        int getMsgColorListCount();
+        /**
+         * <code>repeated string msgColorList = 2;</code>
+         */
+        java.lang.String getMsgColorList(int index);
+        /**
+         * <code>repeated string msgColorList = 2;</code>
+         */
+        com.google.protobuf.ByteString
+        getMsgColorListBytes(int index);
     }
     /**
      * <pre>
@@ -3928,6 +3947,7 @@ public final class BarrageProto {
         }
         private WebClientLoginResp() {
             barrageTotalCount_ = 0;
+            msgColorList_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         }
 
         @java.lang.Override
@@ -3959,6 +3979,15 @@ public final class BarrageProto {
                             barrageTotalCount_ = input.readInt32();
                             break;
                         }
+                        case 18: {
+                            java.lang.String s = input.readStringRequireUtf8();
+                            if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                                msgColorList_ = new com.google.protobuf.LazyStringArrayList();
+                                mutable_bitField0_ |= 0x00000002;
+                            }
+                            msgColorList_.add(s);
+                            break;
+                        }
                         default: {
                             if (!parseUnknownFieldProto3(
                                     input, unknownFields, extensionRegistry, tag)) {
@@ -3974,6 +4003,9 @@ public final class BarrageProto {
                 throw new com.google.protobuf.InvalidProtocolBufferException(
                         e).setUnfinishedMessage(this);
             } finally {
+                if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                    msgColorList_ = msgColorList_.getUnmodifiableView();
+                }
                 this.unknownFields = unknownFields.build();
                 makeExtensionsImmutable();
             }
@@ -3991,6 +4023,7 @@ public final class BarrageProto {
                             top.houry.netty.barrage.proto.BarrageProto.WebClientLoginResp.class, top.houry.netty.barrage.proto.BarrageProto.WebClientLoginResp.Builder.class);
         }
 
+        private int bitField0_;
         public static final int BARRAGETOTALCOUNT_FIELD_NUMBER = 1;
         private int barrageTotalCount_;
         /**
@@ -3998,6 +4031,35 @@ public final class BarrageProto {
          */
         public int getBarrageTotalCount() {
             return barrageTotalCount_;
+        }
+
+        public static final int MSGCOLORLIST_FIELD_NUMBER = 2;
+        private com.google.protobuf.LazyStringList msgColorList_;
+        /**
+         * <code>repeated string msgColorList = 2;</code>
+         */
+        public com.google.protobuf.ProtocolStringList
+        getMsgColorListList() {
+            return msgColorList_;
+        }
+        /**
+         * <code>repeated string msgColorList = 2;</code>
+         */
+        public int getMsgColorListCount() {
+            return msgColorList_.size();
+        }
+        /**
+         * <code>repeated string msgColorList = 2;</code>
+         */
+        public java.lang.String getMsgColorList(int index) {
+            return msgColorList_.get(index);
+        }
+        /**
+         * <code>repeated string msgColorList = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+        getMsgColorListBytes(int index) {
+            return msgColorList_.getByteString(index);
         }
 
         private byte memoizedIsInitialized = -1;
@@ -4017,6 +4079,9 @@ public final class BarrageProto {
             if (barrageTotalCount_ != 0) {
                 output.writeInt32(1, barrageTotalCount_);
             }
+            for (int i = 0; i < msgColorList_.size(); i++) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 2, msgColorList_.getRaw(i));
+            }
             unknownFields.writeTo(output);
         }
 
@@ -4029,6 +4094,14 @@ public final class BarrageProto {
             if (barrageTotalCount_ != 0) {
                 size += com.google.protobuf.CodedOutputStream
                         .computeInt32Size(1, barrageTotalCount_);
+            }
+            {
+                int dataSize = 0;
+                for (int i = 0; i < msgColorList_.size(); i++) {
+                    dataSize += computeStringSizeNoTag(msgColorList_.getRaw(i));
+                }
+                size += dataSize;
+                size += 1 * getMsgColorListList().size();
             }
             size += unknownFields.getSerializedSize();
             memoizedSize = size;
@@ -4048,6 +4121,8 @@ public final class BarrageProto {
             boolean result = true;
             result = result && (getBarrageTotalCount()
                     == other.getBarrageTotalCount());
+            result = result && getMsgColorListList()
+                    .equals(other.getMsgColorListList());
             result = result && unknownFields.equals(other.unknownFields);
             return result;
         }
@@ -4061,6 +4136,10 @@ public final class BarrageProto {
             hash = (19 * hash) + getDescriptor().hashCode();
             hash = (37 * hash) + BARRAGETOTALCOUNT_FIELD_NUMBER;
             hash = (53 * hash) + getBarrageTotalCount();
+            if (getMsgColorListCount() > 0) {
+                hash = (37 * hash) + MSGCOLORLIST_FIELD_NUMBER;
+                hash = (53 * hash) + getMsgColorListList().hashCode();
+            }
             hash = (29 * hash) + unknownFields.hashCode();
             memoizedHashCode = hash;
             return hash;
@@ -4200,6 +4279,8 @@ public final class BarrageProto {
                 super.clear();
                 barrageTotalCount_ = 0;
 
+                msgColorList_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000002);
                 return this;
             }
 
@@ -4226,7 +4307,15 @@ public final class BarrageProto {
             @java.lang.Override
             public top.houry.netty.barrage.proto.BarrageProto.WebClientLoginResp buildPartial() {
                 top.houry.netty.barrage.proto.BarrageProto.WebClientLoginResp result = new top.houry.netty.barrage.proto.BarrageProto.WebClientLoginResp(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
                 result.barrageTotalCount_ = barrageTotalCount_;
+                if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                    msgColorList_ = msgColorList_.getUnmodifiableView();
+                    bitField0_ = (bitField0_ & ~0x00000002);
+                }
+                result.msgColorList_ = msgColorList_;
+                result.bitField0_ = to_bitField0_;
                 onBuilt();
                 return result;
             }
@@ -4278,6 +4367,16 @@ public final class BarrageProto {
                 if (other.getBarrageTotalCount() != 0) {
                     setBarrageTotalCount(other.getBarrageTotalCount());
                 }
+                if (!other.msgColorList_.isEmpty()) {
+                    if (msgColorList_.isEmpty()) {
+                        msgColorList_ = other.msgColorList_;
+                        bitField0_ = (bitField0_ & ~0x00000002);
+                    } else {
+                        ensureMsgColorListIsMutable();
+                        msgColorList_.addAll(other.msgColorList_);
+                    }
+                    onChanged();
+                }
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
                 return this;
@@ -4306,6 +4405,7 @@ public final class BarrageProto {
                 }
                 return this;
             }
+            private int bitField0_;
 
             private int barrageTotalCount_ ;
             /**
@@ -4329,6 +4429,100 @@ public final class BarrageProto {
             public Builder clearBarrageTotalCount() {
 
                 barrageTotalCount_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private com.google.protobuf.LazyStringList msgColorList_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            private void ensureMsgColorListIsMutable() {
+                if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+                    msgColorList_ = new com.google.protobuf.LazyStringArrayList(msgColorList_);
+                    bitField0_ |= 0x00000002;
+                }
+            }
+            /**
+             * <code>repeated string msgColorList = 2;</code>
+             */
+            public com.google.protobuf.ProtocolStringList
+            getMsgColorListList() {
+                return msgColorList_.getUnmodifiableView();
+            }
+            /**
+             * <code>repeated string msgColorList = 2;</code>
+             */
+            public int getMsgColorListCount() {
+                return msgColorList_.size();
+            }
+            /**
+             * <code>repeated string msgColorList = 2;</code>
+             */
+            public java.lang.String getMsgColorList(int index) {
+                return msgColorList_.get(index);
+            }
+            /**
+             * <code>repeated string msgColorList = 2;</code>
+             */
+            public com.google.protobuf.ByteString
+            getMsgColorListBytes(int index) {
+                return msgColorList_.getByteString(index);
+            }
+            /**
+             * <code>repeated string msgColorList = 2;</code>
+             */
+            public Builder setMsgColorList(
+                    int index, java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureMsgColorListIsMutable();
+                msgColorList_.set(index, value);
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>repeated string msgColorList = 2;</code>
+             */
+            public Builder addMsgColorList(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ensureMsgColorListIsMutable();
+                msgColorList_.add(value);
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>repeated string msgColorList = 2;</code>
+             */
+            public Builder addAllMsgColorList(
+                    java.lang.Iterable<java.lang.String> values) {
+                ensureMsgColorListIsMutable();
+                com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                        values, msgColorList_);
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>repeated string msgColorList = 2;</code>
+             */
+            public Builder clearMsgColorList() {
+                msgColorList_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                onChanged();
+                return this;
+            }
+            /**
+             * <code>repeated string msgColorList = 2;</code>
+             */
+            public Builder addMsgColorListBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                ensureMsgColorListIsMutable();
+                msgColorList_.add(value);
                 onChanged();
                 return this;
             }
@@ -5137,11 +5331,12 @@ public final class BarrageProto {
                         "\022\013\n\003msg\030\003 \001(\t\022\020\n\010msgColor\030\004 \001(\t\"9\n\030WebCl" +
                         "ientSendBarrageResp\022\013\n\003msg\030\001 \001(\t\022\020\n\010msgC" +
                         "olor\030\002 \001(\t\"4\n\021WebClientLoginReq\022\016\n\006userI" +
-                        "d\030\001 \001(\t\022\017\n\007videoId\030\002 \001(\t\"/\n\022WebClientLog" +
-                        "inResp\022\031\n\021barrageTotalCount\030\001 \001(\005\"5\n\022Web" +
-                        "ClientLogoutReq\022\016\n\006userId\030\001 \001(\t\022\017\n\007video" +
-                        "Id\030\002 \001(\tB-\n\035top.houry.netty.barrage.prot" +
-                        "oB\014BarrageProtob\006proto3"
+                        "d\030\001 \001(\t\022\017\n\007videoId\030\002 \001(\t\"E\n\022WebClientLog" +
+                        "inResp\022\031\n\021barrageTotalCount\030\001 \001(\005\022\024\n\014msg" +
+                        "ColorList\030\002 \003(\t\"5\n\022WebClientLogoutReq\022\016\n" +
+                        "\006userId\030\001 \001(\t\022\017\n\007videoId\030\002 \001(\tB-\n\035top.ho" +
+                        "ury.netty.barrage.protoB\014BarrageProtob\006p" +
+                        "roto3"
         };
         com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
                 new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5196,7 +5391,7 @@ public final class BarrageProto {
         internal_static_WebClientLoginResp_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_WebClientLoginResp_descriptor,
-                new java.lang.String[] { "BarrageTotalCount", });
+                new java.lang.String[] { "BarrageTotalCount", "MsgColorList", });
         internal_static_WebClientLogoutReq_descriptor =
                 getDescriptor().getMessageTypes().get(7);
         internal_static_WebClientLogoutReq_fieldAccessorTable = new
