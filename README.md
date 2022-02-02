@@ -7,7 +7,7 @@
 ### 版本介绍
 后端基于springboot-2.4.3、redis、netty、protocol buffer。
 
-前端基于vue。
+前端基于vue、webSocket技术实现。
 
 ### 主要功能
 断网重连，实时开关弹幕、设置弹幕颜色，标识自己发送的弹幕，音量调节等功能。
@@ -32,6 +32,9 @@ https://gitee.com/MonkeyBrothers/barrage-vue
 2.启动前端服务
 
 ### 历史版本
+
+[前后端分离版本]-[V2.0版本] https://gitee.com/MonkeyBrothers/barrage/tree/V2.0/
+
 [前后端未分离版本]-[V1.0版本] https://gitee.com/MonkeyBrothers/barrage/tree/V1.0/
 
 ### V2.0版本效果截图
