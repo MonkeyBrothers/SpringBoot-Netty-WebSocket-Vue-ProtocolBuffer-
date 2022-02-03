@@ -24,7 +24,6 @@
         <version.mysql-connector-java>8.0.19</version.mysql-connector-java>
         <version.druid>1.1.10</version.druid>
         <version.mybatis-plus-boot-starter>3.4.3.1</version.mybatis-plus-boot-starter>
-        <version.dynamic-datasource-spring-boot-starter>3.4.1</version.dynamic-datasource-spring-boot-starter>
         <version.mybatis-plus-generator>3.4.1</version.mybatis-plus-generator>
         <version.velocity-engine-core>2.2</version.velocity-engine-core>
 
@@ -53,11 +52,6 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${version.mybatis-plus-boot-starter}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
-            <version>${version.dynamic-datasource-spring-boot-starter}</version>
         </dependency>
 
         <dependency>

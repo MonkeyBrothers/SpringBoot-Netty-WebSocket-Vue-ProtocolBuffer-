@@ -12,7 +12,9 @@ import top.houry.netty.barrage.bo.BarrageMsgBo;
 import top.houry.netty.barrage.consts.BarrageMsgTypeConst;
 import top.houry.netty.barrage.consts.BarrageRedisKeyConst;
 import top.houry.netty.barrage.consts.BarrageVideoConst;
+import top.houry.netty.barrage.entity.BarrageMsg;
 import top.houry.netty.barrage.proto.BarrageProto;
+import top.houry.netty.barrage.service.IBarrageMsgService;
 import top.houry.netty.barrage.service.IBarrageMsgTypeService;
 import top.houry.netty.barrage.service.IBarrageSendMsgToClientService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
@@ -34,11 +36,17 @@ public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
 
     private IBarrageSendMsgToClientService barrageSendMsgToClientService;
 
+    private IBarrageMsgService barrageMsgService;
+
     @Autowired
     public void setRedisUtils(BarrageRedisUtils redisUtils) {
         this.redisUtils = redisUtils;
     }
 
+    @Autowired
+    public void setBarrageMsgService(IBarrageMsgService barrageMsgService) {
+        this.barrageMsgService = barrageMsgService;
+    }
     @Autowired
     public void setBarrageSendMsgToClientService(IBarrageSendMsgToClientService barrageSendMsgToClientService) {
         this.barrageSendMsgToClientService = barrageSendMsgToClientService;
@@ -54,6 +62,15 @@ public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
             String userId = StringUtils.isBlank(clientSendBarrage.getUserId()) ? "" : clientSendBarrage.getUserId();
             String videId = StringUtils.isBlank(clientSendBarrage.getVideoId()) ? "" : clientSendBarrage.getVideoId();
             log.info("[Req]-[BarrageReceiveMsgServiceImpl]-[dealWithBarrageMessage]-[msg:{}]-[userId:{}]-[videId:{}]-[msgPosition:{}]", msg, userId, videId, msgPosition);
+
+            BarrageMsg barrageMsg = new BarrageMsg();
+            barrageMsg.setMsgColor(msgColor);
+            barrageMsg.setMsgContent(msg);
+            barrageMsg.setMsgPosition(msgPosition);
+            barrageMsg.setUserId(Long.parseLong(userId));
+            barrageMsg.setVideoId(Long.parseLong(videId));
+            barrageMsgService.saveBarrageMsg(barrageMsg);
+
             BarrageMsgBo barrageMsgBo = new BarrageMsgBo(msg, msgColor, msgPosition, userId, videId);
             redisUtils.listPush(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + BarrageVideoConst.videId, JSONUtil.toJsonStr(barrageMsgBo));
 
@@ -64,4 +81,5 @@ public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
             log.error("[Exception]-[BarrageReceiveMsgServiceImpl]-[dealWithBarrageMessage]", e);
         }
     }
+
 }
