@@ -11,6 +11,7 @@ import top.houry.netty.barrage.annotation.BarrageAnnotation;
 import top.houry.netty.barrage.bo.BarrageMsgBo;
 import top.houry.netty.barrage.consts.BarrageMsgTypeConst;
 import top.houry.netty.barrage.consts.BarrageRedisKeyConst;
+import top.houry.netty.barrage.consts.BarrageVideoConst;
 import top.houry.netty.barrage.proto.BarrageProto;
 import top.houry.netty.barrage.service.IBarrageMsgTypeService;
 import top.houry.netty.barrage.service.IBarrageSendMsgToClientService;
@@ -49,15 +50,16 @@ public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
             BarrageProto.WebClientSendBarrageReq clientSendBarrage = BarrageProto.WebClientSendBarrageReq.parseFrom(barrage.getBytesData());
             String msg = StringUtils.isBlank(clientSendBarrage.getMsg()) ? "我们都是追梦人" : clientSendBarrage.getMsg();
             String msgColor = StringUtils.isBlank(clientSendBarrage.getMsgColor()) ? "#FFFFFF" : clientSendBarrage.getMsgColor();
+            int msgPosition =  clientSendBarrage.getMsgPosition();
             String userId = StringUtils.isBlank(clientSendBarrage.getUserId()) ? "" : clientSendBarrage.getUserId();
             String videId = StringUtils.isBlank(clientSendBarrage.getVideoId()) ? "" : clientSendBarrage.getVideoId();
-            log.info("[Req]-[BarrageReceiveMsgServiceImpl]-[dealWithBarrageMessage]-[msg:{}]-[userId:{}]-[videId:{}]", msg, userId, videId);
-
-            redisUtils.listPush(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + "1294384753222123", JSONUtil.toJsonStr(new BarrageMsgBo(msg, msgColor, userId, videId)));
+            log.info("[Req]-[BarrageReceiveMsgServiceImpl]-[dealWithBarrageMessage]-[msg:{}]-[userId:{}]-[videId:{}]-[msgPosition:{}]", msg, userId, videId, msgPosition);
+            BarrageMsgBo barrageMsgBo = new BarrageMsgBo(msg, msgColor, msgPosition, userId, videId);
+            redisUtils.listPush(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + BarrageVideoConst.videId, JSONUtil.toJsonStr(barrageMsgBo));
 
             List<ChannelHandlerContext> channelHandlerContextLists = BarrageConnectInfoUtils.getChannelHandlerContextListByVideId(videId);
             if (CollectionUtils.isEmpty(channelHandlerContextLists)) return;
-            channelHandlerContextLists.stream().filter(v -> !v.equals(ctx)).forEach(v -> barrageSendMsgToClientService.sendMsg(msg, msgColor, v));
+            channelHandlerContextLists.stream().filter(v -> !v.equals(ctx)).forEach(v -> barrageSendMsgToClientService.sendMsg(barrageMsgBo, v));
         } catch (Exception e) {
             log.error("[Exception]-[BarrageReceiveMsgServiceImpl]-[dealWithBarrageMessage]", e);
         }

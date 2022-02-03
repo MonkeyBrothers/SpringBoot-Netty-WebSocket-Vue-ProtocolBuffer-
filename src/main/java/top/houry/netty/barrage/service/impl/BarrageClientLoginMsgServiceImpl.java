@@ -53,13 +53,13 @@ public class BarrageClientLoginMsgServiceImpl implements IBarrageMsgTypeService 
             log.info("[Req]-[BarrageClientLoginMsgServiceImpl]-[dealWithBarrageMessage]-[userId:{}]-[videoId:{}]", userId, videoId);
             BarrageConnectInfoUtils.addChannelInfoToBaseMap(videoId, ctx);
 
-            List<String> colors = barrageColorConfigureService.getAll().stream().map(BarrageColorConfigure::getCode).collect(Collectors.toList());
+            //List<String> colors = barrageColorConfigureService.getAll().stream().map(BarrageColorConfigure::getCode).collect(Collectors.toList());
             List<String> totalMsgList = redisUtils.listGetAll(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + BarrageVideoConst.videId);
 
             BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
             BarrageProto.WebClientLoginResp.Builder loginResp = BarrageProto.WebClientLoginResp.newBuilder();
 
-            loginResp.addAllMsgColorList(colors);
+            //loginResp.addAllMsgColorList(colors);
             loginResp.setBarrageTotalCount(totalMsgList.size());
 
             builder.setBytesData(loginResp.build().toByteString());

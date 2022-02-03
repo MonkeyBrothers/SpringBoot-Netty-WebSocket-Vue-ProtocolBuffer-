@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+import top.houry.netty.barrage.bo.BarrageMsgBo;
 import top.houry.netty.barrage.service.IBarrageSendMsgToClientService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 import top.houry.netty.barrage.utils.BarrageContentUtils;
@@ -40,7 +41,8 @@ public class BarrageScheduling {
     public void pushHistoryBarrage() {
         List<ChannelHandlerContext> contexts = BarrageConnectInfoUtils.getChannelHandlerContextListByVideId("1294384753222123");
         if (CollectionUtils.isEmpty(contexts)) return;
-        contexts.forEach(v -> barrageSendMsgToClientService.sendMsg(BarrageContentUtils.getContext(), null, v));
+        BarrageMsgBo barrageMsgBo = new BarrageMsgBo(BarrageContentUtils.getContext(), "#fff", 0, null, null);
+        contexts.forEach(v -> barrageSendMsgToClientService.sendMsg(barrageMsgBo, v));
     }
 
 }

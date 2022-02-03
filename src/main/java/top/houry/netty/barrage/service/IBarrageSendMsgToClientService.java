@@ -1,6 +1,7 @@
 package top.houry.netty.barrage.service;
 
 import io.netty.channel.ChannelHandlerContext;
+import top.houry.netty.barrage.bo.BarrageMsgBo;
 
 /**
  * @Desc
@@ -8,5 +9,5 @@ import io.netty.channel.ChannelHandlerContext;
  * @Date 2022/2/2
  **/
 public interface IBarrageSendMsgToClientService {
-    void sendMsg(String msg, String msgColor, ChannelHandlerContext context);
+    void sendMsg(BarrageMsgBo barrageMsgBo, ChannelHandlerContext context);
 }

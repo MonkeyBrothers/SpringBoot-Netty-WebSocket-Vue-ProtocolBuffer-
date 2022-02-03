@@ -10,15 +10,27 @@ import lombok.NoArgsConstructor;
  * @Date 2022/2/2
  **/
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class BarrageMsgBo {
 
     private String msg;
 
     private String msgColor;
 
+    private Integer msgPosition;
+
+
     private String userId;
 
     private String videId;
+
+    public BarrageMsgBo() {
+    }
+
+    public BarrageMsgBo(String msg, String msgColor, Integer msgPosition, String userId, String videId) {
+        this.msg = msg;
+        this.msgColor = msgColor;
+        this.msgPosition = msgPosition;
+        this.userId = userId;
+        this.videId = videId;
+    }
 }
