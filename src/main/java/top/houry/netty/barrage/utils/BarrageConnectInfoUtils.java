@@ -87,5 +87,17 @@ public class BarrageConnectInfoUtils {
         return contexts.remove(context);
     }
 
+    /**
+     * 根据上下文通道获取对应的视频ID
+     *
+     * @param context 上下文通道
+     * @return 视频ID
+     */
+    public static String getVideoIdByChannelHandlerContext(ChannelHandlerContext context) {
+        String videoId = BASE_CHANNEL_VIDEO_MAP.get(context);
+        if (StringUtils.isBlank(videoId)) return "";
+        return videoId;
+    }
+
 
 }

@@ -70,7 +70,7 @@ public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
             barrageMsg.setUserId(Long.parseLong(userId));
             barrageMsg.setVideoId(Long.parseLong(videId));
             barrageMsgService.saveBarrageMsg(barrageMsg);
-
+            
             BarrageMsgBo barrageMsgBo = new BarrageMsgBo(msg, msgColor, msgPosition, userId, videId);
             redisUtils.listPush(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + BarrageVideoConst.videId, JSONUtil.toJsonStr(barrageMsgBo));
 

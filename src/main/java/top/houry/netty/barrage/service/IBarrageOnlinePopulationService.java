@@ -7,7 +7,9 @@ package top.houry.netty.barrage.service;
  **/
 public interface IBarrageOnlinePopulationService {
 
-    void incrementOne();
+    void incrOne(String videoId);
 
-    void decrementOne();
+    void decrOne(String videoId);
+
+    int getCountByVideoId(String videoId);
 }

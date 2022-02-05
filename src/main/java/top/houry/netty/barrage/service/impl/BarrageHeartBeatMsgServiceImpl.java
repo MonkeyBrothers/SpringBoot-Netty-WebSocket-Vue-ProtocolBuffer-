@@ -2,6 +2,7 @@ package top.houry.netty.barrage.service.impl;
 
 import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.houry.netty.barrage.annotation.BarrageAnnotation;
@@ -38,16 +39,26 @@ public class BarrageHeartBeatMsgServiceImpl implements IBarrageMsgTypeService {
      * @param ctx     通道上下文信息
      */
     @Override
-    public void dealWithBarrageMessage(BarrageProto.Barrage barrage, ChannelHandlerContext ctx) {
-        log.info("[BarrageHeartBeatMsgServiceImpl]-[dealWithBarrageMessage]-[接收到心跳]-[ctx:{}]", ctx.channel().toString());
-        BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
+    public void dealWithBarrageMessage(BarrageProto.Barrage barrage, ChannelHandlerContext ctx)  {
+        try {
+            log.info("[BarrageHeartBeatMsgServiceImpl]-[dealWithBarrageMessage]-[接收到心跳]-[ctx:{}]", ctx.channel().toString());
 
-        BarrageProto.WebClientHeartBeatResp.Builder resp = BarrageProto.WebClientHeartBeatResp.newBuilder();
-        List<String> totalMsgList = redisUtils.listGetAll(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + BarrageVideoConst.videId);
-        resp.setBarrageTotalCount(totalMsgList.size());
+            BarrageProto.WebClientHeartBeatReq heartBeatReq = BarrageProto.WebClientHeartBeatReq.parseFrom(barrage.getBytesData());
+            String videoId = StringUtils.isBlank(heartBeatReq.getVideoId()) ? "" : heartBeatReq.getVideoId();
 
-        builder.setMsgType(BarrageMsgTypeConst.WEB_CLIENT_HEART_BEAT_RESP);
-        builder.setBytesData(resp.build().toByteString());
-        ctx.writeAndFlush(builder);
+            BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
+            BarrageProto.WebClientHeartBeatResp.Builder resp = BarrageProto.WebClientHeartBeatResp.newBuilder();
+
+            List<String> totalMsgList = redisUtils.listGetAll(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + BarrageVideoConst.videId);
+            String onlineCount = redisUtils.get(BarrageRedisKeyConst.BARRAGE_ONLINE_POPULATION_KEY + videoId);
+            resp.setBarrageTotalCount(totalMsgList.size());
+            resp.setBarrageOnlineCount(StringUtils.isBlank(onlineCount) ? 0 : Integer.parseInt(onlineCount));
+
+            builder.setMsgType(BarrageMsgTypeConst.WEB_CLIENT_HEART_BEAT_RESP);
+            builder.setBytesData(resp.build().toByteString());
+            ctx.writeAndFlush(builder);
+        } catch (Exception e) {
+            log.error("[Exception]-[BarrageHeartBeatMsgServiceImpl]-[dealWithBarrageMessage]", e);
+        }
     }
 }

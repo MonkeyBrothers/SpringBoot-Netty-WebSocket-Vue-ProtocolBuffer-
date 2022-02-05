@@ -1,5 +1,14 @@
 package top.houry.netty.barrage.utils;
 
+import cn.hutool.json.JSONUtil;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.CollectionUtils;
+import top.houry.netty.barrage.bo.BarrageMsgBo;
+import top.houry.netty.barrage.consts.BarrageRedisKeyConst;
+import top.houry.netty.barrage.consts.BarrageVideoConst;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -8,29 +17,33 @@ import java.util.Random;
  * @Date 2021/3/8 16:11
  **/
 public class BarrageContentUtils {
-    public static String[] context = {
-            "我们都是追梦人！",
-            "做的不错",
-            "666666666",
-            "哈哈哈哈",
-            "新年好啊",
-            "OK",
-            "太棒了",
-            "学习一下",
-            "版本在持续不断的更迭中",
-            "欢迎大家踊跃的加入啊",
-            "微信搜索:小猴子的技术笔记",
-            "小猴子祝您，虎年大吉，虎虎生威",
-    };
 
-    public static String getContext(String[] barrage){
+    public static BarrageMsgBo getContext(List<BarrageMsgBo> msgBos) {
         Random random = new Random();
-        int i = random.nextInt(barrage.length);
-        return barrage[i];
+        int i = random.nextInt(msgBos.size());
+        return msgBos.get(i);
     }
 
-    public static String getContext() {
-        return getContext(context);
+    public static BarrageMsgBo getContext() {
+        BarrageRedisUtils redisUtils = BarrageSpringContextUtil.getBean(BarrageRedisUtils.class);
+        List<String> barrages = redisUtils.listGetAll(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + BarrageVideoConst.videId);
+        List<BarrageMsgBo> barrageMsgList = new ArrayList<>(barrages.size());
+        barrages.forEach(v -> {
+            BarrageMsgBo msgBo = JSONUtil.toBean(v, BarrageMsgBo.class);
+            barrageMsgList.add(msgBo);
+        });
+        return getContext(barrageMsgList);
     }
+
+//    public static String getContext() {
+//        BarrageRedisUtils redisUtils = BarrageSpringContextUtil.getBean(BarrageRedisUtils.class);
+//        List<String> barrages = redisUtils.listGetAll(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + BarrageVideoConst.videId);
+//        List<String> barrageMsgList = new ArrayList<>(barrages.size());
+//        barrages.forEach(v -> {
+//            BarrageMsgBo msgBo = JSONUtil.toBean(v, BarrageMsgBo.class);
+//            barrageMsgList.add(StringUtils.isBlank(msgBo.getMsg()) ? "" : msgBo.getMsg());
+//        });
+//        return getContext(barrageMsgList.toArray(new String[0]));
+//    }
 
 }

@@ -22,7 +22,7 @@ public class BarrageSendMsgToClientServiceImpl implements IBarrageSendMsgToClien
         BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
         BarrageProto.WebClientSendBarrageResp.Builder client = BarrageProto.WebClientSendBarrageResp.newBuilder();
         client.setMsg(barrageMsgBo.getMsg());
-        client.setMsgPosition(barrageMsgBo.getMsgPosition());
+        client.setMsgPosition(null == barrageMsgBo.getMsgPosition() ? 0 : barrageMsgBo.getMsgPosition());
         client.setMsgColor(StringUtils.isBlank(barrageMsgBo.getMsgColor()) ? "#fff" : barrageMsgBo.getMsgColor());
         builder.setMsgType(BarrageMsgTypeConst.WEB_CLIENT_BARRAGE_RESP);
         builder.setBytesData(client.build().toByteString());

@@ -11,11 +11,14 @@ message Barrage {
 // 心跳回复包
 message WebClientHeartBeatResp {
   int32 barrageTotalCount = 1;
+  int32 barrageOnlineCount = 2;
+  int32 barrageTotalWatchCount = 4;
 }
 
 // 心跳请求包
 message WebClientHeartBeatReq {
-
+  string userId = 1;
+  string videoId = 2;
 }
 
 // web客户端弹幕消息内容请求
@@ -41,8 +44,10 @@ message WebClientLoginReq {
 }
 // web客户端登录信息响应
 message WebClientLoginResp {
-  int32 barrageTotalCount         = 1;
-  repeated string msgColorList    = 2;
+  int32 barrageTotalCount = 1;
+  repeated string msgColorList = 2;
+  int32 barrageOnlineCount = 3;
+  int32 barrageTotalWatchCount = 4;
 }
 
 // web客户端退出信息

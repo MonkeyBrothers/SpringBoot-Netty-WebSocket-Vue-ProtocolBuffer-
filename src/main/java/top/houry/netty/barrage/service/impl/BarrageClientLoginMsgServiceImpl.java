@@ -13,6 +13,8 @@ import top.houry.netty.barrage.entity.BarrageColorConfigure;
 import top.houry.netty.barrage.proto.BarrageProto;
 import top.houry.netty.barrage.service.IBarrageColorConfigureService;
 import top.houry.netty.barrage.service.IBarrageMsgTypeService;
+import top.houry.netty.barrage.service.IBarrageOnlinePopulationService;
+import top.houry.netty.barrage.service.IBarrageWatchInfoService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 import top.houry.netty.barrage.utils.BarrageContentUtils;
 import top.houry.netty.barrage.utils.BarrageRedisUtils;
@@ -32,11 +34,18 @@ public class BarrageClientLoginMsgServiceImpl implements IBarrageMsgTypeService 
 
     private BarrageRedisUtils redisUtils;
 
-    private IBarrageColorConfigureService barrageColorConfigureService;
+    private IBarrageOnlinePopulationService barrageOnlinePopulationService;
+
+    private IBarrageWatchInfoService barrageWatchInfoService;
 
     @Autowired
-    public void setBarrageColorConfigureService(IBarrageColorConfigureService barrageColorConfigureService) {
-        this.barrageColorConfigureService = barrageColorConfigureService;
+    public void setBarrageWatchInfoService(IBarrageWatchInfoService barrageWatchInfoService) {
+        this.barrageWatchInfoService = barrageWatchInfoService;
+    }
+
+    @Autowired
+    public void setBarrageOnlinePopulationService(IBarrageOnlinePopulationService barrageOnlinePopulationService) {
+        this.barrageOnlinePopulationService = barrageOnlinePopulationService;
     }
 
     @Autowired
@@ -53,21 +62,27 @@ public class BarrageClientLoginMsgServiceImpl implements IBarrageMsgTypeService 
             log.info("[Req]-[BarrageClientLoginMsgServiceImpl]-[dealWithBarrageMessage]-[userId:{}]-[videoId:{}]", userId, videoId);
             BarrageConnectInfoUtils.addChannelInfoToBaseMap(videoId, ctx);
 
-            //List<String> colors = barrageColorConfigureService.getAll().stream().map(BarrageColorConfigure::getCode).collect(Collectors.toList());
             List<String> totalMsgList = redisUtils.listGetAll(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + BarrageVideoConst.videId);
 
             BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
             BarrageProto.WebClientLoginResp.Builder loginResp = BarrageProto.WebClientLoginResp.newBuilder();
 
-            //loginResp.addAllMsgColorList(colors);
+            loginResp.setBarrageOnlineCount(barrageOnlinePopulationService.getCountByVideoId(videoId));
             loginResp.setBarrageTotalCount(totalMsgList.size());
 
             builder.setBytesData(loginResp.build().toByteString());
             builder.setMsgType(BarrageMsgTypeConst.WEB_CLIENT_LOGIN_RESP);
 
+            cacheToRedis(videoId);
+
             ctx.writeAndFlush(builder);
         } catch (Exception e) {
             log.error("[Exception]-[BarrageClientLoginMsgServiceImpl]-[dealWithBarrageMessage]", e);
         }
+    }
+
+    private void cacheToRedis(String videoId) {
+        barrageOnlinePopulationService.incrOne(videoId);
+        barrageWatchInfoService.addWatchCount(videoId);
     }
 }

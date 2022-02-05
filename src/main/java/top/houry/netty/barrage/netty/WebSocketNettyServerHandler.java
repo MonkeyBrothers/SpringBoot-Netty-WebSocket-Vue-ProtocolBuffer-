@@ -5,9 +5,13 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import top.houry.netty.barrage.proto.BarrageProto;
+import top.houry.netty.barrage.service.IBarrageOnlinePopulationService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 import top.houry.netty.barrage.utils.BarrageMsgBeanUtils;
+import top.houry.netty.barrage.utils.BarrageSpringContextUtil;
 
 /**
  * @Desc 配置netty-handler
@@ -59,8 +63,12 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         log.info("[WebSocketNettyServerHandler]-[handlerRemoved]-[{}]", ctx.channel().toString());
-        // 因为会有断网的情况，这里需要把断网的连接信息从缓存中清除
         BarrageConnectInfoUtils.removeChannelInfoByChannelHandlerContext(ctx);
+        String videId = BarrageConnectInfoUtils.getVideoIdByChannelHandlerContext(ctx);
+        if (StringUtils.isBlank(videId)) return;
+        IBarrageOnlinePopulationService onlinePopulationService = BarrageSpringContextUtil.getBean(IBarrageOnlinePopulationService.class);
+        onlinePopulationService.decrOne(videId);
+
     }
 
     /**
@@ -71,7 +79,6 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-
     }
 
     /**
