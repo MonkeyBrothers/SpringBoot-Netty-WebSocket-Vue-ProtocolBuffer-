@@ -41,7 +41,6 @@ https://gitee.com/MonkeyBrothers/barrage-vue
 ![avatar](/images/v2.0/1.png)
 ![avatar](/images/v2.0/2.png)
 ![avatar](/images/v2.0/3.png)
-![avatar](/images/v2.0/4.png)
 
 
 ### V1.0版本效果截图
