@@ -55,3 +55,24 @@ message WebClientLogoutReq {
   string userId   = 1;
   string videoId  = 2;
 }
+
+// 历史弹幕消息实体
+message BarrageHistoryMessage{
+  string userId = 1;
+  string videoId = 2;
+  string msg = 3;
+  string msgColor = 4;
+  int32 msgPosition = 5;
+  string sendTime = 6;
+  string createTime = 7;
+}
+
+// 历史弹幕请求
+message WebClientBarrageHistoryListReq {
+  string videoId = 1;
+}
+
+// 历史弹幕响应
+message WebClientBarrageHistoryListResp {
+  repeated BarrageHistoryMessage list = 1;
+}
