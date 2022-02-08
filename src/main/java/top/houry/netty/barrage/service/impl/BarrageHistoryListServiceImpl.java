@@ -10,6 +10,7 @@ import top.houry.netty.barrage.entity.BarrageMsg;
 import top.houry.netty.barrage.proto.BarrageProto;
 import top.houry.netty.barrage.service.IBarrageMsgService;
 import top.houry.netty.barrage.service.IBarrageMsgTypeService;
+import top.houry.netty.barrage.utils.BarrageDateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +43,9 @@ public class BarrageHistoryListServiceImpl implements IBarrageMsgTypeService {
             barrageMsgList.forEach(v ->{
                 BarrageProto.BarrageHistoryMessage.Builder message = BarrageProto.BarrageHistoryMessage.newBuilder();
                 message.setMsg(v.getMsgColor());
-                //message.setCreateTime()
+                message.setCreateTime(BarrageDateUtils.dateToString(v.getCreateTime(), BarrageDateUtils.DateType.NORM_TIME_PATTERN));
                 message.setMsgColor(v.getMsgColor());
+                message.setSendTime(v.getVideoTime());
                 message.setMsg(v.getMsgContent());
                 msgList.add(message.build());
             });
@@ -54,7 +56,7 @@ public class BarrageHistoryListServiceImpl implements IBarrageMsgTypeService {
             builder.setMsgType(BarrageMsgTypeConst.WEB_CLIENT_BARRAGE_HISTORY_RESP);
             builder.setBytesData(resp.build().toByteString());
 
-            ctx.writeAndFlush(resp);
+            ctx.writeAndFlush(builder);
         } catch (Exception e) {
             log.error("[Exception]-[BarrageHistoryListServiceImpl]-[dealWithBarrageMessage]", e);
         }
