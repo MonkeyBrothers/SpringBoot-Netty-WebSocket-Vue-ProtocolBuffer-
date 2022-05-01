@@ -24,7 +24,6 @@ import java.util.List;
 @Slf4j
 public class BarrageScheduling {
 
-    private BarrageRedisUtils redisUtils;
 
     private IBarrageSendMsgToClientService barrageSendMsgToClientService;
 
@@ -32,16 +31,13 @@ public class BarrageScheduling {
     public void setBarrageSendMsgToClientService(IBarrageSendMsgToClientService barrageSendMsgToClientService) {
         this.barrageSendMsgToClientService = barrageSendMsgToClientService;
     }
-    @Autowired
-    public void setRedisUtils(BarrageRedisUtils redisUtils) {
-        this.redisUtils = redisUtils;
-    }
-
 
     @Scheduled(fixedRate = 2000)
     public void pushHistoryBarrage() {
         List<ChannelHandlerContext> contexts = BarrageConnectInfoUtils.getChannelHandlerContextListByVideId(BarrageVideoConst.videId);
-        if (CollectionUtils.isEmpty(contexts)) return;
+        if (CollectionUtils.isEmpty(contexts)) {
+            return;
+        }
         contexts.forEach(v -> barrageSendMsgToClientService.sendMsg(BarrageContentUtils.getContext(), v));
     }
 

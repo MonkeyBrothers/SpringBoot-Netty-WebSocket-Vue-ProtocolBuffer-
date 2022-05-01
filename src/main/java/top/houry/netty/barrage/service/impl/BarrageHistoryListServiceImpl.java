@@ -2,6 +2,7 @@ package top.houry.netty.barrage.service.impl;
 
 import io.netty.channel.ChannelHandlerContext;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.houry.netty.barrage.annotation.BarrageAnnotation;
@@ -45,7 +46,7 @@ public class BarrageHistoryListServiceImpl implements IBarrageMsgTypeService {
                 message.setMsg(v.getMsgColor());
                 message.setCreateTime(BarrageDateUtils.dateToString(v.getCreateTime(), BarrageDateUtils.DateType.NORM_TIME_PATTERN));
                 message.setMsgColor(v.getMsgColor());
-                message.setSendTime(v.getVideoTime());
+                message.setSendTime(BarrageDateUtils.secondToNormTime(Integer.parseInt(StringUtils.isBlank(v.getVideoTime()) ? "0" :v.getVideoTime())));
                 message.setMsg(v.getMsgContent());
                 msgList.add(message.build());
             });

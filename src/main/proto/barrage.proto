@@ -28,6 +28,7 @@ message WebClientSendBarrageReq {
   string msg = 3;
   string msgColor = 4;
   int32 msgPosition = 5;
+  string msgVideoTime = 6;
 }
 
 // web客户端弹幕消息内容响应

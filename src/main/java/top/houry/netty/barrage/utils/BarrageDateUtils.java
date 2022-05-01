@@ -4,9 +4,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.WeekFields;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
@@ -44,6 +42,24 @@ public class BarrageDateUtils {
      * 定义一周的每天表示的常量，用于返回中文展示
      */
     private static final String[] DAY_OF_WEEK = {"周一", "周二", "周三", "周四", "周五", "周六", "周日"};
+
+    public static String secondToNormTime(int seconds) {
+        String h = String.valueOf(seconds / 3600);
+        String m = String.valueOf((seconds % 3600) / 60);
+        String s = String.valueOf((seconds % 3600) % 60);
+        if (h.length() < 2 ) {
+            h += "0";
+        }
+        if (m.length() < 2 ) {
+            m += "0";
+        }
+        if (s.length() < 2 ) {
+            s += "0";
+        }
+        return h + ":" + m + ":"  +s;
+    }
+
+
 
     /**
      * 把长整型的时间戳转换成日期

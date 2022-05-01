@@ -5,10 +5,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import top.houry.netty.barrage.proto.BarrageProto;
-import top.houry.netty.barrage.service.IBarrageOnlinePopulationService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 import top.houry.netty.barrage.utils.BarrageMsgBeanUtils;
 import top.houry.netty.barrage.utils.BarrageSpringContextUtil;
@@ -65,9 +62,9 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
         log.info("[WebSocketNettyServerHandler]-[handlerRemoved]-[{}]", ctx.channel().toString());
         BarrageConnectInfoUtils.removeChannelInfoByChannelHandlerContext(ctx);
         String videId = BarrageConnectInfoUtils.getVideoIdByChannelHandlerContext(ctx);
-        if (StringUtils.isBlank(videId)) return;
-        IBarrageOnlinePopulationService onlinePopulationService = BarrageSpringContextUtil.getBean(IBarrageOnlinePopulationService.class);
-        onlinePopulationService.decrOne(videId);
+        if (StringUtils.isBlank(videId)) {
+            return;
+        }
 
     }
 
@@ -118,7 +115,7 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
             IdleStateEvent event = (IdleStateEvent) evt;
             switch (event.state()) {
                 case READER_IDLE:
-                    log.info("[WebSocketNettyServerHandler]-[userEventTriggered]-[没有接收到：{}的信息心跳信息，将断开连接回收资源]", ctx.toString());
+                    log.info("[WebSocketNettyServerHandler]-[userEventTriggered]-[没有接收到：{}]-[的信息心跳信息，将断开连接回收资源]", ctx.toString());
                     ctx.channel().close();
                     break;
                 case WRITER_IDLE:

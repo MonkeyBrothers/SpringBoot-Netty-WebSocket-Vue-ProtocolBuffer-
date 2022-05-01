@@ -20,6 +20,7 @@ import top.houry.netty.barrage.service.IBarrageSendMsgToClientService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 import top.houry.netty.barrage.utils.BarrageRedisUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -61,6 +62,7 @@ public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
             int msgPosition =  clientSendBarrage.getMsgPosition();
             String userId = StringUtils.isBlank(clientSendBarrage.getUserId()) ? "" : clientSendBarrage.getUserId();
             String videId = StringUtils.isBlank(clientSendBarrage.getVideoId()) ? "" : clientSendBarrage.getVideoId();
+            String msgVideoTime = StringUtils.isBlank(clientSendBarrage.getMsgVideoTime()) ? "" : clientSendBarrage.getMsgVideoTime();
             log.info("[Req]-[BarrageReceiveMsgServiceImpl]-[dealWithBarrageMessage]-[msg:{}]-[userId:{}]-[videId:{}]-[msgPosition:{}]", msg, userId, videId, msgPosition);
 
             BarrageMsg barrageMsg = new BarrageMsg();
@@ -69,17 +71,30 @@ public class BarrageReceiveMsgServiceImpl implements IBarrageMsgTypeService {
             barrageMsg.setMsgPosition(msgPosition);
             barrageMsg.setUserId(Long.parseLong(userId));
             barrageMsg.setVideoId(Long.parseLong(videId));
+            barrageMsg.setVideoTime(msgVideoTime);
+            barrageMsg.setCreateTime(new Date());
+            barrageMsg.setUpdateTime(new Date());
             barrageMsgService.saveBarrageMsg(barrageMsg);
             
             BarrageMsgBo barrageMsgBo = new BarrageMsgBo(msg, msgColor, msgPosition, userId, videId);
             redisUtils.listPush(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + BarrageVideoConst.videId, JSONUtil.toJsonStr(barrageMsgBo));
 
-            List<ChannelHandlerContext> channelHandlerContextLists = BarrageConnectInfoUtils.getChannelHandlerContextListByVideId(videId);
-            if (CollectionUtils.isEmpty(channelHandlerContextLists)) return;
-            channelHandlerContextLists.stream().filter(v -> !v.equals(ctx)).forEach(v -> barrageSendMsgToClientService.sendMsg(barrageMsgBo, v));
+            notifyOtherUser(videId, ctx, barrageMsgBo);
+
         } catch (Exception e) {
             log.error("[Exception]-[BarrageReceiveMsgServiceImpl]-[dealWithBarrageMessage]", e);
         }
     }
+
+
+    private void notifyOtherUser(String videId, ChannelHandlerContext ctx, BarrageMsgBo barrageMsgBo) {
+        List<ChannelHandlerContext> channelHandlerContextLists = BarrageConnectInfoUtils.getChannelHandlerContextListByVideId(videId);
+        if (CollectionUtils.isEmpty(channelHandlerContextLists)) {
+            return;
+        }
+        channelHandlerContextLists.stream().filter(v -> !v.equals(ctx) && v.channel().isActive())
+                .forEach(v -> barrageSendMsgToClientService.sendMsg(barrageMsgBo, v));
+    }
+
 
 }

@@ -20,9 +20,13 @@ public class BarrageAnnotationPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         BarrageAnnotation annotation = AnnotationUtils.findAnnotation(bean.getClass(), BarrageAnnotation.class);
-        if (null == annotation) return bean;
+        if (null == annotation) {
+            return bean;
+        }
         String msgType = annotation.msgType();
-        if (BarrageMsgBeanUtils.exist(msgType)) throw new RuntimeException(msgType + "is already exist");
+        if (BarrageMsgBeanUtils.exist(msgType)) {
+            throw new RuntimeException(msgType + "is already exist");
+        }
         BarrageMsgBeanUtils.addMsgType(msgType, beanName);
         log.info("[BarrageAnnotationPostProcessor]-[postProcessAfterInitialization]-[添加消息类型到缓存中]-[msgType:{}]", msgType);
         return bean;

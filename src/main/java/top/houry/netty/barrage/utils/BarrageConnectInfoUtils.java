@@ -32,9 +32,13 @@ public class BarrageConnectInfoUtils {
      * @return 通道信息集合
      */
     public static List<ChannelHandlerContext> getChannelHandlerContextListByVideId(String videoId) {
-        if (StringUtils.isBlank(videoId)) return null;
+        if (StringUtils.isBlank(videoId)) {
+            return null;
+        }
         List<ChannelHandlerContext> channelHandlerContexts = BASE_CONNECT_INFO_MAP.get(videoId);
-        if (CollectionUtils.isEmpty(channelHandlerContexts)) return null;
+        if (CollectionUtils.isEmpty(channelHandlerContexts)) {
+            return null;
+        }
         return channelHandlerContexts;
     }
 
@@ -46,7 +50,9 @@ public class BarrageConnectInfoUtils {
      * @return 添加结果
      */
     public static boolean addChannelInfoToBaseMap(String videoId, ChannelHandlerContext context) {
-        if (StringUtils.isBlank(videoId) || null == context || !context.channel().isActive()) return false;
+        if (StringUtils.isBlank(videoId) || null == context || !context.channel().isActive()) {
+            return false;
+        }
         List<ChannelHandlerContext> channelHandlerContexts = BASE_CONNECT_INFO_MAP.get(videoId);
         if (CollectionUtils.isEmpty(channelHandlerContexts)) {
             CopyOnWriteArrayList<ChannelHandlerContext> contexts = new CopyOnWriteArrayList<>();
@@ -66,10 +72,16 @@ public class BarrageConnectInfoUtils {
      * @return 移除结果
      */
     public static boolean removeChannelInfoFromBaseMap(String videoId, ChannelHandlerContext context) {
-        if (StringUtils.isBlank(videoId) || null == context || !context.channel().isActive()) return false;
+        if (StringUtils.isBlank(videoId) || null == context || !context.channel().isActive()) {
+            return false;
+        }
         List<ChannelHandlerContext> channelHandlerContexts = BASE_CONNECT_INFO_MAP.get(videoId);
-        if (CollectionUtils.isEmpty(channelHandlerContexts)) return true;
-        if (!channelHandlerContexts.contains(context)) return true;
+        if (CollectionUtils.isEmpty(channelHandlerContexts)) {
+            return true;
+        }
+        if (!channelHandlerContexts.contains(context)) {
+            return true;
+        }
         return channelHandlerContexts.remove(context);
     }
 
@@ -81,9 +93,13 @@ public class BarrageConnectInfoUtils {
      */
     public static boolean removeChannelInfoByChannelHandlerContext(ChannelHandlerContext context) {
         String videId = BASE_CHANNEL_VIDEO_MAP.get(context);
-        if (StringUtils.isBlank(videId)) return true;
+        if (StringUtils.isBlank(videId)) {
+            return true;
+        }
         List<ChannelHandlerContext> contexts = getChannelHandlerContextListByVideId(videId);
-        if (CollectionUtils.isEmpty(contexts)) return true;
+        if (CollectionUtils.isEmpty(contexts)) {
+            return true;
+        }
         return contexts.remove(context);
     }
 
@@ -95,7 +111,9 @@ public class BarrageConnectInfoUtils {
      */
     public static String getVideoIdByChannelHandlerContext(ChannelHandlerContext context) {
         String videoId = BASE_CHANNEL_VIDEO_MAP.get(context);
-        if (StringUtils.isBlank(videoId)) return "";
+        if (StringUtils.isBlank(videoId)) {
+            return "";
+        }
         return videoId;
     }
 

@@ -10,7 +10,9 @@ import top.houry.netty.barrage.consts.BarrageMsgTypeConst;
 import top.houry.netty.barrage.consts.BarrageRedisKeyConst;
 import top.houry.netty.barrage.consts.BarrageVideoConst;
 import top.houry.netty.barrage.proto.BarrageProto;
+import top.houry.netty.barrage.service.IBarrageMsgService;
 import top.houry.netty.barrage.service.IBarrageMsgTypeService;
+import top.houry.netty.barrage.service.IBarrageWatchInfoService;
 import top.houry.netty.barrage.utils.BarrageRedisUtils;
 
 import java.util.List;
@@ -25,12 +27,20 @@ import java.util.List;
 @Slf4j
 public class BarrageHeartBeatMsgServiceImpl implements IBarrageMsgTypeService {
 
-    private BarrageRedisUtils redisUtils;
+    private IBarrageMsgService msgService;
+
+    private IBarrageWatchInfoService watchInfoService;
 
     @Autowired
-    public void setRedisUtils(BarrageRedisUtils redisUtils) {
-        this.redisUtils = redisUtils;
+    public void setBarrageWatchInfoService(IBarrageWatchInfoService barrageWatchInfoService) {
+        this.watchInfoService = barrageWatchInfoService;
     }
+
+    @Autowired
+    public void setMsgService(IBarrageMsgService msgService) {
+        this.msgService = msgService;
+    }
+
 
     /**
      * 处理心跳逻辑
@@ -49,10 +59,9 @@ public class BarrageHeartBeatMsgServiceImpl implements IBarrageMsgTypeService {
             BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
             BarrageProto.WebClientHeartBeatResp.Builder resp = BarrageProto.WebClientHeartBeatResp.newBuilder();
 
-            List<String> totalMsgList = redisUtils.listGetAll(BarrageRedisKeyConst.BARRAGE_TOTAL_MSG_KEY + BarrageVideoConst.videId);
-            String onlineCount = redisUtils.get(BarrageRedisKeyConst.BARRAGE_ONLINE_POPULATION_KEY + videoId);
-            resp.setBarrageTotalCount(totalMsgList.size());
-            resp.setBarrageOnlineCount(StringUtils.isBlank(onlineCount) ? 0 : Integer.parseInt(onlineCount));
+            resp.setBarrageOnlineCount(Integer.parseInt(watchInfoService.getTotalOnlineWatchCount(videoId)));
+            resp.setBarrageTotalCount(msgService.getMsgCountByVideoId(videoId));
+            resp.setBarrageTotalWatchCount(Integer.parseInt(watchInfoService.getTotalWatchCount(videoId)));
 
             builder.setMsgType(BarrageMsgTypeConst.WEB_CLIENT_HEART_BEAT_RESP);
             builder.setBytesData(resp.build().toByteString());

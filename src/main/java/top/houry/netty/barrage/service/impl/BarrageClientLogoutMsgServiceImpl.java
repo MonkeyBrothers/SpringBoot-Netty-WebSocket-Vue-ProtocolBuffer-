@@ -9,7 +9,7 @@ import top.houry.netty.barrage.annotation.BarrageAnnotation;
 import top.houry.netty.barrage.consts.BarrageMsgTypeConst;
 import top.houry.netty.barrage.proto.BarrageProto;
 import top.houry.netty.barrage.service.IBarrageMsgTypeService;
-import top.houry.netty.barrage.service.IBarrageOnlinePopulationService;
+import top.houry.netty.barrage.service.IBarrageWatchInfoService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 
 /**
@@ -22,11 +22,11 @@ import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 @Slf4j
 public class BarrageClientLogoutMsgServiceImpl implements IBarrageMsgTypeService {
 
-    private IBarrageOnlinePopulationService barrageOnlinePopulationService;
+    private IBarrageWatchInfoService watchInfoService;
 
     @Autowired
-    public void setBarrageOnlinePopulationService(IBarrageOnlinePopulationService barrageOnlinePopulationService) {
-        this.barrageOnlinePopulationService = barrageOnlinePopulationService;
+    public void setWatchInfoService(IBarrageWatchInfoService watchInfoService) {
+        this.watchInfoService = watchInfoService;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class BarrageClientLogoutMsgServiceImpl implements IBarrageMsgTypeService
             String videoId = StringUtils.isBlank(loginInfo.getVideoId()) ? "" : loginInfo.getVideoId();
             log.info("[Req]-[BarrageClientLogoutMsgServiceImpl]-[dealWithBarrageMessage]-[userId:{}]-[videoId:{}]", userId, videoId);
             BarrageConnectInfoUtils.removeChannelInfoFromBaseMap(videoId, ctx);
-            barrageOnlinePopulationService.decrOne(videoId);
+            watchInfoService.subOnlineWatchCount(videoId);
         } catch (Exception e) {
             log.error("[Exception]-[BarrageClientLogoutMsgServiceImpl]-[dealWithBarrageMessage]", e);
         }

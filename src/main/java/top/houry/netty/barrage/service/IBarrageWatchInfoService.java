@@ -7,5 +7,13 @@ package top.houry.netty.barrage.service;
  **/
 public interface IBarrageWatchInfoService {
 
-    void addWatchCount(String videoId);
+    void addOnlineWatchCount(String videoId);
+
+    void subOnlineWatchCount(String videoId);
+
+    void addTotalWatchCount(String videoId);
+
+    String getTotalWatchCount(String videoId);
+
+    String getTotalOnlineWatchCount(String videoId);
 }

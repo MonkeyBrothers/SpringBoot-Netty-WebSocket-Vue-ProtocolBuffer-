@@ -30,6 +30,12 @@ public class BarrageMsgServiceImpl extends ServiceImpl<BarrageMsgMapper, Barrage
         return list(Wrappers.<BarrageMsg>lambdaQuery()
                 .eq(BarrageMsg::getDelFlag, false)
                 .eq(BarrageMsg::getVideoId, videoId)
+                .orderByDesc(BarrageMsg::getCreateTime)
         );
+    }
+
+    @Override
+    public int getMsgCountByVideoId(String videoId) {
+        return getListByVideoId(videoId).size();
     }
 }

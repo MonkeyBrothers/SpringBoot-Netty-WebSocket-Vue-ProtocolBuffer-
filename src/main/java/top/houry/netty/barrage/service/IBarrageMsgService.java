@@ -17,4 +17,6 @@ public interface IBarrageMsgService extends IService<BarrageMsg> {
     boolean saveBarrageMsg(BarrageMsg barrageMsg);
 
     List<BarrageMsg> getListByVideoId(String videoId);
+
+    int getMsgCountByVideoId(String videoId);
 }
