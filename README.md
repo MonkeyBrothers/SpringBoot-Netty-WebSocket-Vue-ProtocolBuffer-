@@ -49,9 +49,9 @@ https://gitee.com/MonkeyBrothers/barrage-vue
 [前后端未分离版本]-[V1.0版本] https://gitee.com/MonkeyBrothers/barrage/tree/V1.0/
 
 ### V2.1.0版本效果截图
-![avatar](/images/v2.0/1.png)
-![avatar](/images/v2.0/2.png)
-![avatar](/images/v2.0/3.png)
+![avatar](/images/v2.1.0/1.png)
+![avatar](/images/v2.1.0/2.png)
+![avatar](/images/v2.1.0/3.png)
 
 ### V2.0版本效果截图
 ![avatar](/images/v2.0/1.png)
