@@ -6,12 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
-import top.houry.netty.barrage.bo.BarrageMsgBo;
 import top.houry.netty.barrage.consts.BarrageVideoConst;
 import top.houry.netty.barrage.service.IBarrageSendMsgToClientService;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 import top.houry.netty.barrage.utils.BarrageContentUtils;
-import top.houry.netty.barrage.utils.BarrageRedisUtils;
 
 import java.util.List;
 

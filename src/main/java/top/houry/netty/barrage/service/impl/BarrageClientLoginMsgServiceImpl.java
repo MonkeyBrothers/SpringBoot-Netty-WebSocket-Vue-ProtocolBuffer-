@@ -53,7 +53,6 @@ public class BarrageClientLoginMsgServiceImpl implements IBarrageMsgTypeService 
 
             cacheOnlinePopulationAndWatchCountToRedis(videoId);
 
-
             BarrageProto.Barrage.Builder builder = BarrageProto.Barrage.newBuilder();
             BarrageProto.WebClientLoginResp.Builder loginResp = BarrageProto.WebClientLoginResp.newBuilder();
 

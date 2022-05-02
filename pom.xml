@@ -22,7 +22,7 @@
         <version.hutool-all>5.4.4</version.hutool-all>
         <version.protobuf-java>3.6.1</version.protobuf-java>
         <version.mysql-connector-java>8.0.19</version.mysql-connector-java>
-        <version.druid>1.1.10</version.druid>
+        <version.druid-spring-boot-starter>1.2.9</version.druid-spring-boot-starter>
         <version.mybatis-plus-boot-starter>3.4.3.1</version.mybatis-plus-boot-starter>
         <version.mybatis-plus-generator>3.4.1</version.mybatis-plus-generator>
         <version.velocity-engine-core>2.2</version.velocity-engine-core>
@@ -67,9 +67,10 @@
 
         <dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>${version.druid}</version>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${version.druid-spring-boot-starter}</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.apache.velocity</groupId>

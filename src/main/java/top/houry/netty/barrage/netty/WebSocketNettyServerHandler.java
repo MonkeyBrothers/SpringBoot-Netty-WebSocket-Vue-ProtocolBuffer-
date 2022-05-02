@@ -6,6 +6,7 @@ import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import top.houry.netty.barrage.proto.BarrageProto;
+import top.houry.netty.barrage.service.impl.BarrageWatchInfoServiceImpl;
 import top.houry.netty.barrage.utils.BarrageConnectInfoUtils;
 import top.houry.netty.barrage.utils.BarrageMsgBeanUtils;
 import top.houry.netty.barrage.utils.BarrageSpringContextUtil;
@@ -16,6 +17,7 @@ import top.houry.netty.barrage.utils.BarrageSpringContextUtil;
  * @Date 2021/3/2 9:30
  **/
 @Slf4j
+
 public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<BarrageProto.Barrage> {
 
     /**
@@ -60,12 +62,7 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         log.info("[WebSocketNettyServerHandler]-[handlerRemoved]-[{}]", ctx.channel().toString());
-        BarrageConnectInfoUtils.removeChannelInfoByChannelHandlerContext(ctx);
-        String videId = BarrageConnectInfoUtils.getVideoIdByChannelHandlerContext(ctx);
-        if (StringUtils.isBlank(videId)) {
-            return;
-        }
-
+        clientOffline(ctx);
     }
 
     /**
@@ -99,6 +96,7 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         log.error("[WebSocketNettyServerHandler]-[exceptionCaught]-[Exception]", cause);
         ctx.channel().close();
+        clientOffline(ctx);
     }
 
 
@@ -117,6 +115,7 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
                 case READER_IDLE:
                     log.info("[WebSocketNettyServerHandler]-[userEventTriggered]-[没有接收到：{}]-[的信息心跳信息，将断开连接回收资源]", ctx.toString());
                     ctx.channel().close();
+                    clientOffline(ctx);
                     break;
                 case WRITER_IDLE:
                     log.info("[WebSocketNettyServerHandler]-[userEventTriggered]-[写空闲]");
@@ -131,5 +130,14 @@ public class WebSocketNettyServerHandler extends SimpleChannelInboundHandler<Bar
         }
     }
 
+    private void clientOffline(ChannelHandlerContext ctx) {
+        String videId = BarrageConnectInfoUtils.getVideoIdByChannelHandlerContext(ctx);
+        if (StringUtils.isBlank(videId)) {
+            return;
+        }
+        BarrageWatchInfoServiceImpl watchInfoService = BarrageSpringContextUtil.getBean(BarrageWatchInfoServiceImpl.class);
+        watchInfoService.subOnlineWatchCount(videId);
+        BarrageConnectInfoUtils.removeChannelInfoByChannelHandlerContext(ctx);
+    }
 
 }
