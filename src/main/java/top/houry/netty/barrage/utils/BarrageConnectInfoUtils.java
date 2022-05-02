@@ -58,6 +58,7 @@ public class BarrageConnectInfoUtils {
             CopyOnWriteArrayList<ChannelHandlerContext> contexts = new CopyOnWriteArrayList<>();
             contexts.add(context);
             BASE_CONNECT_INFO_MAP.put(videoId, contexts);
+            BASE_CHANNEL_VIDEO_MAP.put(context, videoId);
             return true;
         }
         BASE_CHANNEL_VIDEO_MAP.put(context, videoId);
